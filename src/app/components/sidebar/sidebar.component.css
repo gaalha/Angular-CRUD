@@ -6,7 +6,7 @@
 }
 
 .sidebar{
-    background-color: #0747A6;
+    background-color: #E53935;
 }
 
 .active{
@@ -15,7 +15,7 @@
 
 .sidebar-item{
     color: white;
-    font-size: 20px;
+    /*font-size: 20px;*/
 }
 
 mat-icon{
