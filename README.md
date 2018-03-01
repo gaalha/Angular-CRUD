@@ -7,7 +7,7 @@ Basic side nav template for angular 5.
 ## Screenshots
 
 <p align="center">
-    <img src="http://3.bp.blogspot.com/-PFHZyS4mkco/WpjVzBB0xPI/AAAAAAAAO54/EeUS-at0JD8MZV0yvc4hdcaylIOps3ETwCK4BGAYYCw/s1600/angular-sidenav.png" width="612" height="749" alt="screenshot" align="center">
+    <img src="http://3.bp.blogspot.com/-PFHZyS4mkco/WpjVzBB0xPI/AAAAAAAAO54/EeUS-at0JD8MZV0yvc4hdcaylIOps3ETwCK4BGAYYCw/s1600/angular-sidenav.png" alt="screenshot" align="center">
 </p>
 
 ### Get the code
