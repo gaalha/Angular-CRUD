@@ -1,0 +1,23 @@
+.main-content{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar{
+    background-color: #0747A6;
+}
+
+.active{
+    background-color:rgba(9, 30, 66, 0.25);
+}
+
+.sidebar-item{
+    color: white;
+    font-size: 20px;
+}
+
+mat-icon{
+    color: white;
+}
