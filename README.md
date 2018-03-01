@@ -1,26 +1,32 @@
-# Sidebar
+<h4 align="center">Angular 5 and Material2</h4>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.2.
+# Angular5-sidenav
 
-## Development server
+Basic side nav template for angular 5.
+
+## Screenshots
+
+<p align="center">
+    <img src="http://3.bp.blogspot.com/-PFHZyS4mkco/WpjVzBB0xPI/AAAAAAAAO54/EeUS-at0JD8MZV0yvc4hdcaylIOps3ETwCK4BGAYYCw/s1600/angular-sidenav.png" width="612" height="749" alt="screenshot" align="center">
+</p>
+
+### Get the code
+
+```
+$ git clone https://github.com/lackmarck/angular5-sidenav.git
+$ cd angular5-sidenav
+$ npm install
+```
+
+### Run the app
+
+```
+$ ng serve
+```
+
+## Development
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
