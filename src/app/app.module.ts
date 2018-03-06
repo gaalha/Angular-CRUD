@@ -19,7 +19,7 @@ import { LoginLayoutComponent } from './layouts/login-layout/login-layout.compon
 import './rxjs-operators';
 
 // COMPONENTS
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app/app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
@@ -30,6 +30,9 @@ import { PersonComponent } from './components/person/person.component';
 
 // SERVICES
 import { PersonService } from './services/person.service';
+import { UserService } from './services/user.service';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule( {
     declarations: [
@@ -53,7 +56,8 @@ import { PersonService } from './services/person.service';
         HttpClientModule
     ],
     providers: [
-        PersonService
+        PersonService,
+        UserService
     ],
     bootstrap: [ AppComponent ]
 } )
