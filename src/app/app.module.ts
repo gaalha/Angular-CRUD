@@ -9,7 +9,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from "@angular/common/http";
 
 // ROUTES
-import { app_routing } from "./app.routes";
+import { AppRoutingModule } from "./app.routes";
 
 // LAYOUT
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
@@ -33,6 +33,8 @@ import { PersonService } from './services/person.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule( {
     declarations: [
@@ -45,14 +47,16 @@ import { AuthGuard } from './auth/auth.guard';
         MenuComponent,
         HomeLayoutComponent,
         LoginLayoutComponent,
-        PersonComponent
+        PersonComponent,
+        LoginComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
         AppMaterialModule,
-        app_routing,
+        AppRoutingModule,
         HttpClientModule
     ],
     providers: [
