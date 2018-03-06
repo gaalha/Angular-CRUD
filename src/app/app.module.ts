@@ -5,7 +5,7 @@ import { AppMaterialModule } from './theme/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { RouterModule, Routes } from "@angular/router";
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from "@angular/common/http";
 
 // ROUTES
@@ -57,7 +57,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         FlexLayoutModule,
         AppMaterialModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule
     ],
     providers: [
         PersonService,

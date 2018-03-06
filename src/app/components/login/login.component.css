@@ -1,0 +1,22 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+}
+.signin-content {
+    padding: 60px 1rem;
+}
+.full-width-input {
+    width: 100%;
+}
+
+
+.angular-logo{
+    width: 140px;
+    height: 140px;
+    margin-bottom: 32px;
+}
+
+.separate{
+    margin-bottom: 32px;
+}

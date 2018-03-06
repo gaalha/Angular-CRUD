@@ -22,7 +22,6 @@ import { LoginLayoutComponent } from './layouts/login-layout/login-layout.compon
 const routes: Routes = [
     { path: '',
         component: HomeLayoutComponent,
-        canActivate: [AuthGuard],
         children: [
             { path: 'home',component: HomeComponent },
             { path: 'about',component: AboutComponent },
