@@ -27,14 +27,12 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { SupportComponent } from './components/support/support.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { PersonComponent } from './components/person/person.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoginComponent } from './components/login/login.component';
 
 // SERVICES
-import { PersonService } from './services/person.service';
-import { UserService } from './services/user.service';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
-import { LoginComponent } from './components/login/login.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule( {
     declarations: [
@@ -62,8 +60,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         FormsModule
     ],
     providers: [
-        PersonService,
-        UserService
+        AuthGuard,
+        AuthService
     ],
     bootstrap: [ AppComponent ]
 } )

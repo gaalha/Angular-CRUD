@@ -19,9 +19,11 @@ import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 
 
+// ROUTES
 const routes: Routes = [
     { path: '',
         component: HomeLayoutComponent,
+       // canActivate: [AuthGuard],
         children: [
             { path: 'home',component: HomeComponent },
             { path: 'about',component: AboutComponent },
@@ -42,7 +44,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [ RouterModule.forRoot(routes, { useHash: true }) ],
+    imports: [ RouterModule.forRoot(routes)],
     exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

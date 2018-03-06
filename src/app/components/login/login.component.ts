@@ -10,6 +10,7 @@ import { AuthService } from './../../auth/auth.service';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
     form: FormGroup;
     private formSubmitAttempt: boolean;
