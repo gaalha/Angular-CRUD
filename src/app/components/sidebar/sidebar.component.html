@@ -43,13 +43,15 @@
               </mat-list-item>
           </a>
 
-          <mat-list-item (click)="openDialog()">
-              <mat-icon mat-list-icon>exit_to_app</mat-icon>
-              <div fxFlex="10"></div>
-              <div *ngIf="sidenavWidth > 6" class="sidebar-item">
-                  <h5>Logout</h5>
-              </div>
-          </mat-list-item>
+          <div class="profile">
+            <mat-list-item (click)="openDialog()">
+                <mat-icon mat-list-icon>exit_to_app</mat-icon>
+                <div fxFlex="10"></div>
+                <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+                    <h5>Logout</h5>
+                </div>
+            </mat-list-item>
+          </div>
 
         </mat-nav-list>
     </mat-sidenav>

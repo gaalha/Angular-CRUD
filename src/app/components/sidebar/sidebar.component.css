@@ -20,3 +20,9 @@
 mat-icon{
     color: white;
 }
+
+.profile {
+    position:fixed;
+    bottom:0px;
+    width:100%;
+}
