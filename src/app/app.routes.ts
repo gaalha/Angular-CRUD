@@ -14,13 +14,6 @@ import {
     NotFoundComponent
 } from './components/index.pages';
 
-/* import { AboutComponent } from './components/about/about.component';
-import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { HomeComponent } from './components/home/home.component';
-import { SupportComponent } from './components/support/support.component';
-import { LoginComponent } from './components/login/login.component';
-import { NotFoundComponent } from './components/not-found/not-found.component'; */
-
 // LAYOUTS
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
@@ -35,8 +28,7 @@ const routes: Routes = [
             { path: '',component: HomeComponent },
             { path: 'about',component: AboutComponent },
             { path: 'support', component: SupportComponent },
-            { path: 'contact-us', component: ContactUsComponent },
-            { path: '**', redirectTo: '' }
+            { path: 'contact-us', component: ContactUsComponent }
         ]
     },
     { path: '',

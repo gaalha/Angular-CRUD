@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient }  from "@angular/common/http";
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from './user';
 import { constants } from '../utils/constanst';
 

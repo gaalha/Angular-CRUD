@@ -7,10 +7,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-    constructor(
-        private authService: AuthService,
-        private router: Router
-    ) {}
+    constructor(private authService: AuthService, private router: Router) {}
 
     canActivate(
         next: ActivatedRouteSnapshot,
@@ -19,11 +16,12 @@ export class AuthGuard implements CanActivate {
         return this.authService.isLoggedIn
         .take(1)
         .map((isLoggedIn: boolean) => {
-          if (!isLoggedIn){
-            this.router.navigate(['login']);  
-            return false;
-          }
-          return true;
+            console.log(isLoggedIn);
+            if (!isLoggedIn){
+                this.router.navigate(['login']);
+                return false;
+            }
+                return true;
         });
     }
 }
