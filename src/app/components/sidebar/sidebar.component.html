@@ -33,6 +33,14 @@
           <h5>Support</h5>
         </div>
       </mat-list-item>
+
+      <mat-list-item routerLink="support" routerLinkActive="active" (click)="onLogout()">
+        <mat-icon mat-list-icon>exit_to_app</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+          <h5>Logout</h5>
+        </div>
+      </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <div class="main-content">

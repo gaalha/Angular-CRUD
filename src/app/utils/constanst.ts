@@ -1,5 +1,5 @@
 const HOST ='http://localhost:3000'
-export const constants = {
+export const CONSTANTS = {
   permissions:{},
   routes:{
       authorization:{
