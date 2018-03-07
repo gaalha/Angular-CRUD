@@ -23,13 +23,13 @@ import { LoginLayoutComponent } from './layouts/login-layout/login-layout.compon
 const routes: Routes = [
     { path: '',
         component: HomeLayoutComponent,
-       // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         children: [
-            { path: 'home',component: HomeComponent },
+            { path: '',component: HomeComponent },
             { path: 'about',component: AboutComponent },
             { path: 'support', component: SupportComponent },
             { path: 'contact-us', component: ContactUsComponent },
-            { path: '**', pathMatch: 'full', redirectTo: 'home' }
+            { path: '**', redirectTo: '' }
         ]
     },
     { path: '',

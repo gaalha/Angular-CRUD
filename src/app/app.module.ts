@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppMaterialModule } from './theme/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { RouterModule, Routes } from "@angular/router";
+//import { RouterModule, Routes } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from "@angular/common/http";
 
@@ -29,10 +29,12 @@ import { MenuComponent } from './components/menu/menu.component';
 import { PersonComponent } from './components/person/person.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
+import { UserComponent } from './components/user/user.component';
 
 // SERVICES
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { UserService } from './services/user.service';
 
 @NgModule( {
     declarations: [
@@ -47,7 +49,8 @@ import { AuthGuard } from './auth/auth.guard';
         LoginLayoutComponent,
         PersonComponent,
         LoginComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        UserComponent
     ],
     imports: [
         BrowserModule,
@@ -61,7 +64,8 @@ import { AuthGuard } from './auth/auth.guard';
     ],
     providers: [
         AuthGuard,
-        AuthService
+        AuthService,
+        UserService
     ],
     bootstrap: [ AppComponent ]
 } )
