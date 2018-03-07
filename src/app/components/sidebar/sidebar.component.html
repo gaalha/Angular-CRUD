@@ -1,8 +1,20 @@
 <mat-sidenav-container fullscreen>
     <mat-sidenav #sidebar mode="side" class="sidebar" [ngStyle]="{'width.em': sidenavWidth}" opened="true" 
-    (mouseover)="increase()" (mouseleave)="decrease()">
+    (mouseleave)="decrease()">
       <mat-nav-list>
-        
+
+<!-- (mouseover)="increase()" -->
+
+        <a href="/#/">
+            <mat-list-item routerLinkActive="active">
+                <mat-icon mat-list-icon (click)="increase()">menu</mat-icon>
+                <div fxFlex="10"></div>
+                <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+                    <h5>Hide menu</h5>
+                </div>
+            </mat-list-item>
+        </a>
+
           <a href="/#/">
               <mat-list-item routerLinkActive="active">
                   <mat-icon mat-list-icon>home</mat-icon>

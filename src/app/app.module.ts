@@ -27,12 +27,12 @@ import { SupportComponent } from './components/support/support.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './auth/dialogs/logout/logout.component';
 
 // SERVICES
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { UserService } from './services/user.service';
-import { LogoutComponent } from './auth/dialogs/logout/logout.component';
 
 @NgModule( {
     declarations: [

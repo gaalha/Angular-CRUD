@@ -35,4 +35,8 @@ export class SidebarComponent implements OnInit {
     ngOnInit () {
     }
 
+    side(value) {
+        return value;
+    }
+
 }
