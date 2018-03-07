@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppMaterialModule } from './theme/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from "@angular/flex-layout";
-//import { RouterModule, Routes } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from "@angular/common/http";
 
@@ -26,10 +25,8 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { SupportComponent } from './components/support/support.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { PersonComponent } from './components/person/person.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
-import { UserComponent } from './components/user/user.component';
 
 // SERVICES
 import { AuthService } from './auth/auth.service';
@@ -47,10 +44,8 @@ import { UserService } from './services/user.service';
         MenuComponent,
         HomeLayoutComponent,
         LoginLayoutComponent,
-        PersonComponent,
         LoginComponent,
-        NotFoundComponent,
-        UserComponent
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,
