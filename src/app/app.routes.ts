@@ -12,7 +12,14 @@ import {
     SupportComponent,
     LoginComponent,
     NotFoundComponent
-} from "./components/index.pages";
+} from './components/index.pages';
+
+/* import { AboutComponent } from './components/about/about.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { HomeComponent } from './components/home/home.component';
+import { SupportComponent } from './components/support/support.component';
+import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component'; */
 
 // LAYOUTS
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
@@ -44,8 +51,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [ RouterModule.forRoot(routes)],
-    exports: [ RouterModule ]
+    imports: [RouterModule.forRoot(routes, { useHash:true })],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
 
