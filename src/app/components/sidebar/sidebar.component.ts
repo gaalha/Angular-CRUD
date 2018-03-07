@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-//import { Router } from '@angular/router';
 import { AuthService } from './../../auth/auth.service';
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { LogoutComponent } from '../../auth/dialogs/logout/logout.component';
 
 @Component( {
     selector: 'app-sidebar',
@@ -12,7 +14,18 @@ import { AuthService } from './../../auth/auth.service';
 export class SidebarComponent implements OnInit {
     isLoggedIn$: Observable<boolean>;
     sidenavWidth = 4;
-    constructor ( private authService: AuthService ) { }
+
+    title: string = 'Cerrar Sesión';
+    message: string = 'Seguro que desea cerrar sesión?';
+
+    constructor ( private authService: AuthService, public dialog: MatDialog ) { }
+
+    openDialog(): void {
+        let dialogRef = this.dialog.open(LogoutComponent, {
+            width: '250px',
+            data: { title: this.title, message: this.message }
+        });
+    }
 
     ngOnInit () {
         this.isLoggedIn$ = this.authService.isLoggedIn;

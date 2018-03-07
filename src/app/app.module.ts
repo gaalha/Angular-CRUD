@@ -32,6 +32,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { UserService } from './services/user.service';
+import { LogoutComponent } from './auth/dialogs/logout/logout.component';
 
 @NgModule( {
     declarations: [
@@ -45,7 +46,8 @@ import { UserService } from './services/user.service';
         HomeLayoutComponent,
         LoginLayoutComponent,
         LoginComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        LogoutComponent
     ],
     imports: [
         BrowserModule,
@@ -62,6 +64,7 @@ import { UserService } from './services/user.service';
         AuthService,
         UserService
     ],
+    entryComponents: [LogoutComponent],
     bootstrap: [ AppComponent ]
 })
 
