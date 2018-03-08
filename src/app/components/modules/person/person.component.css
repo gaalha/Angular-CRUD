@@ -5,17 +5,21 @@
     height: 70vh;
     position: relative;
     width: 85vw;
+    margin-top: 15vh;
+    margin-left: 5vw;
 }
 
 mat-toolbar {
+    position: absolute;
+    top: 0px;
     height: 20vh;
-    width: 85vw;
+    width: 95vw;
     margin-left: 0 !important;
 }
 
 .add-button {
     position:fixed;
-    top: 20vh;
+    top: 15vh;
     right:10vw;
     color:#FFF;
     border-radius:50px;
