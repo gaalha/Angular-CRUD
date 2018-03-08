@@ -18,8 +18,8 @@ mat-toolbar {
 }
 
 .add-button {
-    position:fixed;
-    top: 15vh;
+    position: fixed;
+    top: 16vh;
     right:10vw;
     color:#FFF;
     border-radius:50px;
