@@ -36,6 +36,11 @@ import { ErrorComponent } from './auth/dialogs/error/error.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { UserService } from './services/user.service';
+import { PersonService } from './services/person.service';
+
+// MODULES
+import { UserComponent } from './components/modules/user/user.component';
+import { PersonComponent } from './components/modules/person/person.component';
 
 @NgModule( {
     declarations: [
@@ -51,7 +56,9 @@ import { UserService } from './services/user.service';
         LoginComponent,
         NotFoundComponent,
         LogoutComponent,
-        ErrorComponent
+        ErrorComponent,
+        UserComponent,
+        PersonComponent
     ],
     imports: [
         BrowserModule,
@@ -66,7 +73,8 @@ import { UserService } from './services/user.service';
     providers: [
         AuthGuard,
         AuthService,
-        UserService
+        UserService,
+        PersonService
     ],
     entryComponents: [
         LogoutComponent,

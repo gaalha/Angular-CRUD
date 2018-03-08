@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient }  from "@angular/common/http";
 import { User } from './user';
-import { CONSTANTS } from '../utils/constanst';
+import { CONSTANST } from '../utils/constanst';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +21,7 @@ export class AuthService {
     login(user: User){
         if (user.userName !== '' && user.password != '' ) {
             return this.http
-            .post(CONSTANTS.routes.authorization.login,{txtUsername:user.userName,txtPassword:user.password})
+            .post(CONSTANST.routes.authorization.login,{txtUsername:user.userName,txtPassword:user.password})
         }
     }
 
