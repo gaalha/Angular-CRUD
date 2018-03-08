@@ -26,3 +26,8 @@ mat-icon{
     bottom:0px;
     width:100%;
 }
+
+mat-sidenav {
+    -webkit-box-shadow: 5px 0 5px -5px #333;
+    box-shadow: 5px 0 5px -5px #333;
+}
