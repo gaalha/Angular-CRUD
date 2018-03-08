@@ -4,3 +4,7 @@ export { HomeComponent } from "./home/home.component";
 export { SupportComponent } from "./support/support.component";
 export { LoginComponent } from "./login/login.component";
 export { NotFoundComponent } from "./not-found/not-found.component";
+
+// CRUD
+export { PersonComponent } from "./modules/person/person.component";
+export { UserComponent } from "./modules/user/user.component";

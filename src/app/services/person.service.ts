@@ -17,9 +17,9 @@ export class PersonService {
   getList(sort: string, order: string, page: number,filteredVal:any): Observable<PersonApi> {
       var href = '';
       if(filteredVal===undefined){
-          href = CONSTANST.routes.person.list+sort+'/'+order+'/'+(page+1);
+          href = CONSTANST.routes.person.list+'/'+sort+'/'+order+'/'+(page+1);
       }else{
-          href = CONSTANST.routes.person.list+sort+'/'+order+'/'+(page+1)+'/'+filteredVal;
+          href = CONSTANST.routes.person.list+'/'+sort+'/'+order+'/'+(page+1)+'/'+filteredVal;
       }
       return this.http.get<PersonApi>(href);
   }

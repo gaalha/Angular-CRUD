@@ -11,7 +11,9 @@ import {
     HomeComponent,
     SupportComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PersonComponent,
+    UserComponent
 } from './components/index.pages';
 
 // LAYOUTS
@@ -25,7 +27,7 @@ const routes: Routes = [
         component: HomeLayoutComponent,
         canActivate: [AuthGuard],
         children: [
-            { path: '',component: HomeComponent },
+            { path: '',component: PersonComponent },
             { path: 'about', component: AboutComponent },
             { path: 'support', component: SupportComponent },
             { path: 'contact-us', component: ContactUsComponent }
