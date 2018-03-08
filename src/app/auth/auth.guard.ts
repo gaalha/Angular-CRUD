@@ -9,14 +9,8 @@ import 'rxjs/add/operator/map';
 export class AuthGuard implements CanActivate {
     constructor(private authService: AuthService, private router: Router) {}
 
-    canActivate(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ): Observable<boolean> {
-        return this.authService.isLoggedIn
-        .take(1)
-        .map((isLoggedIn: boolean) => {
-            console.log(isLoggedIn);
+    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+        return this.authService.isLoggedIn.take(1).map((isLoggedIn: boolean) => {
             if (!isLoggedIn){
                 this.router.navigate(['login']);
                 return false;

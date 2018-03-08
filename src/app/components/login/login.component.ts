@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 //Services
 import { AuthService } from './../../auth/auth.service';
 
+// DIALOG ERROR
+import {ErrorComponent } from '../../auth/dialogs/error/error.component';
+import { MatSnackBar } from '@angular/material';
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -18,7 +22,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private authService: AuthService ,
-        private router: Router
+        private router: Router,
+        public snack: MatSnackBar
     ) {}
 
     ngOnInit() {
@@ -47,7 +52,13 @@ export class LoginComponent implements OnInit {
                     localStorage.setItem('token','123')
                     this.router.navigate(['']);
                 }else{
-                    console.log(data)
+                    this.snack.openFromComponent(ErrorComponent, {
+                        data: {
+                            data: data
+                        },
+                        duration: 3000
+                    });
+                    console.log(data);
                 }
             });
         }

@@ -13,7 +13,7 @@ import { LogoutComponent } from '../../auth/dialogs/logout/logout.component';
 export class SidebarComponent implements OnInit {
     sidenavWidth = 4;
     title: string = 'Cerrar Sesión';
-    message: string = 'Seguro que desea cerrar sesión?';
+    message: string = '¿Seguro que deseas cerrar sesión?';
 
     constructor ( public dialog: MatDialog ) { }
 

@@ -4,7 +4,9 @@
     {{data.message}}
 </mat-dialog-content>
 
+<br/>
+
 <mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button mat-dialog-close class="pull-right" (click)="onLogout()">Ok</button>
+    <button mat-button mat-dialog-close (click)="onLogout()">Ok</button>
 </mat-dialog-actions>

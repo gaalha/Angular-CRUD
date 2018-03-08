@@ -1,11 +1,9 @@
 <mat-sidenav-container fullscreen>
-    <mat-sidenav #sidebar mode="side" class="sidebar" [ngStyle]="{'width.em': sidenavWidth}" opened="true" 
+    <mat-sidenav #sidebar mode="side" class="sidebar" [ngStyle]="{'width.em': sidenavWidth}" opened="true"
     (mouseleave)="decrease()">
-      <mat-nav-list>
+    <!-- (mouseover)="increase()" -->
 
-<!-- (mouseover)="increase()" -->
-
-        <a href="/#/">
+        <mat-nav-list>
             <mat-list-item routerLinkActive="active">
                 <mat-icon mat-list-icon (click)="increase()">menu</mat-icon>
                 <div fxFlex="10"></div>
@@ -13,59 +11,57 @@
                     <h5>Hide menu</h5>
                 </div>
             </mat-list-item>
-        </a>
 
-          <a href="/#/">
-              <mat-list-item routerLinkActive="active">
-                  <mat-icon mat-list-icon>home</mat-icon>
+            <a href="/#/">
+                <mat-list-item routerLinkActive="active">
+                    <mat-icon mat-list-icon>home</mat-icon>
+                    <div fxFlex="10"></div>
+                    <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+                        <h5>Home</h5>
+                    </div>
+                </mat-list-item>
+            </a>
+
+            <a href="/#/about">
+                <mat-list-item routerLinkActive="active">
+                    <mat-icon mat-list-icon>info</mat-icon>
+                    <div fxFlex="10"></div>
+                    <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+                        <h5>About</h5>
+                    </div>
+                </mat-list-item>
+            </a>
+
+            <a href="/#/contact-us">
+                <mat-list-item routerLinkActive="active">
+                    <mat-icon mat-list-icon>email</mat-icon>
+                    <div fxFlex="10"></div>
+                    <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+                        <h5>Contact Us</h5>
+                    </div>
+                </mat-list-item>
+            </a>
+            
+            <a href="/#/support">
+                <mat-list-item routerLinkActive="active">
+                    <mat-icon mat-list-icon>help</mat-icon>
+                    <div fxFlex="10"></div>
+                    <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+                        <h5>Support</h5>
+                    </div>
+                </mat-list-item>
+            </a>
+
+            <div class="profile">
+              <mat-list-item (click)="openDialog()">
+                  <mat-icon mat-list-icon>exit_to_app</mat-icon>
                   <div fxFlex="10"></div>
                   <div *ngIf="sidenavWidth > 6" class="sidebar-item">
-                      <h5>Home</h5>
+                      <h5>Logout</h5>
                   </div>
               </mat-list-item>
-          </a>
-
-          <a href="/#/about">
-              <mat-list-item routerLinkActive="active">
-                  <mat-icon mat-list-icon>info</mat-icon>
-                  <div fxFlex="10"></div>
-                  <div *ngIf="sidenavWidth > 6" class="sidebar-item">
-                      <h5>About</h5>
-                  </div>
-              </mat-list-item>
-          </a>
-
-          <a href="/#/contact-us">
-              <mat-list-item routerLinkActive="active">
-                  <mat-icon mat-list-icon>email</mat-icon>
-                  <div fxFlex="10"></div>
-                  <div *ngIf="sidenavWidth > 6" class="sidebar-item">
-                      <h5>Contact Us</h5>
-                  </div>
-              </mat-list-item>
-          </a>
-          
-          <a href="/#/support">
-              <mat-list-item routerLinkActive="active">
-                  <mat-icon mat-list-icon>help</mat-icon>
-                  <div fxFlex="10"></div>
-                  <div *ngIf="sidenavWidth > 6" class="sidebar-item">
-                      <h5>Support</h5>
-                  </div>
-              </mat-list-item>
-          </a>
-
-          <div class="profile">
-            <mat-list-item (click)="openDialog()">
-                <mat-icon mat-list-icon>exit_to_app</mat-icon>
-                <div fxFlex="10"></div>
-                <div *ngIf="sidenavWidth > 6" class="sidebar-item">
-                    <h5>Logout</h5>
-                </div>
-            </mat-list-item>
-          </div>
-
-        </mat-nav-list>
+            </div>
+          </mat-nav-list>
     </mat-sidenav>
 
     <div class="main-content">

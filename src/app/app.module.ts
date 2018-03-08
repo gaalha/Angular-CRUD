@@ -27,7 +27,10 @@ import { SupportComponent } from './components/support/support.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
+
+// DIALOGS
 import { LogoutComponent } from './auth/dialogs/logout/logout.component';
+import { ErrorComponent } from './auth/dialogs/error/error.component';
 
 // SERVICES
 import { AuthService } from './auth/auth.service';
@@ -47,7 +50,8 @@ import { UserService } from './services/user.service';
         LoginLayoutComponent,
         LoginComponent,
         NotFoundComponent,
-        LogoutComponent
+        LogoutComponent,
+        ErrorComponent
     ],
     imports: [
         BrowserModule,
@@ -64,7 +68,10 @@ import { UserService } from './services/user.service';
         AuthService,
         UserService
     ],
-    entryComponents: [LogoutComponent],
+    entryComponents: [
+        LogoutComponent,
+        ErrorComponent
+    ],
     bootstrap: [ AppComponent ]
 })
 
