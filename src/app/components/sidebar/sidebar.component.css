@@ -2,11 +2,13 @@
     display: flex;
     height: 100vh;
     align-items: center;
-    justify-content: center;
+    justify-content: left !important;
+    margin-left: 60px !important;
+    margin-right: 30px;
 }
 
 .sidebar{
-    background-color: #E53935;
+    background-color: #FF4081;
 }
 
 .active{
