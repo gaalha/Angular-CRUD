@@ -55,3 +55,24 @@
     font-size: 14px;
     width: 100%;
 }
+
+mat-toolbar {
+    height: 200px;
+    min-width: 300px;
+    width: 1000px;
+}
+
+.container {
+}
+
+.add-button {
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+}

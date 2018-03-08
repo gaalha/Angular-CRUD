@@ -1,60 +1,66 @@
-<div class="table-container mat-elevation-z1">
-    <div class="table-loading-shade" *ngIf="isLoadingResults">
-        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+<div class="container">
+    <button mat-fab color="accent" class="add-button">
+        <mat-icon>add</mat-icon>
+    </button>
+
+    <div class="table-container mat-elevation-z1">
+        <div class="table-loading-shade" *ngIf="isLoadingResults">
+            <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        </div>
+
+        <div class="table-header">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+
+        <mat-table #table [dataSource]="dataSource" class="person-table"
+        matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{ row.name }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="age">
+                <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{ row.age }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="gender">
+                <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{ row.gender }}</mat-cell>
+            </ng-container>
+
+            <!-- State Column -->
+            <!-- <ng-container matColumnDef="active">
+                <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{ row.active }}</mat-cell>
+            </ng-container> -->
+
+            <!-- actions-->
+            <ng-container matColumnDef="personid">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Actions
+                </mat-header-cell>
+
+                <mat-cell *matCellDef="let row">
+                    <div class="button-row">
+                        <a mat-icon-button color='accent' (click)="edit(row)">
+                            <mat-icon aria-label="Edit">create</mat-icon>
+                        </a>
+                        <a mat-icon-button color='warn' (click)="delete(row)" >
+                            <mat-icon aria-label="Delete">clear</mat-icon>
+                        </a>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <mat-paginator [length]="resultsLength" [pageSize]="pageSize">
+        </mat-paginator>
     </div>
-
-    <div class="table-header">
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-        </mat-form-field>
-    </div>
-
-    <mat-table #table [dataSource]="dataSource" class="person-table"
-    matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
-
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.name }}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="age">
-            <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.age }}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="gender">
-            <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.gender }}</mat-cell>
-        </ng-container>
-
-        <!-- State Column -->
-        <!-- <ng-container matColumnDef="active">
-            <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.active }}</mat-cell>
-        </ng-container> -->
-
-        <!-- actions-->
-        <ng-container matColumnDef="personid">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>
-                Actions
-            </mat-header-cell>
-
-            <mat-cell *matCellDef="let row">
-                <div class="button-row">
-                    <a mat-icon-button color='accent' (click)="edit(row)">
-                        <mat-icon aria-label="Edit">create</mat-icon>
-                    </a>
-                    <a mat-icon-button color='warn' (click)="delete(row)" >
-                        <mat-icon aria-label="Delete">clear</mat-icon>
-                    </a>
-                </div>
-            </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-
-    <mat-paginator [length]="resultsLength" [pageSize]="pageSize">
-    </mat-paginator>
 </div>
