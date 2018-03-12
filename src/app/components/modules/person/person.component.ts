@@ -15,6 +15,10 @@ import { Person } from '../../../models/Person';
 //Services
 import { PersonService } from '../../../services/person.service';
 
+// DIALOGS
+import { MatDialog } from '@angular/material';
+import { DialogsComponent } from '../../dialogs/dialogs.component';
+
 @Component({
   selector: 'app-person',
   templateUrl: './person.component.html',
@@ -32,7 +36,8 @@ export class PersonComponent implements AfterViewInit {
 
     constructor(
         private cdr:ChangeDetectorRef,
-        private personService: PersonService
+        private personService: PersonService,
+        public dialog: MatDialog
     ) { }
 
     ngAfterViewInit() {
@@ -69,6 +74,27 @@ export class PersonComponent implements AfterViewInit {
             ).subscribe(data => this.dataSource.data = data);
     }
 
+    delete(row:Person){
+
+        let dialogRef = this.dialog.open(DialogsComponent, {
+            width: '250px',
+            data: { 
+                title: 'Confirme la acción',
+                message: '¿Seguro que desea eliminar el usuario?'
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if(result){
+                this.personService.delete(row.personid).subscribe((data:any) => {
+                    if(data.success){
+                        this.paginator._changePageSize(this.paginator.pageSize);
+                    }
+                });
+            }
+        });
+    }
+
 }
 
 /*export class UserComponent implements AfterViewInit {
@@ -88,22 +114,4 @@ export class PersonComponent implements AfterViewInit {
                 this.paginator._changePageSize(this.paginator.pageSize);
         });
     }
-
-    delete(row:User){
-        let dialogRef = this.dialog.open(DeleteDialogComponent, {
-            height: '200px',
-            width: '600px'
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if(result){
-                this.userService.delete(row._id).subscribe((data:any) => {
-                    if(data.success){
-                        this.paginator._changePageSize(this.paginator.pageSize);
-                    }
-                });
-            }
-        });
-    }
-}
-*/
+} */

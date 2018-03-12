@@ -31,6 +31,7 @@ import { LoginComponent } from './components/login/login.component';
 // DIALOGS
 import { LogoutComponent } from './auth/dialogs/logout/logout.component';
 import { ErrorComponent } from './auth/dialogs/error/error.component';
+import { DialogsComponent } from './components/dialogs/dialogs.component';
 
 // SERVICES
 import { AuthService } from './auth/auth.service';
@@ -58,7 +59,8 @@ import { PersonComponent } from './components/modules/person/person.component';
         LogoutComponent,
         ErrorComponent,
         UserComponent,
-        PersonComponent
+        PersonComponent,
+        DialogsComponent
     ],
     imports: [
         BrowserModule,
@@ -78,7 +80,8 @@ import { PersonComponent } from './components/modules/person/person.component';
     ],
     entryComponents: [
         LogoutComponent,
-        ErrorComponent
+        ErrorComponent,
+        DialogsComponent
     ],
     bootstrap: [ AppComponent ]
 })
