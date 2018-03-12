@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {ChangeDetectorRef} from '@angular/core';
-import {MediaMatcher} from '@angular/cdk/layout';
+import { ChangeDetectorRef } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { Observable } from 'rxjs/Observable';
+
+
+// LOGOUT CONFIRM DIALOG
+import { MatDialog } from '@angular/material';
+import { LogoutComponent } from '../../auth/dialogs/logout/logout.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -16,7 +21,8 @@ export class SidenavComponent implements OnInit {
     
     constructor(
         changeDetectorRef: ChangeDetectorRef, 
-        media: MediaMatcher
+        media: MediaMatcher,
+        public dialog: MatDialog
     ){
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -26,5 +32,15 @@ export class SidenavComponent implements OnInit {
     }
     ngOnDestroy(): void {
         this.mobileQuery.removeListener(this._mobileQueryListener);
+    }
+
+    openDialog(): void {
+        let dialogRef = this.dialog.open(LogoutComponent, {
+            width: '250px',
+            data: {
+                title: 'Cerrar Sesión',
+                message: '¿Seguro que deseas cerrar sesión?'
+            }
+        });
     }
 }

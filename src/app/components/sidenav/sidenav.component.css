@@ -2,13 +2,13 @@
     height: 100vh;
 }
 
-mat-toolbar {
+/*mat-toolbar {
     background-color: #E91E63 !important;
-}
+}*/
 
-.menu {
+/*.menu {
     color: #fff;
-}
+}*/
 
 .spacer {
   flex: 1 1 auto !important;

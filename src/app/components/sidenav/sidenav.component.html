@@ -1,5 +1,5 @@
 <div class="container" [class.is-mobile]="mobileQuery.matches">
-    <mat-toolbar class="toolbar" class="mat-elevation-z6">
+    <mat-toolbar class="toolbar" class="mat-elevation-z10" mat-elevation-z10 color="accent">
         <button mat-icon-button (click)="snav.toggle()">
             <mat-icon class="menu">menu</mat-icon>
         </button>
@@ -47,5 +47,5 @@
 
 <!--USER PROFILE MENU-->
 <mat-menu #profileMenu="matMenu">
-    <button mat-button (click)="onLogout()">Logout</button>
+    <button mat-button (click)="openDialog()">Logout</button>
 </mat-menu>

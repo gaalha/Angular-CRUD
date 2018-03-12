@@ -83,6 +83,6 @@ mat-toolbar {
     width: 100%;
 }
 
-input[placeholder] {
+::placeholder; {
     color: white;
 }
