@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-home-layout',
-    template: `<app-sidebar></app-sidebar>`,
+    template: `<app-sidenav></app-sidenav>`,
     styles: []
 })
 export class HomeLayoutComponent implements OnInit {

@@ -2,35 +2,33 @@
 .table-container {
     display: flex;
     flex-direction: column;
-    height: 70vh;
+    height: 80vh;
     position: relative;
-    width: 85vw;
-    margin-top: 15vh;
-    margin-left: 5vw;
+    width: 80vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    left: 10vw;
+    right: 10vw;
 }
 
 mat-toolbar {
     position: absolute;
     top: 0px;
     height: 20vh;
-    width: 95vw;
+    width: 100vw;
     margin-left: 0 !important;
 }
 
 .add-button {
-    position: fixed;
-    top: 33vh;
-    right:10vw;
+    position: absolute;
+    top: 11vh;
+    right:8vw;
     color:#FFF;
     border-radius:50px;
     text-align:center;
     box-shadow: 2px 2px 3px #999;
     z-index: 2;
 }
-
-/*.search-bar {
-    width: 70vw !important;
-}*/
 
 .container {
     width: 90vw !important;
@@ -75,7 +73,7 @@ mat-toolbar {
 }
 
 /* applyFilter */
-.example-header {
+.table-header {
     min-height: 64px;
     padding: 8px 24px 0;
 }

@@ -27,6 +27,7 @@ import { SupportComponent } from './components/support/support.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 // DIALOGS
 import { LogoutComponent } from './auth/dialogs/logout/logout.component';
@@ -60,7 +61,8 @@ import { PersonComponent } from './components/modules/person/person.component';
         ErrorComponent,
         UserComponent,
         PersonComponent,
-        DialogsComponent
+        DialogsComponent,
+        SidenavComponent
     ],
     imports: [
         BrowserModule,

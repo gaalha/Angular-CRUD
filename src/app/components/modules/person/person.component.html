@@ -1,11 +1,12 @@
-<mat-toolbar color="accent">Persons</mat-toolbar>
-
 <div class="container">
-    <button mat-fab color="primary" class="add-button">
-        <mat-icon>add</mat-icon>
-    </button>
+
+    <mat-toolbar color="accent"></mat-toolbar>
 
     <div class="table-container mat-elevation-z1">
+        <button mat-fab color="primary" class="add-button">
+            <mat-icon>add</mat-icon>
+        </button>
+    
         <div class="table-loading-shade" *ngIf="isLoadingResults">
             <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
         </div>
