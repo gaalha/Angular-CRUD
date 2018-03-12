@@ -1,5 +1,5 @@
 <div class="container" [class.is-mobile]="mobileQuery.matches">
-    <mat-toolbar class="toolbar" mat-elevation-z8>
+    <mat-toolbar class="toolbar" class="mat-elevation-z6">
         <button mat-icon-button (click)="snav.toggle()">
             <mat-icon class="menu">menu</mat-icon>
         </button>
@@ -8,21 +8,21 @@
         
         <span class="spacer"></span>
 
-        <button mat-icon-button>
+        <!-- <button mat-icon-button>
             <i class="material-icons menu">notifications</i>
         </button>
 
         <button mat-icon-button>
             <i class="material-icons menu">message</i>
-        </button>
+        </button> -->
 
         <button mat-icon-button [matMenuTriggerFor]="profileMenu">
             <i class="material-icons menu">person_pin</i>
         </button>
-
-        <button mat-icon-button>
+        
+        <!-- <button mat-icon-button>
             <i class="material-icons menu">settings</i>
-        </button>
+        </button> -->
     </mat-toolbar>
 
     <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">

@@ -82,3 +82,7 @@ mat-toolbar {
     font-size: 14px;
     width: 100%;
 }
+
+input[placeholder] {
+    color: white;
+}
