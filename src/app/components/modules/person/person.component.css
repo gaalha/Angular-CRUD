@@ -19,7 +19,7 @@ mat-toolbar {
 
 .add-button {
     position: fixed;
-    top: 16vh;
+    top: 33vh;
     right:10vw;
     color:#FFF;
     border-radius:50px;
@@ -27,6 +27,10 @@ mat-toolbar {
     box-shadow: 2px 2px 3px #999;
     z-index: 2;
 }
+
+/*.search-bar {
+    width: 70vw !important;
+}*/
 
 .container {
     width: 90vw !important;
@@ -38,11 +42,12 @@ mat-toolbar {
     align-items: center;
     padding-left: 24px;
     font-size: 20px;
+    margin-bottom: 5vh
 }
 
 .person-table {
     overflow: auto;
-    min-height: 300px;
+    padding-top: 2vh;
 }
 
 .table-loading-shade {
