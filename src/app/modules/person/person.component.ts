@@ -10,14 +10,14 @@ import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
 
 //Models
-import { Person } from '../../../models/Person';
+import { Person } from '../../models/Person';
 
 //Services
-import { PersonService } from '../../../services/person.service';
+import { PersonService } from '../../services/person.service';
 
 // DIALOGS
 import { MatDialog } from '@angular/material';
-import { DialogsComponent } from '../../dialogs/dialogs.component';
+//import { DialogsComponent } from '../../dialogs/dialogs.component';
 
 @Component({
   selector: 'app-person',
@@ -74,7 +74,7 @@ export class PersonComponent implements AfterViewInit {
             ).subscribe(data => this.dataSource.data = data);
     }
 
-    delete(row:Person){
+    /*delete(row:Person){
 
         let dialogRef = this.dialog.open(DialogsComponent, {
             width: '250px',
@@ -93,7 +93,7 @@ export class PersonComponent implements AfterViewInit {
                 });
             }
         });
-    }
+    }*/
 
 }
 

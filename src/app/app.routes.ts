@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // FILTER
-import { AuthGuard } from './auth/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 //COMPONENTS
 import {
     AboutComponent,
     ContactUsComponent,
     HomeComponent,
-    SupportComponent,
     LoginComponent,
     NotFoundComponent,
     PersonComponent,
@@ -17,8 +16,8 @@ import {
 } from './components/index.pages';
 
 // LAYOUTS
-import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
-import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
+import { HomeLayoutComponent } from './modules/layouts/home-layout/home-layout.component';
+import { LoginLayoutComponent } from './modules/layouts/login-layout/login-layout.component';
 
 
 // ROUTES
@@ -29,7 +28,6 @@ const routes: Routes = [
         children: [
             { path: '',component: PersonComponent },
             { path: 'about', component: AboutComponent },
-            { path: 'support', component: SupportComponent },
             { path: 'contact-us', component: ContactUsComponent }
         ]
     },

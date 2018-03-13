@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient }  from "@angular/common/http";
-import { User } from './user';
+import { User } from '../models/user';
 import { CONSTANST } from '../utils/constanst';
 
 @Injectable()

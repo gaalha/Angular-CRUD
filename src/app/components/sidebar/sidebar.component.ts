@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 // LOGOUT CONFIRM DIALOG
 import { MatDialog } from '@angular/material';
-import { LogoutComponent } from '../../auth/dialogs/logout/logout.component';
+// import { LogoutComponent } from '../../auth/dialogs/logout/logout.component';
 
 @Component( {
     selector: 'app-sidebar',
@@ -17,12 +17,12 @@ export class SidebarComponent implements OnInit {
 
     constructor ( public dialog: MatDialog ) { }
 
-    openDialog(): void {
+    /*openDialog(): void {
         let dialogRef = this.dialog.open(LogoutComponent, {
             width: '250px',
             data: { title: this.title, message: this.message }
         });
-    }
+    }*/
 
     increase () {
       this.sidenavWidth = 15;

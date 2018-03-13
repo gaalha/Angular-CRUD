@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 // LOGOUT CONFIRM DIALOG
 import { MatDialog } from '@angular/material';
-import { LogoutComponent } from '../../auth/dialogs/logout/logout.component';
+//import { LogoutComponent } from '../../auth/dialogs/logout/logout.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -34,7 +34,7 @@ export class SidenavComponent implements OnInit {
         this.mobileQuery.removeListener(this._mobileQueryListener);
     }
 
-    openDialog(): void {
+    /*openDialog(): void {
         let dialogRef = this.dialog.open(LogoutComponent, {
             width: '250px',
             data: {
@@ -42,5 +42,5 @@ export class SidenavComponent implements OnInit {
                 message: '¿Seguro que deseas cerrar sesión?'
             }
         });
-    }
+    }*/
 }

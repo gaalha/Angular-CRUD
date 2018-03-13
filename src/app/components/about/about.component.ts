@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { LogoutComponent } from '../../auth/dialogs/logout/logout.component';
+//import { LogoutComponent } from '../../auth/dialogs/logout/logout.component';
 
 @Component({
     selector: 'app-about',
@@ -13,10 +13,10 @@ export class AboutComponent {
 
     constructor(public dialog: MatDialog) { }
 
-    openDialog(): void {
+    /*openDialog(): void {
         let dialogRef = this.dialog.open(LogoutComponent, {
             width: '250px',
             data: { title: this.title, message: this.message }
         });
-    }
+    }*/
 }

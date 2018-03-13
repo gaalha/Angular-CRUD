@@ -3,10 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 //Services
-import { AuthService } from './../../auth/auth.service';
+import { AuthService } from './../../services/auth.service';
 
 // DIALOG ERROR
-import {ErrorComponent } from '../../auth/dialogs/error/error.component';
+// import {ErrorComponent } from '../../auth/dialogs/error/error.component';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
                     this.authService.loggedIn.next(true);
                     localStorage.setItem('token','123')
                     this.router.navigate(['']);
-                }else{
+                }/*else{
                     this.snack.openFromComponent(ErrorComponent, {
                         data: {
                             data: data
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
                         duration: 3000
                     });
                     console.log(data);
-                }
+                }*/
             });
         }
         this.formSubmitAttempt = true;

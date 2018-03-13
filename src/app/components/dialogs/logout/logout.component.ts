@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 // SESSION FILES
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from '../../../auth/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
     selector: 'app-logout',
