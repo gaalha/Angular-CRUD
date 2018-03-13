@@ -25,8 +25,8 @@
         </button> -->
     </mat-toolbar>
 
-    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"[fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"[fixedInViewport]="mobileQuery.matches">
             <mat-nav-list>
                 <a mat-list-item routerLink="/users">
                     <i class="material-icons">people</i>&nbsp;Users
