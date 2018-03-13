@@ -1,3 +1,7 @@
+.container {
+    height: 100vh;
+}
+
 /*mat-toolbar {
     background-color: #E91E63 !important;
 }*/
@@ -13,13 +17,4 @@
 mat-sidenav {
     -webkit-box-shadow: 5px 0 5px -5px #333;
     box-shadow: 5px 0 5px -5px #333;
-    /*width: 15vw;*/
-}
-
-i.side {
-    margin-left: 0.5vw;
-}
-
-mat-toolbar.toolbar {
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3) !important;
 }

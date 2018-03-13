@@ -20,9 +20,9 @@ import { MatDialog } from '@angular/material';
 import { DialogsComponent } from '../../dialogs/dialogs.component';
 
 @Component({
-    selector: 'app-person',
-    templateUrl: './person.component.html',
-    styleUrls: ['./person.component.css']
+  selector: 'app-person',
+  templateUrl: './person.component.html',
+  styleUrls: ['./person.component.css']
 })
 export class PersonComponent implements AfterViewInit {
     displayedColumns = ['name','age','gender', 'personid'];

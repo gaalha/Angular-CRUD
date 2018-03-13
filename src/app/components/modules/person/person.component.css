@@ -2,7 +2,7 @@
 .table-container {
     display: flex;
     flex-direction: column;
-    /*height: 80vh;*/
+    height: 80vh;
     position: relative;
     width: 80vw;
     margin-top: 5vh;
@@ -81,4 +81,8 @@ mat-toolbar {
 .mat-form-field {
     font-size: 14px;
     width: 100%;
+}
+
+::placeholder; {
+    color: white;
 }
