@@ -14,7 +14,7 @@ import { PersonService } from '../../services/person.service';
 
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmComponent } from '../../components/confirm/confirm.component';
-import {SnackbarComponent } from '../../components/snackbar/snackbar.component';
+import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Component({
     selector: 'app-person',
@@ -84,9 +84,7 @@ export class PersonComponent implements AfterViewInit {
             if(result){
                 this.personService.delete(row.personid).subscribe((data:any) => {
                     if(data.success){
-                        // RELOAD TABLE AFTER DELETE
                         this.paginator._changePageSize(this.paginator.pageSize);
-                        // SHOW SUCCESS TRUE MESSAGE FROM BACKEND
                         this.snack.openFromComponent(SnackbarComponent, {
                             data: {
                                 data: data
@@ -94,7 +92,6 @@ export class PersonComponent implements AfterViewInit {
                             duration: 3000
                         });
                     }else{
-                        // SHOW ERROR MESSAGE FROM BACKEND
                         this.snack.openFromComponent(SnackbarComponent, {
                             data: {
                                 data: data
@@ -108,20 +105,3 @@ export class PersonComponent implements AfterViewInit {
     }
 
 }
-
-/*export class UserComponent implements AfterViewInit {s
-    edit(row:User):void{
-        let dialogRef = this.dialog.open(DialogFormUser, {
-            height: '400px',
-            width: '600px',
-            data: { action: 'edit',data:row}
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('result')
-            console.log(`Dialog result: ${result}`);
-            if(result)
-                this.paginator._changePageSize(this.paginator.pageSize);
-        });
-    }
-} */
