@@ -35,6 +35,7 @@ import { UserComponent } from './modules/user/user.component';
 import { PersonComponent } from './modules/person/person.component';
 import { AdminLayoutModule } from './modules/admin-layout/admin-layout.module';
 import { LoginLayoutModule } from './modules/login-layout/login-layout.module';
+import { FormsComponent } from './modules/person/forms/forms.component';
 
 @NgModule( {
     declarations: [
@@ -48,7 +49,8 @@ import { LoginLayoutModule } from './modules/login-layout/login-layout.module';
         UserComponent,
         PersonComponent,
         ConfirmComponent,
-        SnackbarComponent
+        SnackbarComponent,
+        FormsComponent
     ],
     imports: [
         SharedModule,

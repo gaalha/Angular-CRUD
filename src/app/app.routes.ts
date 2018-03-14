@@ -28,7 +28,8 @@ const routes: Routes = [
         children: [
             { path: '',component: PersonComponent },
             { path: 'about', component: AboutComponent },
-            { path: 'contact-us', component: ContactUsComponent }
+            { path: 'contact-us', component: ContactUsComponent },
+            { path: 'table', component: HomeComponent }
         ]
     },
     { path: '',

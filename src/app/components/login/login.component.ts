@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
             this.authService.login(this.form.value).subscribe((data:any) => {
                 if(data.success){
                     this.authService.loggedIn.next(true);
-                    localStorage.setItem('token','123')
+                    localStorage.setItem('token', data.token);
                     this.router.navigate(['']);
                 }else{
                     this.snack.openFromComponent(SnackbarComponent, {

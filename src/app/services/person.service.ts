@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient }  from "@angular/common/http";
+import { HttpClient, HttpParams, HttpHeaders }  from "@angular/common/http";
 import { CONSTANST } from '../utils/constanst';
 import { Person } from '../models/Person';
 
-//table
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+
+const headers = new HttpHeaders({
+    'x-access-token': localStorage.getItem('token')
+});
 
 @Injectable()
 export class PersonService {
+    loading:boolean = true;
+
     constructor(
         private router: Router,
         public http:HttpClient
@@ -20,21 +25,22 @@ export class PersonService {
         page: number,
         filteredVal: any
     ):Observable<PersonApi> {
-        var href = '';
-        if(filteredVal === undefined || filteredVal === null){
-            href = CONSTANST.routes.person.list+'/'+sort+'/'+order+'/'+(page+1);
-        }else{
-            href = CONSTANST.routes.person.list+'/'+sort+'/'+order+'/'+(page+1)+'/'+filteredVal;
-        }
-        return this.http.get<PersonApi>(href);
+        return this.http.get<PersonApi>(CONSTANST.routes.person.list, {headers: headers});
     }
 
     delete(id:number){
-        return this.http.delete(CONSTANST.routes.person.delete.replace(':id', String(id)));
+        return this.http.delete(
+            CONSTANST.routes.person.delete.replace(':id', String(id)),
+            { headers: headers }
+        );
     }
 
     save(person: Person){
-        return this.http.post(CONSTANST.routes.person.save, person);
+        return this.http.post(
+            CONSTANST.routes.person.save,
+            person,
+            {headers: headers}
+        );
     }
 }
 
