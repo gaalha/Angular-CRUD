@@ -16,15 +16,15 @@ import {
 } from './components/index.pages';
 
 // LAYOUTS
-import { HomeLayoutComponent } from './modules/layouts/home-layout/home-layout.component';
-import { LoginLayoutComponent } from './modules/layouts/login-layout/login-layout.component';
+import { AdminLayoutComponent } from './modules/admin-layout/admin-layout.component';
+import { LoginLayoutComponent } from './modules/login-layout/login-layout.component';
 
 
 // ROUTES
 const routes: Routes = [
     { path: '',
-        component: HomeLayoutComponent,
-        canActivate: [AuthGuard],
+        component: AdminLayoutComponent,
+        /*canActivate: [AuthGuard],*/
         children: [
             { path: '',component: PersonComponent },
             { path: 'about', component: AboutComponent },

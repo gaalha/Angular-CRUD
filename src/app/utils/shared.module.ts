@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AppMaterialModule } from '../modules/theme/material.module';
+import { MaterialComponentsModule } from './material.module';
 
 @NgModule({
     imports: [
@@ -10,14 +10,14 @@ import { AppMaterialModule } from '../modules/theme/material.module';
         FormsModule,
         FlexLayoutModule,
         ReactiveFormsModule,
-        AppMaterialModule
+        MaterialComponentsModule
     ],
     exports: [
         CommonModule,
         FormsModule,
         FlexLayoutModule,
         ReactiveFormsModule,
-        AppMaterialModule
+        MaterialComponentsModule
     ]
 })
 export class SharedModule {

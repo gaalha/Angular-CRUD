@@ -17,7 +17,7 @@ import { PersonService } from '../../services/person.service';
 
 // DIALOGS
 import { MatDialog } from '@angular/material';
-//import { DialogsComponent } from '../../dialogs/dialogs.component';
+import { ConfirmComponent } from '../../components/confirm/confirm.component';
 
 @Component({
   selector: 'app-person',
@@ -74,9 +74,9 @@ export class PersonComponent implements AfterViewInit {
             ).subscribe(data => this.dataSource.data = data);
     }
 
-    /*delete(row:Person){
+    delete(row:Person){
 
-        let dialogRef = this.dialog.open(DialogsComponent, {
+        let dialogRef = this.dialog.open(ConfirmComponent, {
             width: '250px',
             data: { 
                 title: 'Confirme la acción',
@@ -93,7 +93,7 @@ export class PersonComponent implements AfterViewInit {
                 });
             }
         });
-    }*/
+    }
 
 }
 

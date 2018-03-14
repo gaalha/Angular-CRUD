@@ -1,9 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule} from "@angular/common/http";
-
 import { SharedModule } from './utils/shared.module';
 
 // ROUTES
@@ -23,11 +22,11 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { ConfirmComponent } from './components/confirm/confirm.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 // DIALOGS
-/*import { ConfirmComponent } from './components/dialogs/logout/logout.component';
-import { SnackbarComponent } from './components/dialogs/error/error.component';*/
+/*import { ConfirmComponent } from './components/dialogs/logout/logout.component';*/
 
 // SERVICES
 import { AuthService } from './services/auth.service';
@@ -37,8 +36,8 @@ import { PersonService } from './services/person.service';
 // MODULES
 import { UserComponent } from './modules/user/user.component';
 import { PersonComponent } from './modules/person/person.component';
-
-import { LayoutModule } from './modules/layouts/layout.module';
+import { AdminLayoutModule } from './modules/admin-layout/admin-layout.module';
+import { LoginLayoutModule } from './modules/login-layout/login-layout.module';
 
 @NgModule( {
     declarations: [
@@ -49,9 +48,10 @@ import { LayoutModule } from './modules/layouts/layout.module';
         ContactUsComponent,
         LoginComponent,
         NotFoundComponent,
-        SidenavComponent,
         UserComponent,
-        PersonComponent
+        PersonComponent,
+        ConfirmComponent,
+        SnackbarComponent
     ],
     imports: [
         SharedModule,
@@ -59,7 +59,8 @@ import { LayoutModule } from './modules/layouts/layout.module';
         BrowserAnimationsModule,
         AppRoutingModule,
         HttpClientModule,
-        LayoutModule
+        AdminLayoutModule,
+        LoginLayoutModule
     ],
     providers: [
         AuthGuard,
@@ -68,8 +69,8 @@ import { LayoutModule } from './modules/layouts/layout.module';
         PersonService
     ],
     entryComponents: [
-        /*ConfirmComponent,
-        SnackbarComponent*/
+        ConfirmComponent,
+        SnackbarComponent
     ],
     bootstrap: [ AppComponent ]
 })

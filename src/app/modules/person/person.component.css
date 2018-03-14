@@ -22,7 +22,7 @@ mat-toolbar {
 .add-button {
     position: absolute;
     top: 11vh;
-    right:8vw;
+    right:3vw;
     color:#FFF;
     border-radius:50px;
     text-align:center;
@@ -86,3 +86,9 @@ mat-toolbar {
 ::placeholder; {
     color: white;
 }
+
+.button-row, .mat-column-personid {
+    display: flex;
+    justify-content: center;
+}
+.mat-sort-header {}

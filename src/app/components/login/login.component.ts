@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 //Services
 import { AuthService } from './../../services/auth.service';
 
-// DIALOG ERROR
-// import {ErrorComponent } from '../../auth/dialogs/error/error.component';
+// ERROR MESSAGE
+import {SnackbarComponent } from '../../components/snackbar/snackbar.component';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -51,15 +51,14 @@ export class LoginComponent implements OnInit {
                     this.authService.loggedIn.next(true);
                     localStorage.setItem('token','123')
                     this.router.navigate(['']);
-                }/*else{
-                    this.snack.openFromComponent(ErrorComponent, {
+                }else{
+                    this.snack.openFromComponent(SnackbarComponent, {
                         data: {
                             data: data
                         },
                         duration: 3000
                     });
-                    console.log(data);
-                }*/
+                }
             });
         }
         this.formSubmitAttempt = true;

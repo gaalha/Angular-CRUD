@@ -1,8 +1,7 @@
 <div class="container">
+    <!-- <mat-toolbar color="accent" mat-elevation-z2></mat-toolbar> -->
 
-    <mat-toolbar color="accent" mat-elevation-z2></mat-toolbar>
-
-    <div class="table-container mat-elevation-z10">
+    <div class="table-container mat-elevation-z5">
         <button mat-fab color="primary" class="add-button">
             <mat-icon>add</mat-icon>
         </button>
@@ -26,12 +25,12 @@
             </ng-container>
 
             <ng-container matColumnDef="age">
-                <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Age</mat-header-cell>
                 <mat-cell *matCellDef="let row">{{ row.age }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="gender">
-                <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Gender</mat-header-cell>
                 <mat-cell *matCellDef="let row">{{ row.gender }}</mat-cell>
             </ng-container>
 
@@ -43,7 +42,7 @@
 
             <!-- actions-->
             <ng-container matColumnDef="personid">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                <mat-header-cell *matHeaderCellDef>
                     Actions
                 </mat-header-cell>
 
