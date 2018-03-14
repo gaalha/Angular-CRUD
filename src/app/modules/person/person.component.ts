@@ -57,8 +57,12 @@ export class PersonComponent implements AfterViewInit {
             switchMap(() => {
                 this.isLoadingResults = true;
                 return this.personService!.getList(
-                    this.sort.active, this.sort.direction, this.paginator.pageIndex, filterValue);
-                }),
+                    this.sort.active,
+                    this.sort.direction,
+                    this.paginator.pageIndex,
+                    filterValue
+                );
+            }),
                 map(data => {
                     this.isLoadingResults = false;
                     this.resultsLength = data.totalCount;
@@ -69,7 +73,7 @@ export class PersonComponent implements AfterViewInit {
                     this.isLoadingResults = false;
                     return observableOf([]);
                 })
-            ).subscribe(data => this.dataSource.data = data);
+        ).subscribe(data => this.dataSource.data = data);
     }
 
     delete(row:Person){
