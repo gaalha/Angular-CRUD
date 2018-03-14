@@ -1,3 +1,5 @@
+// https://stackoverflow.com/questions/37069609/show-loading-screen-when-navigating-between-routes-in-angular-2
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
