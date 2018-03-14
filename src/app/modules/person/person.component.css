@@ -2,13 +2,17 @@
 .table-container {
     display: flex;
     flex-direction: column;
-    height: 80vh;
     position: relative;
     width: 80vw;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
     left: 10vw;
     right: 10vw;
+}
+
+.container {
+    width: 80vw;
+    height: 80vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 
 mat-toolbar {
@@ -83,12 +87,8 @@ mat-toolbar {
     width: 100%;
 }
 
-::placeholder; {
-    color: white;
-}
 
 .button-row, .mat-column-personid {
     display: flex;
     justify-content: center;
 }
-.mat-sort-header {}

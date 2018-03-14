@@ -13,9 +13,4 @@ export class ConfirmComponent {
         public dialogRef: MatDialogRef<ConfirmComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any
     ) { }
-
-    onNoClick(): void {
-        this.dialogRef.close();
-    }
-
 }

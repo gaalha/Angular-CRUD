@@ -25,9 +25,6 @@ import { LoginComponent } from './components/login/login.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
-// DIALOGS
-/*import { ConfirmComponent } from './components/dialogs/logout/logout.component';*/
-
 // SERVICES
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';

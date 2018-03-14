@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-//Services
+// SERVICES
 import { AuthService } from './../../services/auth.service';
 
 // ERROR MESSAGE

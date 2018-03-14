@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+
 import { Observable } from 'rxjs/Observable';
 import { merge } from 'rxjs/observable/merge';
 import { of as observableOf } from 'rxjs/observable/of';
@@ -9,20 +9,17 @@ import { map } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
 
-//Models
 import { Person } from '../../models/Person';
-
-//Services
 import { PersonService } from '../../services/person.service';
 
-// DIALOGS
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmComponent } from '../../components/confirm/confirm.component';
+import {SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Component({
-  selector: 'app-person',
-  templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css']
+    selector: 'app-person',
+    templateUrl: './person.component.html',
+    styleUrls: ['./person.component.css']
 })
 export class PersonComponent implements AfterViewInit {
     displayedColumns = ['name','age','gender', 'personid'];
@@ -37,7 +34,8 @@ export class PersonComponent implements AfterViewInit {
     constructor(
         private cdr:ChangeDetectorRef,
         private personService: PersonService,
-        public dialog: MatDialog
+        public dialog: MatDialog,
+        public snack: MatSnackBar
     ) { }
 
     ngAfterViewInit() {
@@ -75,20 +73,34 @@ export class PersonComponent implements AfterViewInit {
     }
 
     delete(row:Person){
-
         let dialogRef = this.dialog.open(ConfirmComponent, {
             width: '250px',
             data: { 
                 title: 'Confirme la acción',
-                message: '¿Seguro que desea eliminar el usuario?'
+                message: '¿Seguro que desea eliminar este registro?'
             }
         });
-
         dialogRef.afterClosed().subscribe(result => {
             if(result){
                 this.personService.delete(row.personid).subscribe((data:any) => {
                     if(data.success){
+                        // RELOAD TABLE AFTER DELETE
                         this.paginator._changePageSize(this.paginator.pageSize);
+                        // SHOW SUCCESS TRUE MESSAGE FROM BACKEND
+                        this.snack.openFromComponent(SnackbarComponent, {
+                            data: {
+                                data: data
+                            },
+                            duration: 3000
+                        });
+                    }else{
+                        // SHOW ERROR MESSAGE FROM BACKEND
+                        this.snack.openFromComponent(SnackbarComponent, {
+                            data: {
+                                data: data
+                            },
+                            duration: 3000
+                        });
                     }
                 });
             }
@@ -97,9 +109,7 @@ export class PersonComponent implements AfterViewInit {
 
 }
 
-/*export class UserComponent implements AfterViewInit {
-
-
+/*export class UserComponent implements AfterViewInit {s
     edit(row:User):void{
         let dialogRef = this.dialog.open(DialogFormUser, {
             height: '400px',
