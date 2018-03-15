@@ -23,6 +23,12 @@
             <i class="material-icons menu">settings</i>
         </button>
     </mat-toolbar>
+
+    <!-- LOADINGBAR -->
+    <div class="loading-overlay" #progressBar style="opacity: 0;">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
     <mat-sidenav-container class="sidenav-container">
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"[fixedInViewport]="mobileQuery.matches">
             <mat-nav-list>
