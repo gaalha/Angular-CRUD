@@ -53,9 +53,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['']);
                 }else{
                     this.snack.openFromComponent(SnackbarComponent, {
-                        data: {
-                            data: data
-                        },
+                        data: { data: data },
                         duration: 3000
                     });
                 }

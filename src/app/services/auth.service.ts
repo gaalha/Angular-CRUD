@@ -29,9 +29,10 @@ export class AuthService {
     }
 
     logout() {
-        this.router.navigate(['login']);
+        return this.http.get(CONSTANST.routes.authorization.logout);
+        /*this.router.navigate(['login']);
         this.loggedIn.next(false);
-        localStorage.removeItem('token');
+        localStorage.removeItem('token');*/
     }
 
     hasToken():boolean {

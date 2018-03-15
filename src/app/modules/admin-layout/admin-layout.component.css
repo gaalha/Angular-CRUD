@@ -10,10 +10,6 @@
     color: #fff;
 }*/
 
-.spacer {
-  flex: 1 1 auto !important;
-}
-
 mat-sidenav {
     -webkit-box-shadow: 5px 0 5px -5px #333;
     box-shadow: 5px 0 5px -5px #333;

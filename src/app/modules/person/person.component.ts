@@ -49,6 +49,13 @@ export class PersonComponent implements AfterViewInit {
         this.cdr.detectChanges();
     }
 
+    openSnack(data) {
+        this.snack.openFromComponent(SnackbarComponent, {
+            data: { data: data },
+            duration: 3000
+        });
+    }
+
     // GET PERSONS
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim();
@@ -82,7 +89,7 @@ export class PersonComponent implements AfterViewInit {
     // EDIT PERSONS
     edit(row:Person):void {
         let dialogRef = this.dialog.open(FormsComponent, {
-            height: '400px',
+            height: '350px',
             width: '600px',
             data: { title: 'MODIFICAR REGISTRO', action: 'edit', data:row}
         });
@@ -95,7 +102,7 @@ export class PersonComponent implements AfterViewInit {
     // SAVE PERSONS
     save():void {
         let dialogRef = this.dialog.open(FormsComponent, {
-            height: '400px',
+            height: '350px',
             width: '600px',
             data: { title: 'AGREGAR REGISTRO', action: 'save'}
         });
@@ -119,15 +126,9 @@ export class PersonComponent implements AfterViewInit {
                 this.personService.delete(row.personid).subscribe((data:any) => {
                     if(data.success){
                         this.paginator._changePageSize(this.paginator.pageSize);
-                        this.snack.openFromComponent(SnackbarComponent, {
-                            data: { data: data },
-                            duration: 3000
-                        });
+                        this.openSnack(data);
                     }else{
-                        this.snack.openFromComponent(SnackbarComponent, {
-                            data: { data: data },
-                            duration: 3000
-                        });
+                        this.openSnack(data);
                     }
                 });
             }

@@ -30,6 +30,13 @@ export class FormsComponent {
         this.initializeForm();
     }
 
+    openSnack(data) {
+        this.snack.openFromComponent(SnackbarComponent, {
+            data: { data: data },
+            duration: 3000
+        });
+    }
+
     initializeForm(){
         if(this.data.action=='edit'){
             this.frm = this.fb.group({
@@ -40,10 +47,10 @@ export class FormsComponent {
             });
         }else{
             this.frm = new FormGroup({
-                name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-                age: new FormControl('', [Validators.required, Validators.minLength(1)]),
-                gender: new FormControl('', [Validators.required]),
-                personid: new FormControl('')
+                name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+                age: new FormControl(null, [Validators.required, Validators.minLength(1)]),
+                gender: new FormControl(null, [Validators.required]),
+                personid: new FormControl(null)
             });
         }
     }
@@ -53,25 +60,22 @@ export class FormsComponent {
         this.personService.save(form.value).subscribe((data:any) => {
             if(data.success){
                 this.dialogRef.close(true);
-                this.snack.openFromComponent(SnackbarComponent, {
-                    data: { data: data },
-                    duration: 3000
-                });
+                this.openSnack(data);
             }else{
-                this.snack.openFromComponent(SnackbarComponent, {
-                    data: { data: data },
-                    duration: 3000
-                });
+                this.openSnack(data);
             }
         });
     }
 
-    getErrorMessage() {
+    getNameErrorMessage() {
         return this.frm.controls.name.hasError('required') ? 'El campo Nombre es obligatorio' :
-        this.frm.controls.name.hasError('minlength') ? 'Al menos 2 caracteres' :
-        this.frm.controls.age.hasError('required') ? 'El campo edad es obligatorio' :
-        this.frm.controls.age.hasError('minlength') ? 'Al menos un numero debe ser ingresado' :
-        this.frm.controls.gender.hasError('required') ? 'Seleccione al menos una opcion' : '';
+        this.frm.controls.name.hasError('minlength') ? 'Al menos 2 caracteres' : '';
     }
-
+    getAgeErrorMessage() {
+        return this.frm.controls.age.hasError('required') ? 'El campo edad es obligatorio' :
+        this.frm.controls.age.hasError('minlength') ? 'Al menos un numero debe ser ingresado' : '';
+    }
+    getGenderErrorMessage() {
+        return this.frm.controls.gender.hasError('required') ? '' : '';
+    }
 }

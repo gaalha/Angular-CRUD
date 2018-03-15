@@ -38,7 +38,11 @@ body {
     animation-name: fadeIn;
 }
 
-svg path,
-svg rect{
-    fill: black;
+/*//////////////// GLOBAL LABELS ////////////////*/
+label {
+    font-family: Roboto;
+}
+
+.spacer {
+  flex: 1 1 auto !important;
 }

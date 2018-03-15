@@ -1,35 +1,43 @@
-<h1 mat-dialog-title> {{ data.title }}</h1>
-<mat-dialog-content>
-    <div class="container">
-        <form [formGroup]="frm" (ngSubmit)='save(frm)' class="person-form">
-            <mat-form-field hintLabel="Max 10 characters">
-                <input matInput placeholder="Nombre" formControlName="name" class="person-input">
-                <mat-hint align="end">{{frm.controls.name.value?.length || 0}}/10</mat-hint>
-                <mat-error *ngIf="frm.controls.name.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field>
-            <br/>
-            <mat-form-field>
-                <input matInput type="number" formControlName='age'>
-                <mat-hint align="end">{{frm.controls.age.value?.length || 0}}/10</mat-hint>
-                <mat-error *ngIf="frm.controls.age.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field>
-            <br/>
-            <mat-radio-group formControlName='gender'>
-                <mat-radio-button value="Femenino">Femenino</mat-radio-button>
-                <mat-radio-button value="Masculino">Masculino</mat-radio-button>
-                <mat-error *ngIf="frm.controls.gender.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-radio-group>
-            <br/>
-            <mat-form-field style="visibility: hidden;">
-                <input matInput type="text" formControlName='personid'>
-            </mat-form-field>
-            <div class="button-row">
-                <button mat-raised-button color="primary" type="submit" class="btnSave" [disabled]="!frm.valid">
-                    <mat-icon aria-label="icon-button">save </mat-icon>
-                    <span>Guardar</span>
-                </button>
-                <button mat-button [mat-dialog-close]>Cancelar</button>
-            </div>
-        </form>
-    </div>
-</mat-dialog-content>
+<div class="container">
+    <h1 mat-dialog-title> {{ data.title }}</h1>
+    <mat-dialog-content>
+        <div class="container">
+            <form [formGroup]="frm" (ngSubmit)='save(frm)'>
+                <mat-form-field>
+                    <input matInput placeholder="Nombre" formControlName="name" class="person-input">
+                    <mat-hint align="end">{{frm.controls.name.value?.length || 0}}/10</mat-hint>
+                    <mat-error *ngIf="frm.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+                </mat-form-field>
+
+                <br/>
+
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Edad" formControlName='age'>
+                    <mat-hint align="end">{{frm.controls.age.value?.length || 0}}/10</mat-hint>
+                    <mat-error *ngIf="frm.controls.age.invalid">{{getAgeErrorMessage()}}</mat-error>
+                </mat-form-field>
+
+                <br/>
+
+                <mat-radio-group formControlName='gender'>
+                    <label>Genero: </label>
+                    <mat-radio-button value="Femenino">Femenino</mat-radio-button>
+                    <mat-radio-button value="Masculino">Masculino</mat-radio-button>
+                    <mat-error *ngIf="frm.controls.gender.invalid">{{getGenderErrorMessage()}}</mat-error>
+                </mat-radio-group>
+
+                <mat-form-field style="visibility: hidden; height: 0vh !important">
+                    <input matInput type="text" formControlName='personid'>
+                </mat-form-field>
+
+                <div class="button-row">
+                    <button mat-button [mat-dialog-close]>Cancelar</button>
+                    <button mat-raised-button color="primary" type="submit" class="btnSave" [disabled]="!frm.valid">
+                        <mat-icon aria-label="icon-button">save </mat-icon>
+                        <span>Guardar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </mat-dialog-content>
+</div>

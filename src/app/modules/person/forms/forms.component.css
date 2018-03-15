@@ -1,7 +1,13 @@
-.person-form {
-    width: 100vw !important;
+mat-form-field {
+    width: 100%;
 }
 
-.person-input{
-    width: 100vw !important;
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.button-row {
+    margin-top: 2vh;
+    text-align: right;
 }

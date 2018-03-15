@@ -4,7 +4,8 @@ export const CONSTANST = {
     permissions:{},
     routes:{
         authorization:{
-            login: HOST + "/api/auth/login"
+            login: HOST + '/api/auth/login',
+            logout: HOST + '/api/auth/logout'
         },
         person:{
             list: HOST + '/api/person',
