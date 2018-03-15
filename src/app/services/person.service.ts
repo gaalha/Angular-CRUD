@@ -36,10 +36,15 @@ export class PersonService {
     }
 
     save(person: Person){
-        return this.http.post(
-            CONSTANST.routes.person.save,
-            person,
-            {headers: headers}
+        return this.http
+            .post(CONSTANST.routes.person.save,
+                {
+                    txtName: person.name,
+                    txtAge: person.age,
+                    txtGender: person.gender,
+                    txtPersonId: person.personid
+                },
+                { headers: headers }
         );
     }
 }
@@ -49,3 +54,5 @@ export interface PersonApi {
     totalCount: number;
     pageSize: number;
 }
+
+/*.post(constanst.routes.authorization.login,{txtUserEmail:user.userName,txtPassword:user.password})*/

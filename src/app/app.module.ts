@@ -32,10 +32,10 @@ import { PersonService } from './services/person.service';
 
 // MODULES
 import { UserComponent } from './modules/user/user.component';
-import { PersonComponent } from './modules/person/person.component';
+//import { PersonComponent } from './modules/person/person.component';
 import { AdminLayoutModule } from './modules/admin-layout/admin-layout.module';
 import { LoginLayoutModule } from './modules/login-layout/login-layout.module';
-import { FormsComponent } from './modules/person/forms/forms.component';
+import { PersonModule } from './modules/person/person.module';
 
 @NgModule( {
     declarations: [
@@ -47,10 +47,8 @@ import { FormsComponent } from './modules/person/forms/forms.component';
         LoginComponent,
         NotFoundComponent,
         UserComponent,
-        PersonComponent,
         ConfirmComponent,
-        SnackbarComponent,
-        FormsComponent
+        SnackbarComponent
     ],
     imports: [
         SharedModule,
@@ -59,7 +57,8 @@ import { FormsComponent } from './modules/person/forms/forms.component';
         AppRoutingModule,
         HttpClientModule,
         AdminLayoutModule,
-        LoginLayoutModule
+        LoginLayoutModule,
+        PersonModule
     ],
     providers: [
         AuthGuard,

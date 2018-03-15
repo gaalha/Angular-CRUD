@@ -12,8 +12,10 @@ import { switchMap } from 'rxjs/operators/switchMap';
 import { Person } from '../../models/Person';
 import { PersonService } from '../../services/person.service';
 
+// DIALOGS
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmComponent } from '../../components/confirm/confirm.component';
+import { FormsComponent } from './forms/forms.component';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Component({
@@ -47,6 +49,7 @@ export class PersonComponent implements AfterViewInit {
         this.cdr.detectChanges();
     }
 
+    // GET PERSONS
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim();
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
@@ -76,6 +79,33 @@ export class PersonComponent implements AfterViewInit {
         ).subscribe(data => this.dataSource.data = data);
     }
 
+    // EDIT PERSONS
+    edit(row:Person):void {
+        let dialogRef = this.dialog.open(FormsComponent, {
+            height: '400px',
+            width: '600px',
+            data: { title: 'MODIFICAR REGISTRO', action: 'edit', data:row}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if(result)
+                this.paginator._changePageSize(this.paginator.pageSize);
+        });
+    }
+
+    // SAVE PERSONS
+    save():void {
+        let dialogRef = this.dialog.open(FormsComponent, {
+            height: '400px',
+            width: '600px',
+            data: { title: 'AGREGAR REGISTRO', action: 'save'}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if(result)
+                this.paginator._changePageSize(this.paginator.pageSize);
+        });
+    }
+
+    // DELETE PERSONS
     delete(row:Person){
         let dialogRef = this.dialog.open(ConfirmComponent, {
             width: '250px',
@@ -90,16 +120,12 @@ export class PersonComponent implements AfterViewInit {
                     if(data.success){
                         this.paginator._changePageSize(this.paginator.pageSize);
                         this.snack.openFromComponent(SnackbarComponent, {
-                            data: {
-                                data: data
-                            },
+                            data: { data: data },
                             duration: 3000
                         });
                     }else{
                         this.snack.openFromComponent(SnackbarComponent, {
-                            data: {
-                                data: data
-                            },
+                            data: { data: data },
                             duration: 3000
                         });
                     }
