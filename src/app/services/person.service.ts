@@ -54,5 +54,3 @@ export interface PersonApi {
     totalCount: number;
     pageSize: number;
 }
-
-/*.post(constanst.routes.authorization.login,{txtUserEmail:user.userName,txtPassword:user.password})*/

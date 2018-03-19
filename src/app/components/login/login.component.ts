@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { PlatformLocation } from '@angular/common';
 
 // SERVICES
 import { AuthService } from './../../services/auth.service';
@@ -23,8 +24,14 @@ export class LoginComponent implements OnInit {
         private fb: FormBuilder,
         private authService: AuthService ,
         private router: Router,
-        public snack: MatSnackBar
-    ) {}
+        public snack: MatSnackBar,
+        private location: PlatformLocation
+    ) {
+        location.onPopState(() => {
+            /*console.log('pressed back!');*/
+            window.location.reload();
+        });
+    }
 
     ngOnInit() {
         if(localStorage.getItem('token')){

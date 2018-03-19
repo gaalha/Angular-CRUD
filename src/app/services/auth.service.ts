@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { HttpClient }  from "@angular/common/http";
+import { HttpClient, HttpHeaders }  from "@angular/common/http";
 import { User } from '../models/user';
 import { CONSTANST } from '../utils/constanst';
+
+const headers = new HttpHeaders({
+    'x-access-token': localStorage.getItem('token')
+});
 
 @Injectable()
 export class AuthService {
@@ -29,10 +33,7 @@ export class AuthService {
     }
 
     logout() {
-        return this.http.get(CONSTANST.routes.authorization.logout);
-        /*this.router.navigate(['login']);
-        this.loggedIn.next(false);
-        localStorage.removeItem('token');*/
+        return this.http.get(CONSTANST.routes.authorization.logout, { headers: headers });
     }
 
     hasToken():boolean {
