@@ -10,7 +10,7 @@
         </div>
         
         <div class="table-header">
-            <mat-form-field class="search-bar">
+            <mat-form-field class="filter-field">
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
             </mat-form-field>
         </div>
@@ -60,6 +60,11 @@
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
-        <mat-paginator [length]="resultsLength" [pageSize]="pageSize"></mat-paginator>
+        <mat-paginator 
+            [pageSizeOptions]="pageSizeOptions" 
+            [length]="totalItems" 
+            [pageSize]="pageSize"
+            (page)="onPaginateChange($event)">
+        </mat-paginator>
     </div>
 </div>

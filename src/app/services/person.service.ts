@@ -19,13 +19,14 @@ export class PersonService {
         public http:HttpClient
     ) {  }
 
-    getList(
-        sort: string,
-        order: string,
-        page: number,
-        filteredVal: any
-    ):Observable<PersonApi> {
-        return this.http.get<PersonApi>(CONSTANST.routes.person.list, {headers: headers});
+    getList(order: string, pageSize: number, page: number, search: string) {
+        let params = new HttpParams();
+        params = params.append('order', order);
+        params = params.append('search', search);
+        params = params.append('pageSize', pageSize.toString());
+        params = params.append('page', page.toString());
+
+        return this.http.get<PersonApi>(CONSTANST.routes.person.list, {headers: headers, params: params});
     }
 
     delete(id:number){
@@ -50,7 +51,9 @@ export class PersonService {
 }
 
 export interface PersonApi {
-    data: Person[];
-    totalCount: number;
-    pageSize: number;
+    success: boolean,
+    data: Person[],
+    total: number,
+    pageSize: number,
+    page: number
 }

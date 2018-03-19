@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 import { merge } from 'rxjs/observable/merge';
@@ -26,9 +26,17 @@ import { SnackbarComponent } from '../../components/snackbar/snackbar.component'
 export class PersonComponent implements AfterViewInit {
     displayedColumns = ['name','age','gender', 'personid'];
     dataSource = new MatTableDataSource();
-    pageSize = 0;
+
     resultsLength = 0;
-    isLoadingResults = false;
+
+    pageEvent: PageEvent;
+    pageSizeOptions = [5, 10, 25, 100];
+    pageSize = 5;
+    page = 1;
+    isLoading = false;
+    isTotalReached = false;
+    totalItems = 0;
+    search = '';
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -42,7 +50,7 @@ export class PersonComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-        this.applyFilter('');
+        this.getData();
     }
 
     ngAfterViewChecked(){
@@ -56,36 +64,38 @@ export class PersonComponent implements AfterViewInit {
         });
     }
 
-    // GET PERSONS
-    applyFilter(filterValue: string) {
-        filterValue = filterValue.trim();
-        this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+    onPaginateChange(event){
+        this.page = event.pageIndex + 1;
+        this.pageSize = event.pageSize;
+        this.getData();
+    }
 
+    applyFilter(filterValue: string) {
+        filterValue = filterValue.trim(); // Remove whitespace
+        filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+        this.search = filterValue;
+        this.getData();
+      }
+
+    // GET PERSONS
+    getData() {
+        this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
         merge(this.sort.sortChange, this.paginator.page)
         .pipe(
             startWith({}),
             switchMap(() => {
-                this.isLoadingResults = true;
-                return this.personService.getList(
-                    this.sort.active,
-                    this.sort.direction,
-                    this.paginator.pageIndex,
-                    filterValue
-                );
+                this.isLoading = true;
+                return this.personService!.getList(this.sort.direction, this.pageSize, this.page, this.search);
             }),
                 map(data => {
-                    console.log('AQUI ESTA TU DATA PPRO >:v \n' + data.data.length);
-                    if (data.data.length === 0 || data.data.length === null || data.data.length === undefined) {
-                        window.location.reload();
-                    }else{
-                        this.isLoadingResults = false;
-                        this.resultsLength = data.totalCount;
-                        this.paginator.pageSize = data.pageSize;
-                        return data.data;
-                    }
+                    this.isLoading = false;
+                    this.isTotalReached = false;
+                    this.totalItems = data.total;
+                    return data.data;
                 }),
                 catchError(() => {
-                    this.isLoadingResults = false;
+                    this.isLoading = false;
+                    this.isTotalReached = true;
                     return observableOf([]);
                 })
         ).subscribe(data => this.dataSource.data = data);
