@@ -66,7 +66,7 @@ export class PersonComponent implements AfterViewInit {
             startWith({}),
             switchMap(() => {
                 this.isLoadingResults = true;
-                return this.personService!.getList(
+                return this.personService.getList(
                     this.sort.active,
                     this.sort.direction,
                     this.paginator.pageIndex,
@@ -74,10 +74,15 @@ export class PersonComponent implements AfterViewInit {
                 );
             }),
                 map(data => {
-                    this.isLoadingResults = false;
-                    this.resultsLength = data.totalCount;
-                    this.paginator.pageSize = data.pageSize;
-                    return data.data;
+                    console.log('AQUI ESTA TU DATA PPRO >:v \n' + data.data.length);
+                    if (data.data.length === 0 || data.data.length === null || data.data.length === undefined) {
+                        window.location.reload();
+                    }else{
+                        this.isLoadingResults = false;
+                        this.resultsLength = data.totalCount;
+                        this.paginator.pageSize = data.pageSize;
+                        return data.data;
+                    }
                 }),
                 catchError(() => {
                     this.isLoadingResults = false;

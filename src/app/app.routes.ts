@@ -13,7 +13,7 @@ import {
     NotFoundComponent,
     PersonComponent,
     UserComponent
-} from './components/index.pages';
+} from './utils/index.pages';
 
 // LAYOUTS
 import { AdminLayoutComponent } from './modules/admin-layout/admin-layout.component';
