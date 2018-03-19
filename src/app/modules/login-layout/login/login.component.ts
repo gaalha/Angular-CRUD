@@ -4,10 +4,10 @@ import { Router, NavigationEnd } from '@angular/router';
 import { PlatformLocation } from '@angular/common';
 
 // SERVICES
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from './../../../services/auth.service';
 
 // ERROR MESSAGE
-import {SnackbarComponent } from '../../components/snackbar/snackbar.component';
+import { SnackbarComponent } from '../../../components/snackbar/snackbar.component';
 import { MatSnackBar } from '@angular/material';
 
 @Component({

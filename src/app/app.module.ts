@@ -21,7 +21,6 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { LoginComponent } from './components/login/login.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
@@ -44,7 +43,6 @@ import { PersonModule } from './modules/person/person.module';
         HomeComponent,
         AboutComponent,
         ContactUsComponent,
-        LoginComponent,
         NotFoundComponent,
         UserComponent,
         ConfirmComponent,

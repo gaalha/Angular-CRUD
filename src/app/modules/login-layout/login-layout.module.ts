@@ -1,8 +1,9 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
 import { SharedModule } from './../../utils/shared.module';
 import { LoginLayoutComponent } from './login-layout.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     imports: [
@@ -10,7 +11,8 @@ import { LoginLayoutComponent } from './login-layout.component';
         SharedModule
     ],
     declarations: [
-        LoginLayoutComponent
+        LoginLayoutComponent,
+        LoginComponent
     ],
     providers: [],
     exports: []
