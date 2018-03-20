@@ -1,20 +1,19 @@
-<h4 align="center">Angular 5 and Material2</h4>
+# Angular5-CRUD
 
-# Angular5-sidenav
-
-Basic side nav template for angular 5.
+Basic CRUD with Angular 5 & Angular Material and sessions.
+Backend: [PersonAPI](https://github.com/edgarMejia/PersonAPI).
 
 ## Screenshots
 
 <p align="center">
-    <img src="http://3.bp.blogspot.com/-PFHZyS4mkco/WpjVzBB0xPI/AAAAAAAAO54/EeUS-at0JD8MZV0yvc4hdcaylIOps3ETwCK4BGAYYCw/s1600/angular-sidenav.png" alt="screenshot" align="center">
+    <img src="https://k50.kn3.net/C/0/A/B/7/1/D99.png" alt="screenshot" align="center">
 </p>
 
 ### Get the code
 
 ```
-$ git clone https://github.com/lackmarck/angular5-sidenav.git
-$ cd angular5-sidenav
+$ git clone https://github.com/edgarMejia/angular5-crud.git
+$ cd angular5-crud
 $ npm install
 ```
 
