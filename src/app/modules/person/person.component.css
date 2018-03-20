@@ -2,31 +2,17 @@
 .table-container {
     display: flex;
     flex-direction: column;
-    position: relative;
+    overflow: auto;
+    height: 75vh;
     width: 80vw;
-    left: 10vw;
-    right: 10vw;
-}
-
-.container {
-    width: 80vw;
-    height: 79vh;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-}
-
-mat-toolbar {
-    position: absolute;
-    top: 0px;
-    height: 20vh;
-    width: 100vw;
-    margin-left: 0 !important;
+    margin:5vh auto 9vh auto!important;
 }
 
 .add-button {
-    position: absolute;
-    top: 11vh;
-    right:3vw;
+    position: sticky;
+    top: 15vh;
+    /*right:15vw;*/
+    left: 70vw;
     color:#FFF;
     border-radius:50px;
     text-align:center;
@@ -38,14 +24,11 @@ mat-toolbar {
     width: 90vw !important;
 }
 
-.table-header {
-    min-height: 64px;
+/*.table-header {
     display: flex;
     align-items: center;
-    padding-left: 24px;
-    font-size: 20px;
-    margin-bottom: 5vh
-}
+    height: 5vh;
+}*/
 
 .person-table {
     overflow: auto;
@@ -78,15 +61,14 @@ mat-toolbar {
 
 /* applyFilter */
 .table-header {
-    min-height: 64px;
-    padding: 8px 24px 0;
+    padding: 0px 8px 0px 24px;
 }
 
 .mat-form-field {
     font-size: 14px;
-    width: 100%;
+    width: 77vw;
+    height: 10vh !important;
 }
-
 
 .button-row, .mat-column-personid {
     display: flex;
