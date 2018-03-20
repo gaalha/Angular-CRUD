@@ -58,10 +58,13 @@ export class PersonComponent implements AfterViewInit {
 
     // IMPORTANTE: VERIFICAR SI EL TOKEN EXISTE.
     ngOnInit() {
+        // VERIFICA QUE EXISTA EL TOQUEN
+        // FUNCIONA PERO ES INCORRECTO.
         /*if(!localStorage.getItem('token')){
             this.router.navigate(['/login']);
         }*/
-        
+
+        // VERIFICA QUE LA SESIÓN EXISTA EN AUTH.SERVICE.TS
         if(!this.authService.loggedIn.getValue()){
             this.router.navigate(['/login']);
         }
