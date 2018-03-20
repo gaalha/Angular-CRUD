@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
                 if(data.success){
                     this.authService.loggedIn.next(true);
                     localStorage.setItem('token', data.token);
-                    this.router.navigate(['']);
+                    this.router.navigate(['/home']);
                 }else{
                     this.snack.openFromComponent(SnackbarComponent, {
                         data: { data: data },

@@ -22,7 +22,7 @@ import { LoginLayoutComponent } from './modules/login-layout/login-layout.compon
 
 // ROUTES
 const routes: Routes = [
-    { path: '',
+    { path: 'home',
         component: AdminLayoutComponent,
         canActivate: [AuthGuard],
         children: [
