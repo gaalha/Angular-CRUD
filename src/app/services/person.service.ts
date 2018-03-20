@@ -17,7 +17,7 @@ export class PersonService {
     constructor(
         private router: Router,
         public http:HttpClient
-    ) {  }
+    ) { }
 
     getList(order: string, pageSize: number, page: number, search: string) {
         let params = new HttpParams();
@@ -29,7 +29,7 @@ export class PersonService {
         return this.http.get<PersonApi>(CONSTANST.routes.person.list, {headers: headers, params: params});
     }
 
-    delete(id:number){
+    delete(id: number){
         return this.http.delete(
             CONSTANST.routes.person.delete.replace(':id', String(id)),
             { headers: headers }

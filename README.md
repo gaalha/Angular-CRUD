@@ -9,7 +9,7 @@ Backend: [PersonAPI](https://github.com/edgarMejia/PersonAPI).
     <img src="https://k50.kn3.net/C/0/A/B/7/1/D99.png" alt="screenshot" align="center">
 </p>
 
-### Get the code
+## Get the code
 
 ```
 $ git clone https://github.com/edgarMejia/angular5-crud.git
@@ -17,7 +17,7 @@ $ cd angular5-crud
 $ npm install
 ```
 
-### Run the app
+## Run the app
 
 ```
 $ ng serve
