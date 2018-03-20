@@ -76,8 +76,8 @@ export class AdminLayoutComponent implements OnInit {
             if(result){
                 this.authService.logout().subscribe((data:any) => {
                     if(data.success){
-                        localStorage.removeItem('token');
                         this.authService.loggedIn.next(false);
+                        localStorage.removeItem('token');
                         this.router.navigate(['/login']);
                       }
                 });

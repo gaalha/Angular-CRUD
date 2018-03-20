@@ -6,12 +6,16 @@ import { merge } from 'rxjs/observable/merge';
 import { of as observableOf } from 'rxjs/observable/of';
 import { catchError} from 'rxjs/operators/catchError';
 import { map } from 'rxjs/operators/map';
+import { take } from 'rxjs/operator/take';
 import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
+
 import { Router } from '@angular/router';
 
 import { Person } from '../../models/Person';
 import { PersonService } from '../../services/person.service';
+import { AuthService } from '../../services/auth.service';
+import { AuthGuard } from '../../guards/auth.guard';
 
 // DIALOGS
 import { MatDialog, MatSnackBar } from '@angular/material';
@@ -46,6 +50,7 @@ export class PersonComponent implements AfterViewInit {
     constructor(
         private cdr:ChangeDetectorRef,
         private personService: PersonService,
+        private authService: AuthService,
         private router: Router,
         public dialog: MatDialog,
         public snack: MatSnackBar
@@ -53,7 +58,11 @@ export class PersonComponent implements AfterViewInit {
 
     // IMPORTANTE: VERIFICAR SI EL TOKEN EXISTE.
     ngOnInit() {
-        if(!localStorage.getItem('token')){
+        /*if(!localStorage.getItem('token')){
+            this.router.navigate(['/login']);
+        }*/
+        
+        if(!this.authService.loggedIn.getValue()){
             this.router.navigate(['/login']);
         }
     }
@@ -95,7 +104,13 @@ export class PersonComponent implements AfterViewInit {
             startWith({}),
             switchMap(() => {
                 this.isLoading = true;
-                return this.personService!.getList(this.sort.direction, this.pageSize, this.page, this.search);
+                return this.personService!
+                .getList(
+                    this.sort.direction,
+                    this.pageSize,
+                    this.page,
+                    this.search
+                );
             }),
                 map(data => {
                     this.isLoading = false;
