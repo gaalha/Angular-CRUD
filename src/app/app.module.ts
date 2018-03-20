@@ -35,6 +35,7 @@ import { UserComponent } from './modules/user/user.component';
 import { AdminLayoutModule } from './modules/admin-layout/admin-layout.module';
 import { LoginLayoutModule } from './modules/login-layout/login-layout.module';
 import { PersonModule } from './modules/person/person.module';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule( {
     declarations: [
@@ -46,7 +47,8 @@ import { PersonModule } from './modules/person/person.module';
         NotFoundComponent,
         UserComponent,
         ConfirmComponent,
-        SnackbarComponent
+        SnackbarComponent,
+        DashboardComponent
     ],
     imports: [
         SharedModule,

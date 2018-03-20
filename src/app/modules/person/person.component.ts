@@ -8,6 +8,7 @@ import { catchError} from 'rxjs/operators/catchError';
 import { map } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
+import { Router } from '@angular/router';
 
 import { Person } from '../../models/Person';
 import { PersonService } from '../../services/person.service';
@@ -21,7 +22,8 @@ import { SnackbarComponent } from '../../components/snackbar/snackbar.component'
 @Component({
     selector: 'app-person',
     templateUrl: './person.component.html',
-    styleUrls: ['./person.component.css']
+    styleUrls: ['./person.component.css'],
+    providers: [ PersonService ]
 })
 export class PersonComponent implements AfterViewInit {
     displayedColumns = ['name','age','gender', 'personid'];
@@ -44,9 +46,17 @@ export class PersonComponent implements AfterViewInit {
     constructor(
         private cdr:ChangeDetectorRef,
         private personService: PersonService,
+        private router: Router,
         public dialog: MatDialog,
         public snack: MatSnackBar
     ) { }
+
+    // IMPORTANTE: VERIFICAR SI EL TOKEN EXISTE.
+    ngOnInit() {
+        if(!localStorage.getItem('token')){
+            this.router.navigate(['/login']);
+        }
+    }
 
     ngAfterViewInit() {
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);

@@ -35,9 +35,9 @@ const routes: Routes = [
     { path: '',
         component: LoginLayoutComponent,
         children: [
-            {path: 'login',component: LoginComponent},
-            {path: '404', component: NotFoundComponent},
-            {path: '**', redirectTo: '/404'}
+            { path: 'login',component: LoginComponent },
+            { path: '404', component: NotFoundComponent },
+            { path: '**', redirectTo: '/404' }
         ]
     }
 

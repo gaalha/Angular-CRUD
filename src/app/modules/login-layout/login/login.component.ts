@@ -13,7 +13,8 @@ import { MatSnackBar } from '@angular/material';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.css'],
+    providers: [ ]
 })
 
 export class LoginComponent implements OnInit {
@@ -27,10 +28,10 @@ export class LoginComponent implements OnInit {
         public snack: MatSnackBar,
         private location: PlatformLocation
     ) {
-        location.onPopState(() => {
-            /*console.log('pressed back!');*/
+        /*location.onPopState(() => {
+            console.log('pressed back!');
             window.location.reload();
-        });
+        });*/
     }
 
     ngOnInit() {
