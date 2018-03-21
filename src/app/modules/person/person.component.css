@@ -1,38 +1,21 @@
 /* Structure */
 .table-container {
-    display: flex;
-    flex-direction: column;
     overflow: auto;
-    height: 75vh;
+    height: auto;
     width: 80vw;
     margin:5vh auto 9vh auto!important;
 }
 
 .add-button {
-    position: sticky;
+    position: absolute;
     top: 15vh;
     /*right:15vw;*/
-    left: 70vw;
+    right: 13vw;
     color:#FFF;
     border-radius:50px;
     text-align:center;
     box-shadow: 2px 2px 3px #999;
     z-index: 2;
-}
-
-.container {
-    width: 90vw !important;
-}
-
-/*.table-header {
-    display: flex;
-    align-items: center;
-    height: 5vh;
-}*/
-
-.person-table {
-    overflow: auto;
-    padding-top: 2vh;
 }
 
 .table-loading-shade {
@@ -66,8 +49,11 @@
 
 .mat-form-field {
     font-size: 14px;
-    width: 77vw;
+    width:75vw;
     height: 10vh !important;
+}
+.table-header{
+    padding-top: 3vh !important;
 }
 
 .button-row, .mat-column-personid {

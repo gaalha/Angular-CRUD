@@ -19,12 +19,11 @@ import {
 import { AdminLayoutComponent } from './modules/admin-layout/admin-layout.component';
 import { LoginLayoutComponent } from './modules/login-layout/login-layout.component';
 
-
 // ROUTES
 const routes: Routes = [
-    { path: 'home',
+    { path: '',
         component: AdminLayoutComponent,
-        canActivate: [AuthGuard],
+        canActivate: [ AuthGuard ],
         children: [
             { path: '',component: PersonComponent },
             { path: 'about', component: AboutComponent },
@@ -44,8 +43,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    imports: [ RouterModule.forRoot(routes) ],
+    exports: [ RouterModule ]
 })
 export class AppRoutingModule { }
 

@@ -5,44 +5,38 @@ body {
     margin: 0 !important;
 }
 
-/*//////////////// --> ANIMACIONES <-- //////////////////////////*/
+/* ANIMACIÓN AL CARGAR UNA PÁGINA */
 .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
-
 @-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
-
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
-
 .fadeIn {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
 }
 
-/*//////////////// GLOBAL LABELS ////////////////*/
+/* FUENTE GLOBAL DEL SISTEMA */
 label {
     font-family: Roboto;
 }
 
+/* PONE LOS ICONOS DEL TOOLBAR A LA DERECHA */
 .spacer {
   flex: 1 1 auto !important;
+}
+
+/* SETEANDO LOS MARGENES GLOBALES DE LA PÁGINA */
+mat-sidenav-content {
+    width: 100vw;
+    height: 89vh !important;
 }

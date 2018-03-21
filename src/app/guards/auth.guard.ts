@@ -9,20 +9,7 @@ import { take } from 'rxjs/operator/take';
 export class AuthGuard implements CanActivate {
     constructor(private authService: AuthService, private router: Router) {}
 
-    /*canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-        return this.authService.isLoggedIn
-        .take(1)
-        .map((isLoggedIn: boolean) => {
-            if (!isLoggedIn){
-                this.router.navigate(['login']);
-                return false;
-            }else{
-                return true;
-            }
-        });
-    }*/
-
-    canActivate(): Observable<boolean> {
+    canActivate(): Observable<boolean> { /*next: ActivatedRouteSnapshot, state: RouterStateSnapshot*/
         return this.authService.isLoggedIn
         .take(1)
         .map((isLoggedIn: boolean) => !!isLoggedIn)

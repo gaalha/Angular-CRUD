@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         if(localStorage.getItem('token')){
-            this.router.navigate(['/home']);
+            this.router.navigate(['/']);
         }
 
         this.form = this.fb.group({
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
                 if(data.success){
                     this.authService.loggedIn.next(true);
                     localStorage.setItem('token', data.token);
-                    this.router.navigate(['home']);
+                    this.router.navigate(['/']);
                 }else{
                     this.snack.openFromComponent(SnackbarComponent, {
                         data: { data: data },

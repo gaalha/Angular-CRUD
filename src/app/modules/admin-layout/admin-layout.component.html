@@ -32,15 +32,15 @@
     <mat-sidenav-container class="sidenav-container">
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"[fixedInViewport]="mobileQuery.matches">
             <mat-nav-list>
-                <a mat-list-item routerLink="/home">
+                <a mat-list-item routerLink="/">
                     <i class="material-icons">person</i>&nbsp;Personas
                 </a>
 
-                <a mat-list-item routerLink="/home/contact-us">
+                <a mat-list-item routerLink="/contact-us">
                     <i class="material-icons">email</i>&nbsp;Contactanos
                 </a>
 
-                <a mat-list-item routerLink="/home/table">
+                <a mat-list-item routerLink="/table">
                     <i class="material-icons">web</i>&nbsp;Tablas
                 </a>
 
@@ -51,9 +51,7 @@
         </mat-sidenav>
 
         <mat-sidenav-content>
-            <div class="content">
-                <router-outlet></router-outlet>
-            </div>
+            <router-outlet></router-outlet>
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>
