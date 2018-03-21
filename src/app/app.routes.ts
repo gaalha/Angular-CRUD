@@ -12,7 +12,8 @@ import {
     LoginComponent,
     NotFoundComponent,
     PersonComponent,
-    UserComponent
+    UserComponent,
+    DashboardComponent
 } from './utils/index.pages';
 
 // LAYOUTS
@@ -25,7 +26,8 @@ const routes: Routes = [
         component: AdminLayoutComponent,
         canActivate: [ AuthGuard ],
         children: [
-            { path: '',component: PersonComponent },
+            { path: '',component: DashboardComponent },
+            { path: 'person',component: PersonComponent },
             { path: 'about', component: AboutComponent },
             { path: 'contact-us', component: ContactUsComponent },
             { path: 'table', component: HomeComponent }
