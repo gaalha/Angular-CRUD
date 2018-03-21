@@ -4,11 +4,11 @@ import { HttpClient, HttpParams, HttpHeaders }  from "@angular/common/http";
 import { CONSTANST } from '../utils/constanst';
 import { Person } from '../models/Person';
 
-import { Observable } from 'rxjs/Observable';
-
-const headers = new HttpHeaders({
-    'x-access-token': localStorage.getItem('token')
-});
+//import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class PersonService {
@@ -19,20 +19,25 @@ export class PersonService {
         public http:HttpClient
     ) { }
 
+    headers = new HttpHeaders({
+        'x-access-token': localStorage.getItem('token')
+    });
+
     getList(order: string, pageSize: number, page: number, search: string) {
         let params = new HttpParams();
         params = params.append('order', order);
         params = params.append('search', search);
         params = params.append('pageSize', pageSize.toString());
         params = params.append('page', page.toString());
-
-        return this.http.get<PersonApi>(CONSTANST.routes.person.list, {headers: headers, params: params});
+        console.log(this.headers);
+        console.log(params);
+        return this.http.get<PersonApi>(CONSTANST.routes.person.list, {headers: this.headers, params: params});
     }
 
     delete(id: number){
         return this.http.delete(
             CONSTANST.routes.person.delete.replace(':id', String(id)),
-            { headers: headers }
+            { headers: this.headers }
         );
     }
 
@@ -45,7 +50,7 @@ export class PersonService {
                     txtGender: person.gender,
                     txtPersonId: person.personid
                 },
-                { headers: headers }
+                { headers: this.headers }
         );
     }
 }

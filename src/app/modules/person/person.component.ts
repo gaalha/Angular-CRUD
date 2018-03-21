@@ -71,7 +71,6 @@ export class PersonComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
         this.getData();
     }
 

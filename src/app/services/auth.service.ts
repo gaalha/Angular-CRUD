@@ -5,10 +5,6 @@ import { HttpClient, HttpHeaders }  from "@angular/common/http";
 import { User } from '../models/user';
 import { CONSTANST } from '../utils/constanst';
 
-const headers = new HttpHeaders({
-    'x-access-token': localStorage.getItem('token')
-});
-
 @Injectable()
 export class AuthService {
     public loggedIn = new BehaviorSubject<boolean>(this.hasToken());
@@ -22,6 +18,10 @@ export class AuthService {
         public http:HttpClient
     ) {}
 
+    headers = new HttpHeaders({
+        'x-access-token': localStorage.getItem('token')
+    });
+
     login(user: User){
         if (user.userName !== '' && user.password !== '' ) {
             return this.http
@@ -33,7 +33,7 @@ export class AuthService {
     }
 
     logout() {
-        return this.http.get(CONSTANST.routes.authorization.logout, { headers: headers });
+        return this.http.get(CONSTANST.routes.authorization.logout, { headers: this.headers });
     }
 
     hasToken():boolean {

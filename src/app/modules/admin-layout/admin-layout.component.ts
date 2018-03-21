@@ -85,6 +85,7 @@ export class AdminLayoutComponent implements OnInit {
         });
     }
 
+    // BARRA DE PROGRESO
     private _navigationInterceptor(event: RouterEvent): void {
         if (event instanceof NavigationStart) {
             this.ngZone.runOutsideAngular(() => {
@@ -97,22 +98,23 @@ export class AdminLayoutComponent implements OnInit {
         }
         if (event instanceof NavigationEnd) {
             setTimeout(() => {
-                this._hideSpinner();
+                this._hideProgressBar();
             }, 1000);
         }
         if (event instanceof NavigationCancel) {
             setTimeout(() => {
-                this._hideSpinner();
+                this._hideProgressBar();
             }, 1000);
         }
         if (event instanceof NavigationError) {
             setTimeout(() => {
-                this._hideSpinner();
+                this._hideProgressBar();
             }, 1000);
         }
     }
-
-    private _hideSpinner(): void {
+    /* OCULTA LA BARRA DE PROGRESO CUANDO LA PAGINA
+    DEJA DE CARGAR */
+    private _hideProgressBar(): void {
         this.ngZone.runOutsideAngular(() => {
             this.renderer.setElementStyle(
                 this.progressBar.nativeElement,
