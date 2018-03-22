@@ -3,7 +3,7 @@ export { ContactUsComponent } from '../components/contact-us/contact-us.componen
 export { HomeComponent } from '../components/home/home.component';
 export { NotFoundComponent } from '../components/not-found/not-found.component';
 export { LoginComponent } from '../modules/login-layout/login/login.component';
-export { DashboardComponent } from '../components/dashboard/dashboard.component';
+export { DashboardComponent } from '../modules/dashboard/dashboard.component';
 
 // CRUD
 export { PersonComponent } from "../modules/person/person.component";

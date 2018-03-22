@@ -31,11 +31,10 @@ import { PersonService } from './services/person.service';
 
 // MODULES
 import { UserComponent } from './modules/user/user.component';
-//import { PersonComponent } from './modules/person/person.component';
 import { AdminLayoutModule } from './modules/admin-layout/admin-layout.module';
 import { LoginLayoutModule } from './modules/login-layout/login-layout.module';
 import { PersonModule } from './modules/person/person.module';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 @NgModule( {
     declarations: [
