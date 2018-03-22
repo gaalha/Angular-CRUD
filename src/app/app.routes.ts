@@ -4,11 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 // FILTER
 import { AuthGuard } from './guards/auth.guard';
 
-//COMPONENTS
+/*CON LA CREACIÓN DEL ARCHIVO INDEX.PAGES NOS AHORRAMOS TENER QUE HACER
+UNA IMPORTACIÓN POR CADA COMPONENTE DE LAS VISTAS*/
 import {
-    AboutComponent,
     ContactUsComponent,
-    HomeComponent,
+    TablesComponent,
     LoginComponent,
     NotFoundComponent,
     PersonComponent,
@@ -28,9 +28,8 @@ const routes: Routes = [
         children: [
             { path: '',component: DashboardComponent },
             { path: 'person',component: PersonComponent },
-            { path: 'about', component: AboutComponent },
             { path: 'contact-us', component: ContactUsComponent },
-            { path: 'table', component: HomeComponent }
+            { path: 'table', component: TablesComponent }
         ]
     },
     { path: '',

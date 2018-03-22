@@ -1,4 +1,6 @@
-// Observable class extensions
+// PARA MAS INFORMACIÓN SOBRE ESTA LIBRERIA: https://angular.io/guide/rx-library
+
+// Observable class extensions 
 import 'rxjs/add/observable/of';
 
 // Observable operators

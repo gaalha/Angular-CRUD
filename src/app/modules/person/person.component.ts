@@ -36,9 +36,9 @@ export class PersonComponent implements AfterViewInit {
     resultsLength = 0;
 
     pageEvent: PageEvent;
-    pageSizeOptions = [5, 10, 25, 100];
-    pageSize = 5;
-    page = 1;
+    pageSizeOptions = [5, 10, 25, 100]; /*CANTIDADES DE DATOS QUE SE PUEDEN MOSTRAR EN LA TABLA*/
+    pageSize = 5; /*CANTIDAD DE DATOS QUE SE MUESTRAN AL CARGAR EL GRID */
+    page = 1; /*PAGINA QUE SE MOSTRARA AL CARGAR EL GRID*/
     isLoading = false;
     isTotalReached = false;
     totalItems = 0;
@@ -71,6 +71,7 @@ export class PersonComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
+        // ANTES QUE LA VISTA CARGUE INICIA LA CARGA DE DATOS EN EL GRID
         this.getData();
     }
 

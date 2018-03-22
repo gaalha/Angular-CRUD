@@ -1,3 +1,5 @@
+// CONTIENE TODOS LOS MODULOS DE ANGULAR MATERIAL
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

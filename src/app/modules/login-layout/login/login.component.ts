@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         public snack: MatSnackBar,
         private location: PlatformLocation
     ) {
+        // AL PRECIONAR EL BOTON ATRAS O ADELANTE DEL NAVEGADOR REFRESCA LA PAGINA
         /*location.onPopState(() => {
             console.log('pressed back!');
             window.location.reload();
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        /*SI EXISTE UN TOKEN SETEADO TE REDIRECCIONA AL DASHBOARD*/
         if(localStorage.getItem('token')){
             this.router.navigate(['/']);
         }
@@ -56,10 +58,10 @@ export class LoginComponent implements OnInit {
         if (this.form.valid) {
             this.authService.login(this.form.value).subscribe((data:any) => {
                 if(data.success){
-                    this.authService.loggedIn.next(true);
-                    localStorage.setItem('token', data.token);
-                    this.router.navigate(['/']);
-                }else{
+                    this.authService.loggedIn.next(true); /*SETEA EL METODO loggedIn COMO TRUE EN EL AuthService*/
+                    localStorage.setItem('token', data.token); /*SETEA EL TOKEN PROCEDENTE DEL BACKEND*/
+                    this.router.navigate(['/']); /*REDIRECCIONA AL DASHBOAR*/
+                }else{ /*SINO MUESTRA UN MENSAJE DE ERROR PROCEDENTE DEL BACKEND*/
                     this.snack.openFromComponent(SnackbarComponent, {
                         data: { data: data },
                         duration: 3000
