@@ -29,8 +29,7 @@ export class PersonService {
         params = params.append('search', search);
         params = params.append('pageSize', pageSize.toString());
         params = params.append('page', page.toString());
-        console.log(this.headers);
-        console.log(params);
+        
         return this.http.get<PersonApi>(CONSTANST.routes.person.list, {headers: this.headers, params: params});
     }
 
