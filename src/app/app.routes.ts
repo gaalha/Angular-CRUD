@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+// https://angular.io/tutorial/toh-pt5
+
 // FILTER
 import { AuthGuard } from './guards/auth.guard';
 
