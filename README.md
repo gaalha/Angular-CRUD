@@ -1,6 +1,6 @@
 # Angular-CRUD
 
-Basic CRUD with Angular, Angular Material, sessions, JSON Web Token (JWT) & pagination.
+Basic CRUD with Angular, Angular Material, sessions, JSON Web Token (JWT), routes & pagination.
 Backend: [PersonAPI](https://github.com/edgarMejia/PersonAPI).
 
 ## Screenshots
