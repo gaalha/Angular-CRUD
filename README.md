@@ -15,7 +15,7 @@ Backend: [PersonAPI](https://github.com/edgarMejia/PersonAPI).
 ## Get the code
 
 ```
-$ git clone https://github.com/edgarMejia/angular5-crud.git
+$ git clone https://github.com/edgarMejia/angular-crud.git
 $ cd angular5-crud
 $ npm install
 ```
