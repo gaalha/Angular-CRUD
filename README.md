@@ -6,7 +6,10 @@ Backend: [PersonAPI](https://github.com/edgarMejia/PersonAPI).
 ## Screenshots
 
 <p align="center">
-    <img src="https://k50.kn3.net/C/0/A/B/7/1/D99.png" alt="screenshot" align="center">
+    <img src="/capturas/grid.png" alt="screenshot" align="center">
+</p>
+<p>
+    <img src="/capturas/login.png" alt="screenshot" align="center">
 </p>
 
 ## Get the code
