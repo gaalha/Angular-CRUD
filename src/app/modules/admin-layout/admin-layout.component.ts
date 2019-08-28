@@ -27,7 +27,7 @@ export class AdminLayoutComponent implements OnInit {
     mobileQuery: MediaQueryList;
     private _mobileQueryListener: () => void;
     
-    @ViewChild('progressBar')
+    @ViewChild('progressBar', {static: false})
     progressBar: ElementRef;
 
     constructor(

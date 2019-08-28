@@ -41,8 +41,8 @@ export class PersonComponent implements AfterViewInit {
     totalItems = 0;
     search = '';
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+    @ViewChild(MatSort, {static: false}) sort: MatSort;
 
     constructor(
         private cdr:ChangeDetectorRef,
