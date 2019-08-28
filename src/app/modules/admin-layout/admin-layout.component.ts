@@ -1,11 +1,4 @@
-import { 
-    Component,
-    OnInit,
-    ChangeDetectorRef,
-    NgZone,
-    Renderer,
-    ElementRef,
-    ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, NgZone, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import {
     Router,
     Event as RouterEvent,
@@ -45,7 +38,7 @@ export class AdminLayoutComponent implements OnInit {
 
         private router: Router,
         private ngZone: NgZone,
-        private renderer: Renderer
+        private renderer: Renderer2
     ) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -89,11 +82,7 @@ export class AdminLayoutComponent implements OnInit {
     private _navigationInterceptor(event: RouterEvent): void {
         if (event instanceof NavigationStart) {
             this.ngZone.runOutsideAngular(() => {
-                this.renderer.setElementStyle(
-                    this.progressBar.nativeElement,
-                    'opacity',
-                    '1'
-                )
+                this.renderer.setStyle(this.progressBar.nativeElement, 'opacity', '1')
             })
         }
         if (event instanceof NavigationEnd) {
@@ -116,11 +105,7 @@ export class AdminLayoutComponent implements OnInit {
     DEJA DE CARGAR */
     private _hideProgressBar(): void {
         this.ngZone.runOutsideAngular(() => {
-            this.renderer.setElementStyle(
-                this.progressBar.nativeElement,
-                'opacity',
-                '0'
-            )
+            this.renderer.setStyle(this.progressBar.nativeElement, 'opacity', '0')
         })
     }
 }
