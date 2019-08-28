@@ -1,5 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { Observable } from 'rxjs/Observable';
 import { merge } from 'rxjs/observable/merge';
@@ -18,7 +20,8 @@ import { AuthService } from '../../services/auth.service';
 import { AuthGuard } from '../../guards/auth.guard';
 
 // DIALOGS
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmComponent } from '../../components/confirm/confirm.component';
 import { FormsComponent } from './forms/forms.component';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';

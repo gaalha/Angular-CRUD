@@ -8,7 +8,7 @@ import { AuthService } from './../../../services/auth.service';
 
 // ERROR MESSAGE
 import { SnackbarComponent } from '../../../components/snackbar/snackbar.component';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-login',

@@ -3,19 +3,19 @@
         <mat-card-content>
             <img src="../../../assets/img/1.png" width="200px">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <mat-input-container class="full-width-input">
+                <mat-form-field class="full-width-input">
                     <input matInput placeholder="User" formControlName="userName" required>
                     <mat-error *ngIf="isFieldInvalid('userName')">
                     Please inform your user name
                     </mat-error>
-                </mat-input-container>
+                </mat-form-field>
 
-                <mat-input-container class="full-width-input separate">
+                <mat-form-field class="full-width-input separate">
                     <input matInput type="password" placeholder="Password" formControlName="password" required>
                     <mat-error *ngIf="isFieldInvalid('userName')">
                     Please inform your password
                     </mat-error>
-                </mat-input-container>
+                </mat-form-field>
 
                 <button mat-raised-button color="primary" type="submit">Login</button>
             </form>

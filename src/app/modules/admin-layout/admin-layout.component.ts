@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../services/auth.service';
 
 // LOGOUT CONFIRM DIALOG
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmComponent } from '../../components/confirm/confirm.component';
 
 @Component({
