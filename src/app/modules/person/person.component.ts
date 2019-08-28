@@ -3,14 +3,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { Observable } from 'rxjs/Observable';
-import { merge } from 'rxjs/observable/merge';
-import { of as observableOf } from 'rxjs/observable/of';
-import { catchError} from 'rxjs/operators/catchError';
-import { map } from 'rxjs/operators/map';
-import { take } from 'rxjs/operator/take';
-import { startWith } from 'rxjs/operators/startWith';
-import { switchMap } from 'rxjs/operators/switchMap';
+import { Observable ,  merge ,  of as observableOf } from 'rxjs';
+import { catchError,  map ,  startWith ,  switchMap } from 'rxjs/operators';
 
 import { Router } from '@angular/router';
 

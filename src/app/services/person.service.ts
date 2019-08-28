@@ -5,10 +5,10 @@ import { CONSTANST } from '../utils/constanst';
 import { Person } from '../models/Person';
 
 //import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Rx';
+
+
+
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class PersonService {

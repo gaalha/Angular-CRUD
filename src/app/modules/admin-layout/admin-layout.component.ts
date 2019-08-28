@@ -8,7 +8,7 @@ import {
     NavigationError
 } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
 // LOGOUT CONFIRM DIALOG
