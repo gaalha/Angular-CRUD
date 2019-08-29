@@ -163,7 +163,7 @@ export class PersonComponent implements AfterViewInit {
         });
         dialogRef.afterClosed().subscribe(result => {
             if(result){
-                this.personService.delete(row.personid).subscribe((data:any) => {
+                this.personService.delete(row.id).subscribe((data:any) => {
                     if(data.success){
                         this.paginator._changePageSize(this.paginator.pageSize);
                         this.openSnack(data);

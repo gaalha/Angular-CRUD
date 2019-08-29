@@ -44,10 +44,10 @@ export class PersonService {
         return this.http
             .post(CONSTANST.routes.person.save,
                 {
-                    txtName: person.name,
+                    txtName: person.first_name,
                     txtAge: person.age,
                     txtGender: person.gender,
-                    txtPersonId: person.personid
+                    txtPersonId: person.id
                 },
                 { headers: this.headers }
         );
