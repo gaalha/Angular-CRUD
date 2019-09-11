@@ -99,6 +99,7 @@ export class PersonComponent implements AfterViewInit {
     // GET PERSONS
     getData() {
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
         merge(this.sort.sortChange, this.paginator.page)
         .pipe(
             startWith({}),
@@ -106,6 +107,7 @@ export class PersonComponent implements AfterViewInit {
                 this.isLoading = true;
                 return this.personService!
                 .getList(
+                    this.sort.active,
                     this.sort.direction,
                     this.pageSize,
                     this.page,

@@ -23,8 +23,9 @@ export class PersonService {
         'x-access-token': localStorage.getItem('token')
     });
 
-    getList(order: string, pageSize: number, page: number, search: string) {
+    getList(sortActive: string, order: string, pageSize: number, page: number, search: string) {
         let params = new HttpParams();
+        params = params.append('active', sortActive);
         params = params.append('order', order);
         params = params.append('search', search);
         params = params.append('pageSize', pageSize.toString());
