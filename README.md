@@ -9,7 +9,7 @@ Backend: [PersonAPI](https://github.com/edgarMejia/PersonAPI).
     <img src="/capturas/login.png" alt="screenshot" align="center">
 </p>
 <p align="center">
-    <img src="/capturas/grid-v2.png" alt="screenshot" align="center">
+    <img src="/capturas/grid-v3.png" alt="screenshot" align="center">
 </p>
 
 ## Get the code
