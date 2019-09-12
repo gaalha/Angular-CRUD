@@ -41,16 +41,24 @@ export class PersonService {
         );
     }
 
+    getOne(id: number){
+        return this.http.get(
+            CONSTANST.routes.person.get.replace(':id', String(id)),
+            { headers: this.headers }
+        );
+    }
+
     save(person: Person){
-        return this.http
-            .post(CONSTANST.routes.person.save,
-                {
-                    txtName: person.first_name,
-                    txtAge: person.age,
-                    txtGender: person.gender,
-                    txtPersonId: person.id
-                },
-                { headers: this.headers }
+        return this.http.post(
+            CONSTANST.routes.person.save,
+            {
+                txtFirstName: person.first_name,
+                txtLastName: person.last_name,
+                txtAge: person.age,
+                txtGender: person.gender,
+                id: person.id
+            },
+            { headers: this.headers }
         );
     }
 }

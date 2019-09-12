@@ -1,7 +1,7 @@
 <div class="animated fadeIn table-container mat-elevation-z20">
-    <button mat-fab color="primary" class="add-button" (click)="save(row)">
+    <!-- <button mat-fab color="primary" class="add-button" (click)="save(row)" align="end">
         <mat-icon>add</mat-icon>
-    </button>
+    </button> -->
 
     <div class="table-loading-shade" *ngIf="isLoading">
         <mat-spinner *ngIf="isLoading"></mat-spinner>
@@ -9,14 +9,36 @@
     
     <div class="table-header">
         <mat-form-field class="filter-field">
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            <input 
+                matInput 
+                (keyup)="applyFilter($event.target.value)"
+                placeholder="Filter by name, age or gender" 
+                [(ngModel)]="value">
+            <button 
+                mat-button 
+                *ngIf="value" 
+                matSuffix 
+                mat-icon-button 
+                aria-label="Clear" 
+                (click)="value=''; applyFilter('')">
+                <mat-icon>close</mat-icon>
+            </button>
         </mat-form-field>
+
+        <button mat-raised-button (click)="save(row)" align="end" style="margin-bottom: 15px;">
+            <mat-icon>add</mat-icon> Add new
+        </button>
     </div>
 
     <mat-table #table [dataSource]="dataSource" class="person-table"
-    matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+    matSort matSortActive="id" matSortDisableClear matSortDirection="asc">
 
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>No.</mat-header-cell>
+            <mat-cell *matCellDef="let row; let i = index;"> {{ i + 1 }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="first_name">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
             <mat-cell *matCellDef="let row">{{ row.first_name + ' ' + row.last_name }}</mat-cell>
         </ng-container>
@@ -29,6 +51,11 @@
         <ng-container matColumnDef="gender">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Gender</mat-header-cell>
             <mat-cell *matCellDef="let row">{{ row.gender }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="created">
+            <mat-header-cell *matHeaderCellDef>Created at</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.created_at | date:'dd/MM/yyyy' }}</mat-cell>
         </ng-container>
 
         <!-- State Column -->
@@ -44,20 +71,33 @@
             </mat-header-cell>
 
             <mat-cell *matCellDef="let row">
-                <div class="button-row">
+                <!-- <div class="button-row">
                     <a mat-icon-button color='accent' (click)="edit(row)">
                         <mat-icon aria-label="Edit">create</mat-icon>
                     </a>
                     <a mat-icon-button color='warn' (click)="delete(row)" >
                         <mat-icon aria-label="Delete">clear</mat-icon>
                     </a>
-                </div>
+                </div> -->
+
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Click to see more actions">
+                    <i class="material-icons">more_vert</i>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="edit(row)">
+                        <mat-icon aria-label="Edit">create</mat-icon> Edit
+                    </button>
+                    <button mat-menu-item (click)="delete(row)">
+                        <mat-icon aria-label="Delete">clear</mat-icon> Delete
+                    </button>
+                </mat-menu>
             </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+
     <mat-paginator 
         [pageSizeOptions]="pageSizeOptions" 
         [length]="totalItems" 

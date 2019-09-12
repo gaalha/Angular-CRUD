@@ -27,7 +27,7 @@ import { SnackbarComponent } from '../../components/snackbar/snackbar.component'
     providers: [ PersonService ]
 })
 export class PersonComponent implements AfterViewInit {
-    displayedColumns = ['name','age','gender', 'personid'];
+    displayedColumns = ['id', 'first_name','age','gender', 'created', 'personid'];
     dataSource = new MatTableDataSource();
 
     resultsLength = 0;
@@ -130,23 +130,33 @@ export class PersonComponent implements AfterViewInit {
 
     // EDIT PERSONS
     edit(row:Person):void {
-        let dialogRef = this.dialog.open(FormsComponent, {
-            height: '350px',
-            width: '600px',
-            data: { title: 'MODIFICAR REGISTRO', action: 'edit', data:row}
-        });
-        dialogRef.afterClosed().subscribe(result => {
-            if(result)
-                this.paginator._changePageSize(this.paginator.pageSize);
+        // Getting data from back
+        this.personService.getOne(row.id).subscribe((data:any) => {
+            if(data.success){
+                /*this.paginator._changePageSize(this.paginator.pageSize);
+                this.openSnack(data);*/
+
+                let dialogRef = this.dialog.open(FormsComponent, {
+                    // height: '450px',
+                    width: '400px',
+                    data: { title: 'Update person', action: 'edit', data: data.data}
+                });
+                
+                dialogRef.afterClosed().subscribe(result => {
+                    if(result) {
+                        this.paginator._changePageSize(this.paginator.pageSize);
+                    }
+                });
+            }
         });
     }
 
     // SAVE PERSONS
     save():void {
         let dialogRef = this.dialog.open(FormsComponent, {
-            height: '350px',
-            width: '600px',
-            data: { title: 'AGREGAR REGISTRO', action: 'save'}
+            //height: '350px',
+            width: '400px',
+            data: { title: 'Add person', action: 'save'}
         });
         dialogRef.afterClosed().subscribe(result => {
             if(result)

@@ -11,3 +11,7 @@ mat-form-field {
     margin-top: 2vh;
     text-align: right;
 }
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }

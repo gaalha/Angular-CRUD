@@ -38,26 +38,28 @@ export class FormsComponent {
         });
     }
 
-    initializeForm(){
+    initializeForm() {
         if(this.data.action=='edit'){
+            let data = this.data.data;
             this.frm = this.fb.group({
-                name: new FormControl(this.data.data.name, [Validators.required, Validators.minLength(3)]),
-                age: new FormControl(this.data.data.age, [Validators.required, Validators.minLength(1)]),
-                gender: new FormControl(this.data.data.gender, [Validators.required]),
-                personid: new FormControl(this.data.data.personid)
+                first_name: new FormControl(data.first_name, [Validators.required, Validators.minLength(3)]),
+                last_name: new FormControl(data.last_name, [Validators.required, Validators.minLength(3)]),
+                age: new FormControl(data.age, [Validators.required, Validators.minLength(1)]),
+                gender: new FormControl(data.gender, [Validators.required]),
+                id: new FormControl(data.id)
             });
         }else{
             this.frm = new FormGroup({
-                name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+                first_name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+                last_name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
                 age: new FormControl(null, [Validators.required, Validators.minLength(1)]),
                 gender: new FormControl(null, [Validators.required]),
-                personid: new FormControl(null)
+                id: new FormControl(null)
             });
         }
     }
 
-    save(form:FormGroup){
-        console.log(form.value);
+    save(form: FormGroup) {
         this.personService.save(form.value).subscribe((data:any) => {
             if(data.success){
                 this.dialogRef.close(true);
@@ -69,11 +71,15 @@ export class FormsComponent {
     }
 
     getNameErrorMessage() {
-        return this.frm.controls.name.hasError('required') ? 'El campo Nombre es obligatorio' :
+        return this.frm.controls.first_name.hasError('required') ? 'First name is required' :
+        this.frm.controls.name.hasError('minlength') ? 'Al menos 2 caracteres' : '';
+    }
+    getLastNameErrorMessage() {
+        return this.frm.controls.last_name.hasError('required') ? 'Last name is required' :
         this.frm.controls.name.hasError('minlength') ? 'Al menos 2 caracteres' : '';
     }
     getAgeErrorMessage() {
-        return this.frm.controls.age.hasError('required') ? 'El campo edad es obligatorio' :
+        return this.frm.controls.age.hasError('required') ? 'Age is required' :
         this.frm.controls.age.hasError('minlength') ? 'Al menos un numero debe ser ingresado' : '';
     }
     getGenderErrorMessage() {

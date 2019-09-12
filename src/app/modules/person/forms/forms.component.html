@@ -1,18 +1,26 @@
 <div class="container">
     <h1 mat-dialog-title> {{ data.title }}</h1>
-    <mat-dialog-content>
+    <div mat-dialog-content>
         <div class="container">
             <form [formGroup]="frm" (ngSubmit)='save(frm)'>
                 <mat-form-field>
-                    <input matInput placeholder="Nombre" formControlName="name" class="person-input">
-                    <mat-hint align="end">{{frm.controls.name.value?.length || 0}}/10</mat-hint>
-                    <mat-error *ngIf="frm.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+                    <input matInput placeholder="First name" formControlName="first_name" class="person-input">
+                    <mat-hint align="end">{{frm.controls.first_name.value?.length || 0}}/10</mat-hint>
+                    <mat-error *ngIf="frm.controls.first_name.invalid">{{getNameErrorMessage()}}</mat-error>
                 </mat-form-field>
 
                 <br/>
 
                 <mat-form-field>
-                    <input matInput type="number" placeholder="Edad" formControlName='age'>
+                    <input matInput placeholder="Last name" formControlName="last_name" class="person-input">
+                    <mat-hint align="end">{{frm.controls.last_name.value?.length || 0}}/10</mat-hint>
+                    <mat-error *ngIf="frm.controls.last_name.invalid">{{getLastNameErrorMessage()}}</mat-error>
+                </mat-form-field>
+
+                <br/>
+
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Age" formControlName='age'>
                     <mat-hint align="end">{{frm.controls.age.value?.length || 0}}/10</mat-hint>
                     <mat-error *ngIf="frm.controls.age.invalid">{{getAgeErrorMessage()}}</mat-error>
                 </mat-form-field>
@@ -20,24 +28,44 @@
                 <br/>
 
                 <mat-radio-group formControlName='gender'>
-                    <label>Genero: </label>
-                    <mat-radio-button value="Femenino">Femenino</mat-radio-button>
-                    <mat-radio-button value="Masculino">Masculino</mat-radio-button>
+                    <label>Gender: </label> <br/><br/>
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                    <mat-radio-button value="Male">Male</mat-radio-button>
                     <mat-error *ngIf="frm.controls.gender.invalid">{{getGenderErrorMessage()}}</mat-error>
                 </mat-radio-group>
 
                 <mat-form-field style="visibility: hidden; height: 0vh !important">
-                    <input matInput type="text" formControlName='personid'>
+                    <input matInput type="text" formControlName='id'>
                 </mat-form-field>
 
-                <div class="button-row">
+                <!-- <div class="button-row">
                     <button mat-button [mat-dialog-close]>Cancelar</button>
                     <button mat-raised-button color="primary" type="submit" class="btnSave" [disabled]="!frm.valid">
                         <mat-icon aria-label="icon-button">save </mat-icon>
-                        <span>Guardar</span>
+                        <span>Save</span>
+                    </button>
+                </div> -->
+
+                <div mat-dialog-actions align="end">
+                    <!-- <button mat-button (click)="onNoClick()">No Thanks</button>
+                    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+            
+                    <button mat-button [mat-dialog-close]>Cancelar</button>
+                    <button mat-raised-button color="primary" type="submit" class="btnSave" [disabled]="!frm.valid">
+                        <mat-icon aria-label="icon-button">save </mat-icon>
+                        <span>Save</span>
                     </button>
                 </div>
             </form>
         </div>
-    </mat-dialog-content>
+    </div>
+
+    <!-- <div mat-dialog-actions>
+
+        <button mat-button [mat-dialog-close]>Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" class="btnSave" [disabled]="!frm.valid">
+            <mat-icon aria-label="icon-button">save </mat-icon>
+            <span>Save</span>
+        </button>
+    </div> -->
 </div>
