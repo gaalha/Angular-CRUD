@@ -2,14 +2,6 @@
     height: 100vh;
 }
 
-/*mat-toolbar {
-    background-color: #E91E63 !important;
-}*/
-
-/*.menu {
-    color: #fff;
-}*/
-
 mat-sidenav {
     -webkit-box-shadow: 5px 0 5px -5px #333;
     box-shadow: 5px 0 5px -5px #333;
