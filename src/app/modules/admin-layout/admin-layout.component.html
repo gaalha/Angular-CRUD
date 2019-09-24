@@ -5,7 +5,7 @@
             <mat-icon class="menu">menu</mat-icon>
         </button>
         
-        <h1 class="menu">Angular-CRUD</h1>
+        <h1 class="menu" routerLink="/" style="cursor: pointer;">Angular-CRUD</h1>
         <span class="spacer"></span>
 
         <!-- <button mat-icon-button>
@@ -15,9 +15,29 @@
             <i class="material-icons menu">message</i>
         </button> -->
 
-        <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+        <!-- <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+            <i class="material-icons menu">person_pin</i>
+        </button> -->
+
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="">
             <i class="material-icons menu">person_pin</i>
         </button>
+        
+        <!--USER PROFILE MENU-->
+        <mat-menu #profileMenu="matMenu">
+            <button mat-menu-item (click)="openDialog()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+            </button>
+            <button mat-menu-item disabled>
+                <mat-icon>supervisor_account</mat-icon>
+                <span>Modify account</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>info</mat-icon>
+                <span>Help</span>
+            </button>
+        </mat-menu>
         
         <!-- <button mat-icon-button>
             <i class="material-icons menu">settings</i>
@@ -59,8 +79,3 @@
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>
-
-<!--USER PROFILE MENU-->
-<mat-menu #profileMenu="matMenu">
-    <button mat-button (click)="openDialog()">Cerrar sesión</button>
-</mat-menu>

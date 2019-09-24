@@ -2,8 +2,6 @@ import { Component, AfterViewInit, ViewChild, ChangeDetectorRef, OnInit } from '
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
-import { Observable ,  merge ,  of as observableOf } from 'rxjs';
 import { catchError,  map ,  startWith ,  switchMap } from 'rxjs/operators';
 
 import { Router } from '@angular/router';
@@ -11,7 +9,6 @@ import { Router } from '@angular/router';
 import { Person } from '../../models/Person';
 import { PersonService } from '../../services/person.service';
 import { AuthService } from '../../services/auth.service';
-import { AuthGuard } from '../../guards/auth.guard';
 
 // DIALOGS
 import { MatDialog } from '@angular/material/dialog';

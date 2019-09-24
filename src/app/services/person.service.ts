@@ -20,7 +20,8 @@ export class PersonService {
     ) { }
 
     headers = new HttpHeaders({
-        'x-access-token': localStorage.getItem('token')
+        'Authorization': 'JWT ' + localStorage.getItem('token')
+        //'x-access-token': localStorage.getItem('token')
     });
 
     getList(sortActive: string, order: string, pageSize: number, page: number, search: string) {
@@ -50,8 +51,7 @@ export class PersonService {
 
     save(person: Person){
         return this.http.post(
-            CONSTANST.routes.person.save,
-            {
+            CONSTANST.routes.person.save, {
                 txtFirstName: person.first_name,
                 txtLastName: person.last_name,
                 txtAge: person.age,

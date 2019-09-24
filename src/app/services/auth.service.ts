@@ -23,8 +23,7 @@ export class AuthService {
     });
 
     login(user: User){
-        console.log(user);
-        if (user.user_name !== '' && user.password !== '' ) {
+        if (user.user_name !== '' && user.password !== '') {
             return this.http
             .post(CONSTANST.routes.authorization.login,{
                 txtUsername: user.user_name,

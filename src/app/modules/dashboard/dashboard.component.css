@@ -1,12 +1,12 @@
 .dashboard {
     margin: 5vh auto 5vh auto !important;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .dashboard-item {
     cursor: pointer;
     width: 230px;
-    height: 80px;
+    height: 110px;
     color: #FFF!important;
     margin: 2vh 1vw 1vh 1vw !important;
 }

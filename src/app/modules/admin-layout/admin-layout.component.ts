@@ -61,8 +61,8 @@ export class AdminLayoutComponent implements OnInit {
         let dialogRef = this.dialog.open(ConfirmComponent, {
             width: '250px',
             data: {
-                title: 'Cerrar Sesión',
-                message: '¿Seguro que deseas cerrar sesión?'
+                title: 'Logout',
+                message: 'Close session?'
             }
         });
         dialogRef.afterClosed().subscribe(result => {
