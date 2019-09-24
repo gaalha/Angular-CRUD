@@ -2,6 +2,8 @@ import { Component, AfterViewInit, ViewChild, ChangeDetectorRef, OnInit } from '
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+
+import { Observable,  merge,  of as observableOf } from 'rxjs';
 import { catchError,  map ,  startWith ,  switchMap } from 'rxjs/operators';
 
 import { Router } from '@angular/router';
@@ -52,12 +54,6 @@ export class PersonComponent implements AfterViewInit {
 
     // IMPORTANTE: VERIFICAR SI EL TOKEN EXISTE.
     ngOnInit() {
-        // VERIFICA QUE EXISTA EL TOQUEN
-        // FUNCIONA PERO ES INCORRECTO.
-        /*if(!localStorage.getItem('token')){
-            this.router.navigate(['/login']);
-        }*/
-
         // VERIFICA QUE LA SESIÓN EXISTA EN AUTH.SERVICE.TS
         if(!this.authService.loggedIn.getValue()){
             this.router.navigate(['/login']);
@@ -130,9 +126,6 @@ export class PersonComponent implements AfterViewInit {
         // Getting data from back
         this.personService.getOne(row.id).subscribe((data:any) => {
             if(data.success){
-                /*this.paginator._changePageSize(this.paginator.pageSize);
-                this.openSnack(data);*/
-
                 let dialogRef = this.dialog.open(FormsComponent, {
                     // height: '450px',
                     width: '400px',
