@@ -4,12 +4,6 @@ import { HttpClient, HttpParams, HttpHeaders }  from "@angular/common/http";
 import { CONSTANST } from '../utils/constanst';
 import { Person } from '../models/Person';
 
-//import { Observable } from 'rxjs/Observable';
-
-
-
-import { Observable } from 'rxjs';
-
 @Injectable()
 export class PersonService {
     loading:boolean = true;

@@ -80,13 +80,6 @@
                     </mat-header-cell>
         
                     <mat-cell *matCellDef="let row">
-                        <!-- <div class="button-row">
-                            <a mat-icon-button color='accent' (click)="edit(row)">
-                                <mat-icon aria-label="Edit">create</mat-icon>
-                            </a>
-                            <a mat-icon-button color='warn' (click)="delete(row)" >
-                                <mat-icon aria-label="Delete">clear</mat-icon>
-                            </a>
                         </div> -->
         
                         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Click to see more actions">
@@ -114,9 +107,5 @@
                 (page)="onPaginateChange($event)">
             </mat-paginator>
         </mat-card-content>
-        <!-- <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-        </mat-card-actions> -->
     </mat-card>
 </div>
