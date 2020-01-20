@@ -9,9 +9,9 @@ EN TODO EL PROYECTO, EL TITULO Y EL MENSAJE SERAN SETEADOS DESDE EL MODULO
 QUE LE MANDA LA DATA A ESTE MODULO.*/
 
 @Component({
-  selector: 'app-confirm',
-  templateUrl: './confirm.component.html',
-  styleUrls: ['./confirm.component.css']
+    selector: 'app-confirm',
+    templateUrl: './confirm.component.html',
+    styleUrls: ['./confirm.component.css']
 })
 export class ConfirmComponent {
     constructor(

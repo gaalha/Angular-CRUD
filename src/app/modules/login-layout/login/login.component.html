@@ -1,19 +1,19 @@
 <div class="signin-content animated fadeIn">
     <mat-card>
         <mat-card-content>
-            <img src="../../../assets/img/1.png" width="200px">
+            <img src="assets/img/1.png" width="200px">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <mat-form-field class="full-width-input">
                     <input matInput placeholder="User" formControlName="user_name" required>
                     <mat-error *ngIf="isFieldInvalid('user_name')">
-                    Please inform your user name
+                        Please inform your user name
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="full-width-input separate">
                     <input matInput type="password" placeholder="Password" formControlName="password" required>
                     <mat-error *ngIf="isFieldInvalid('user_name')">
-                    Please inform your password
+                        Please inform your password
                     </mat-error>
                 </mat-form-field>
 

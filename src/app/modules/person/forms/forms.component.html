@@ -9,7 +9,7 @@
                     <mat-error *ngIf="frm.controls.first_name.invalid">{{getNameErrorMessage()}}</mat-error>
                 </mat-form-field>
 
-                <br/>
+                <br />
 
                 <mat-form-field>
                     <input matInput placeholder="Last name" formControlName="last_name" class="person-input">
@@ -17,7 +17,7 @@
                     <mat-error *ngIf="frm.controls.last_name.invalid">{{getLastNameErrorMessage()}}</mat-error>
                 </mat-form-field>
 
-                <br/>
+                <br />
 
                 <mat-form-field>
                     <input matInput type="number" placeholder="Age" formControlName='age'>
@@ -25,10 +25,10 @@
                     <mat-error *ngIf="frm.controls.age.invalid">{{getAgeErrorMessage()}}</mat-error>
                 </mat-form-field>
 
-                <br/>
+                <br />
 
                 <mat-radio-group formControlName='gender'>
-                    <label>Gender: </label> <br/><br/>
+                    <label>Gender: </label> <br /><br />
                     <mat-radio-button value="Female">Female</mat-radio-button>
                     <mat-radio-button value="Male">Male</mat-radio-button>
                     <mat-error *ngIf="frm.controls.gender.invalid">{{getGenderErrorMessage()}}</mat-error>

@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, NavigationEnd } from '@angular/router';
+
+import { Router } from '@angular/router';
 import { PlatformLocation } from '@angular/common';
-
-// SERVICES
-import { AuthService } from './../../../services/auth.service';
-
-// ERROR MESSAGE
-import { SnackbarComponent } from '../../../components/snackbar/snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { AuthService } from '~services/auth.service';
+import { SnackbarComponent } from '~components/snackbar/snackbar.component';
+
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
-    providers: [ ]
+    providers: []
 })
 
 export class LoginComponent implements OnInit {
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private authService: AuthService ,
+        private authService: AuthService,
         private router: Router,
         public snack: MatSnackBar,
         private location: PlatformLocation
@@ -37,7 +36,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         /*SI EXISTE UN TOKEN SETEADO TE REDIRECCIONA AL DASHBOARD*/
-        if(localStorage.getItem('token')){
+        if (localStorage.getItem('token')) {
             this.router.navigate(['/']);
         }
 
@@ -56,12 +55,12 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         if (this.form.valid) {
-            this.authService.login(this.form.value).subscribe((data:any) => {
-                if(data.success){
+            this.authService.login(this.form.value).subscribe((data: any) => {
+                if (data.success) {
                     this.authService.loggedIn.next(true); /*SETEA EL METODO loggedIn COMO TRUE EN EL AuthService*/
                     localStorage.setItem('token', data.token); /*SETEA EL TOKEN PROCEDENTE DEL BACKEND*/
                     this.router.navigate(['/']); /*REDIRECCIONA AL DASHBOAR*/
-                }else{ /*SINO MUESTRA UN MENSAJE DE ERROR PROCEDENTE DEL BACKEND*/
+                } else { /*SINO MUESTRA UN MENSAJE DE ERROR PROCEDENTE DEL BACKEND*/
                     this.snack.openFromComponent(SnackbarComponent, {
                         data: { data: data },
                         duration: 3000
