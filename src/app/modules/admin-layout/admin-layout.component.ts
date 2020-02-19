@@ -17,7 +17,7 @@ import { ConfirmComponent } from '~components/confirm/confirm.component';
 export class AdminLayoutComponent implements OnInit {
     isLoggedIn$: Observable<boolean>;
     mobileQuery: MediaQueryList;
-    private _mobileQueryListener: () => void;
+    private mobileQueryListener: () => void;
 
     @ViewChild('progressBar', { static: false })
     progressBar: ElementRef;
@@ -33,8 +33,8 @@ export class AdminLayoutComponent implements OnInit {
         private renderer: Renderer2
     ) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
-        this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-        this.mobileQuery.addListener(this._mobileQueryListener);
+        this.mobileQueryListener = () => changeDetectorRef.detectChanges();
+        this.mobileQuery.addListener(this.mobileQueryListener);
 
         router.events.subscribe((event: RouterEvent) => {
             this._navigationInterceptor(event);
@@ -46,12 +46,12 @@ export class AdminLayoutComponent implements OnInit {
     }
 
     ngOnDestroy(): void {
-        this.mobileQuery.removeListener(this._mobileQueryListener);
+        this.mobileQuery.removeListener(this.mobileQueryListener);
     }
 
     /*ABRE EL COMPONENTE ConfirmComponent, LE INYECTA LOS DATOS A MOSTRAR Y SE SUSCRIBE PARA VER LA RESPUESTA BOOLEANA*/
     openDialog(): void {
-        let dialogRef = this.dialog.open(ConfirmComponent, {
+        const dialogRef = this.dialog.open(ConfirmComponent, {
             width: '250px',
             data: {
                 title: 'Logout',
@@ -76,27 +76,27 @@ export class AdminLayoutComponent implements OnInit {
         if (event instanceof NavigationStart) {
             this.ngZone.runOutsideAngular(() => {
                 this.renderer.setStyle(this.progressBar.nativeElement, 'opacity', '1');
-            })
+            });
         }
         if (event instanceof NavigationEnd) {
             setTimeout(() => {
-                this._hideProgressBar();
+                this.hideProgressBar();
             }, 1000);
         }
         if (event instanceof NavigationCancel) {
             setTimeout(() => {
-                this._hideProgressBar();
+                this.hideProgressBar();
             }, 1000);
         }
         if (event instanceof NavigationError) {
             setTimeout(() => {
-                this._hideProgressBar();
+                this.hideProgressBar();
             }, 1000);
         }
     }
     /* OCULTA LA BARRA DE PROGRESO CUANDO LA PAGINA
     DEJA DE CARGAR */
-    private _hideProgressBar(): void {
+    private hideProgressBar(): void {
         this.ngZone.runOutsideAngular(() => {
             this.renderer.setStyle(this.progressBar.nativeElement, 'opacity', '0');
         });
