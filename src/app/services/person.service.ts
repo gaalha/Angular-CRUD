@@ -10,7 +10,6 @@ export class PersonService {
     loading = true;
 
     constructor(
-        private router: Router,
         public http: HttpClient
     ) { }
 

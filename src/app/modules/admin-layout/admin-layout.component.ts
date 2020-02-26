@@ -49,7 +49,6 @@ export class AdminLayoutComponent implements OnInit {
         this.mobileQuery.removeListener(this.mobileQueryListener);
     }
 
-    /*ABRE EL COMPONENTE ConfirmComponent, LE INYECTA LOS DATOS A MOSTRAR Y SE SUSCRIBE PARA VER LA RESPUESTA BOOLEANA*/
     openDialog(): void {
         const dialogRef = this.dialog.open(ConfirmComponent, {
             width: '250px',
