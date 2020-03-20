@@ -1,12 +1,19 @@
 div.container {
     text-align: center;
     width: 100vw;
+    margin-top: 10%;
+}
+
+h1 {
+    font-size:130px;
+    margin: 0;
 }
 
 div.container > h2 {
     font-family: 'Anton', sans-serif;
-    font-size:90px;
+    font-size:70px;
     opacity: 0.8;
+    margin: 0;
 }
 
 span {

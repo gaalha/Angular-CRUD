@@ -5,31 +5,29 @@ import { MatTableDataSource } from '@angular/material/table';
 import { catchError,  map , startWith ,  switchMap } from 'rxjs/operators';
 import { Observable, merge } from 'rxjs';
 
+import { merge, of as observableOf } from 'rxjs';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
-import { Person } from '../../models/Person';
-import { PersonService } from '../../services/person.service';
-import { AuthService } from '../../services/auth.service';
-
-// DIALOGS
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfirmComponent } from '../../components/confirm/confirm.component';
-import { FormsComponent } from './forms/forms.component';
-import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
+
+import { Person } from '~models/Person';
+import { PersonService } from '~services/person.service';
+import { AuthService } from '~services/auth.service';
+import { ConfirmComponent } from '~components/confirm/confirm.component';
+import { FormsComponent } from '~modules/person/forms/forms.component';
+import { SnackbarComponent } from '~components/snackbar/snackbar.component';
 
 @Component({
     selector: 'app-person',
     templateUrl: './person.component.html',
     styleUrls: ['./person.component.css'],
-    providers: [ PersonService ]
+    providers: [PersonService]
 })
 export class PersonComponent implements AfterViewInit {
-    displayedColumns = ['id', 'first_name','age','gender', 'created', 'personid'];
+    displayedColumns = ['id', 'first_name', 'age', 'gender', 'created', 'personid'];
     dataSource = new MatTableDataSource();
-
     resultsLength = 0;
-
     pageEvent: PageEvent;
     pageSizeOptions = [5, 10, 25, 100]; /*CANTIDADES DE DATOS QUE SE PUEDEN MOSTRAR EN LA TABLA*/
     pageSize = 5; /*CANTIDAD DE DATOS QUE SE MUESTRAN AL CARGAR EL GRID */
@@ -39,11 +37,11 @@ export class PersonComponent implements AfterViewInit {
     totalItems = 0;
     search = '';
 
-    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-    @ViewChild(MatSort, {static: false}) sort: MatSort;
+    @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+    @ViewChild(MatSort, { static: false }) sort: MatSort;
 
     constructor(
-        private cdr:ChangeDetectorRef,
+        private cdr: ChangeDetectorRef,
         private personService: PersonService,
         private authService: AuthService,
         private router: Router,
@@ -53,14 +51,8 @@ export class PersonComponent implements AfterViewInit {
 
     // IMPORTANTE: VERIFICAR SI EL TOKEN EXISTE.
     ngOnInit() {
-        // VERIFICA QUE EXISTA EL TOQUEN
-        // FUNCIONA PERO ES INCORRECTO.
-        /*if(!localStorage.getItem('token')){
-            this.router.navigate(['/login']);
-        }*/
-
         // VERIFICA QUE LA SESIÓN EXISTA EN AUTH.SERVICE.TS
-        if(!this.authService.loggedIn.getValue()){
+        if (!this.authService.loggedIn.getValue()) {
             this.router.navigate(['/login']);
         }
     }
@@ -70,7 +62,7 @@ export class PersonComponent implements AfterViewInit {
         this.getData();
     }
 
-    ngAfterViewChecked(){
+    ngAfterViewChecked() {
         this.cdr.detectChanges();
     }
 
@@ -81,7 +73,7 @@ export class PersonComponent implements AfterViewInit {
         });
     }
 
-    onPaginateChange(event){
+    onPaginateChange(event) {
         this.page = event.pageIndex + 1;
         this.pageSize = event.pageSize;
         this.getData();
@@ -92,26 +84,26 @@ export class PersonComponent implements AfterViewInit {
         filterValue = filterValue.toLowerCase();
         this.search = filterValue;
         this.getData();
-      }
+    }
 
     // GET PERSONS
     getData() {
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
         merge(this.sort.sortChange, this.paginator.page)
-        .pipe(
-            startWith({}),
-            switchMap(() => {
-                this.isLoading = true;
-                return this.personService!
-                .getList(
-                    this.sort.active,
-                    this.sort.direction,
-                    this.pageSize,
-                    this.page,
-                    this.search
-                );
-            }),
+            .pipe(
+                startWith({}),
+                switchMap(() => {
+                    this.isLoading = true;
+                    return this.personService!
+                        .getList(
+                            this.sort.active,
+                            this.sort.direction,
+                            this.pageSize,
+                            this.page,
+                            this.search
+                        );
+                }),
                 map(data => {
                     this.isLoading = false;
                     this.isTotalReached = false;
@@ -123,25 +115,22 @@ export class PersonComponent implements AfterViewInit {
                     this.isTotalReached = true;
                     return observableOf([]);
                 })
-        ).subscribe(data => this.dataSource.data = data);
+            ).subscribe(data => this.dataSource.data = data);
     }
 
     // EDIT PERSONS
-    edit(row:Person):void {
+    edit(row: Person): void {
         // Getting data from back
-        this.personService.getOne(row.id).subscribe((data:any) => {
-            if(data.success){
-                /*this.paginator._changePageSize(this.paginator.pageSize);
-                this.openSnack(data);*/
-
-                let dialogRef = this.dialog.open(FormsComponent, {
+        this.personService.getOne(row.id).subscribe((data: any) => {
+            if (data.success) {
+                const dialogRef = this.dialog.open(FormsComponent, {
                     // height: '450px',
                     width: '400px',
-                    data: { title: 'Update person', action: 'edit', data: data.data}
+                    data: { title: 'Update person', action: 'edit', data: data.data }
                 });
-                
+
                 dialogRef.afterClosed().subscribe(result => {
-                    if(result) {
+                    if (result) {
                         this.paginator._changePageSize(this.paginator.pageSize);
                     }
                 });
@@ -150,34 +139,35 @@ export class PersonComponent implements AfterViewInit {
     }
 
     // SAVE PERSONS
-    save():void {
-        let dialogRef = this.dialog.open(FormsComponent, {
+    save(): void {
+        const dialogRef = this.dialog.open(FormsComponent, {
             //height: '350px',
             width: '400px',
-            data: { title: 'Add person', action: 'save'}
+            data: { title: 'Add person', action: 'save' }
         });
         dialogRef.afterClosed().subscribe(result => {
-            if(result)
+            if (result) {
                 this.paginator._changePageSize(this.paginator.pageSize);
+            }
         });
     }
 
     // DELETE PERSONS
-    delete(row:Person){
-        let dialogRef = this.dialog.open(ConfirmComponent, {
+    delete(row: Person) {
+        const dialogRef = this.dialog.open(ConfirmComponent, {
             width: '250px',
-            data: { 
+            data: {
                 title: 'Confirme la acción',
                 message: '¿Seguro que desea eliminar este registro?'
             }
         });
         dialogRef.afterClosed().subscribe(result => {
-            if(result){
-                this.personService.delete(row.id).subscribe((data:any) => {
-                    if(data.success){
+            if (result) {
+                this.personService.delete(row.id).subscribe((data: any) => {
+                    if (data.success) {
                         this.paginator._changePageSize(this.paginator.pageSize);
                         this.openSnack(data);
-                    }else{
+                    } else {
                         this.openSnack(data);
                     }
                 });

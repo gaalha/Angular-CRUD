@@ -1,38 +1,30 @@
 import { Component, OnInit, ChangeDetectorRef, NgZone, ElementRef, ViewChild, Renderer2 } from '@angular/core';
-import {
-    Router,
-    Event as RouterEvent,
-    NavigationStart,
-    NavigationEnd,
-    NavigationCancel,
-    NavigationError
-} from '@angular/router';
+import { Router, Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
-
-// LOGOUT CONFIRM DIALOG
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmComponent } from '../../components/confirm/confirm.component';
+import { Observable } from 'rxjs';
+
+import { AuthService } from '~services/auth.service';
+import { ConfirmComponent } from '~components/confirm/confirm.component';
 
 @Component({
     selector: 'app-admin-layout',
     templateUrl: './admin-layout.component.html',
     styleUrls: ['./admin-layout.component.css'],
-    providers: [ AuthService ]
+    providers: [AuthService]
 })
 
 export class AdminLayoutComponent implements OnInit {
     isLoggedIn$: Observable<boolean>;
     mobileQuery: MediaQueryList;
-    private _mobileQueryListener: () => void;
-    
-    @ViewChild('progressBar', {static: false})
+    private mobileQueryListener: () => void;
+
+    @ViewChild('progressBar', { static: false })
     progressBar: ElementRef;
 
     constructor(
         private authService: AuthService,
-        changeDetectorRef: ChangeDetectorRef, 
+        changeDetectorRef: ChangeDetectorRef,
         media: MediaMatcher,
         public dialog: MatDialog,
 
@@ -41,11 +33,11 @@ export class AdminLayoutComponent implements OnInit {
         private renderer: Renderer2
     ) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
-        this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-        this.mobileQuery.addListener(this._mobileQueryListener);
+        this.mobileQueryListener = () => changeDetectorRef.detectChanges();
+        this.mobileQuery.addListener(this.mobileQueryListener);
 
         router.events.subscribe((event: RouterEvent) => {
-            this._navigationInterceptor(event)
+            this._navigationInterceptor(event);
         });
     }
 
@@ -54,11 +46,12 @@ export class AdminLayoutComponent implements OnInit {
     }
 
     ngOnDestroy(): void {
-        this.mobileQuery.removeListener(this._mobileQueryListener);
+        this.mobileQuery.removeListener(this.mobileQueryListener);
     }
 
-    openDialog(): void { /*ABRE EL COMPONENTE ConfirmComponent, LE INYECTA LOS DATOS A MOSTRAR Y SE SUSCRIBE PARA VER LA RESPUESTA BOOLEANA*/
-        let dialogRef = this.dialog.open(ConfirmComponent, {
+    /*ABRE EL COMPONENTE ConfirmComponent, LE INYECTA LOS DATOS A MOSTRAR Y SE SUSCRIBE PARA VER LA RESPUESTA BOOLEANA*/
+    openDialog(): void {
+        const dialogRef = this.dialog.open(ConfirmComponent, {
             width: '250px',
             data: {
                 title: 'Logout',
@@ -66,13 +59,13 @@ export class AdminLayoutComponent implements OnInit {
             }
         });
         dialogRef.afterClosed().subscribe(result => {
-            if(result){
-                this.authService.logout().subscribe((data:any) => {
-                    if(data.success){
+            if (result) {
+                this.authService.logout().subscribe((data: any) => {
+                    if (data.success) {
                         this.authService.loggedIn.next(false);
                         localStorage.removeItem('token');
                         this.router.navigate(['/login']);
-                      }
+                    }
                 });
             }
         });
@@ -82,30 +75,30 @@ export class AdminLayoutComponent implements OnInit {
     private _navigationInterceptor(event: RouterEvent): void {
         if (event instanceof NavigationStart) {
             this.ngZone.runOutsideAngular(() => {
-                this.renderer.setStyle(this.progressBar.nativeElement, 'opacity', '1')
-            })
+                this.renderer.setStyle(this.progressBar.nativeElement, 'opacity', '1');
+            });
         }
         if (event instanceof NavigationEnd) {
             setTimeout(() => {
-                this._hideProgressBar();
+                this.hideProgressBar();
             }, 1000);
         }
         if (event instanceof NavigationCancel) {
             setTimeout(() => {
-                this._hideProgressBar();
+                this.hideProgressBar();
             }, 1000);
         }
         if (event instanceof NavigationError) {
             setTimeout(() => {
-                this._hideProgressBar();
+                this.hideProgressBar();
             }, 1000);
         }
     }
     /* OCULTA LA BARRA DE PROGRESO CUANDO LA PAGINA
     DEJA DE CARGAR */
-    private _hideProgressBar(): void {
+    private hideProgressBar(): void {
         this.ngZone.runOutsideAngular(() => {
-            this.renderer.setStyle(this.progressBar.nativeElement, 'opacity', '0')
-        })
+            this.renderer.setStyle(this.progressBar.nativeElement, 'opacity', '0');
+        });
     }
 }

@@ -11,7 +11,7 @@ PARA PODER INYECTARLE LOS DATOS PROCEDENTES DEL COMPONENTE QU ELO ESTA 'INVOCAND
 export class SnackbarComponent implements OnInit {
     constructor(
         @Inject(MAT_SNACK_BAR_DATA) public data: any
-    ) {}
+    ) { }
 
     ngOnInit() {
     }
