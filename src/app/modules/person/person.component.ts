@@ -2,7 +2,8 @@ import { Component, AfterViewInit, ViewChild, ChangeDetectorRef, OnInit } from '
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { catchError,  map ,  startWith ,  switchMap } from 'rxjs/operators';
+import { catchError,  map , startWith ,  switchMap } from 'rxjs/operators';
+import { Observable, merge } from 'rxjs';
 
 import { Router } from '@angular/router';
 
