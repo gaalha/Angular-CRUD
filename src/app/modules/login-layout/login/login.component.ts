@@ -14,7 +14,8 @@ import { SnackbarComponent } from '~components/snackbar/snackbar.component';
 })
 
 export class LoginComponent implements OnInit {
-    form: FormGroup;
+    public form: FormGroup;
+    public isLogin = false;
     private formSubmitAttempt: boolean;
 
     constructor(
@@ -44,18 +45,26 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         if (this.form.valid) {
-            this.authService.login(this.form.value).subscribe((data: any) => {
-                if (data.success) {
-                    this.authService.loggedIn.next(true);
-                    localStorage.setItem('token', data.token);
-                    this.router.navigate(['/']);
-                } else {
-                    this.snack.openFromComponent(SnackbarComponent, {
-                        data: { data: data },
-                        duration: 3000
-                    });
+            this.isLogin = true;
+            this.authService.login(this.form.value).subscribe(
+                (data: any) => {
+                    this.isLogin = false;
+                    if (data.success) {
+                        this.authService.loggedIn.next(true);
+                        localStorage.setItem('token', data.token);
+                        this.router.navigate(['/']);
+                    } else {
+                        this.snack.openFromComponent(SnackbarComponent, {
+                            data: { data: data },
+                            duration: 3000
+                        });
+                    }
+                },
+                (error) => {
+                    console.log(error);
+                    this.isLogin = false;
                 }
-            });
+            );
         }
         this.formSubmitAttempt = true;
     }
