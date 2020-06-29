@@ -15,7 +15,6 @@ export class AuthService {
     }
 
     constructor(
-        private router: Router,
         public http: HttpClient
     ) { }
 
@@ -25,17 +24,20 @@ export class AuthService {
 
     login(user: User) {
         if (user.user_name !== '' && user.password !== '') {
-            return this.http
-                .post(CONSTANST.routes.authorization.login, {
-                    txtUsername: user.user_name,
-                    txtEmail: user.email,
-                    txtPassword: user.password
-                })
+            return this.http.post(
+                CONSTANST.routes.authorization.login, {
+                txtUsername: user.user_name,
+                txtEmail: user.email,
+                txtPassword: user.password
+            });
         }
     }
 
     logout() {
-        return this.http.get(CONSTANST.routes.authorization.logout, { headers: this.headers });
+        return this.http.get(
+            CONSTANST.routes.authorization.logout,
+            { headers: this.headers }
+        );
     }
 
     hasToken(): boolean {

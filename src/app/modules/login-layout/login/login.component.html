@@ -6,19 +6,25 @@
                 <mat-form-field class="full-width-input">
                     <input matInput placeholder="User" formControlName="user_name" required>
                     <mat-error *ngIf="isFieldInvalid('user_name')">
-                        Please inform your user name
+                        Please enter a valid username or email
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="full-width-input separate">
                     <input matInput type="password" placeholder="Password" formControlName="password" required>
                     <mat-error *ngIf="isFieldInvalid('user_name')">
-                        Please inform your password
+                        Please enter a valid password
                     </mat-error>
                 </mat-form-field>
 
-                <button mat-raised-button color="primary" type="submit" style="width: 100%;">Login</button>
+                <button mat-raised-button color="primary" type="submit" style="width: 100%;" [disabled]="isLogin">
+                    <div *ngIf="isLogin; else loginText">Loading ...</div>
+                </button>
             </form>
+
+            <ng-template #loginText>
+                Login
+            </ng-template>
         </mat-card-content>
     </mat-card>
 </div>

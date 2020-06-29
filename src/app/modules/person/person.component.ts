@@ -22,18 +22,19 @@ import { SnackbarComponent } from '~components/snackbar/snackbar.component';
     styleUrls: ['./person.component.css'],
     providers: [PersonService]
 })
-export class PersonComponent implements AfterViewInit {
-    displayedColumns = ['id', 'first_name', 'age', 'gender', 'created', 'personid'];
-    dataSource = new MatTableDataSource();
-    resultsLength = 0;
-    pageEvent: PageEvent;
-    pageSizeOptions = [5, 10, 25, 100]; /*CANTIDADES DE DATOS QUE SE PUEDEN MOSTRAR EN LA TABLA*/
-    pageSize = 5; /*CANTIDAD DE DATOS QUE SE MUESTRAN AL CARGAR EL GRID */
-    page = 1; /*PAGINA QUE SE MOSTRARA AL CARGAR EL GRID*/
-    isLoading = false;
-    isTotalReached = false;
-    totalItems = 0;
-    search = '';
+export class PersonComponent implements AfterViewInit, OnInit {
+    public readonly displayedColumns = ['id', 'first_name', 'age', 'gender', 'created', 'personid'];
+    public readonly pageSizeOptions = [5, 10, 25, 100];
+    public pageSize = 5;
+    public dataSource = new MatTableDataSource();
+    public pageEvent: PageEvent;
+    public resultsLength = 0;
+    public page = 1;
+    public isLoading = false;
+    public isTotalReached = false;
+    public totalItems = 0;
+    public search = '';
+    value: any;
 
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -47,9 +48,7 @@ export class PersonComponent implements AfterViewInit {
         public snack: MatSnackBar
     ) { }
 
-    // IMPORTANTE: VERIFICAR SI EL TOKEN EXISTE.
     ngOnInit() {
-        // VERIFICA QUE LA SESIÓN EXISTA EN AUTH.SERVICE.TS
         if (!this.authService.loggedIn.getValue()) {
             this.router.navigate(['/login']);
         }
@@ -64,28 +63,27 @@ export class PersonComponent implements AfterViewInit {
         this.cdr.detectChanges();
     }
 
-    openSnack(data) {
+    private openSnack(data: any): void {
         this.snack.openFromComponent(SnackbarComponent, {
             data: { data: data },
             duration: 3000
         });
     }
 
-    onPaginateChange(event) {
+    public onPaginateChange(event: any): void {
         this.page = event.pageIndex + 1;
         this.pageSize = event.pageSize;
         this.getData();
     }
 
-    applyFilter(filterValue: string) {
+    public applyFilter(filterValue: string): void {
         filterValue = filterValue.trim();
         filterValue = filterValue.toLowerCase();
         this.search = filterValue;
         this.getData();
     }
 
-    // GET PERSONS
-    getData() {
+    private getData(): any {
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
         merge(this.sort.sortChange, this.paginator.page)
@@ -93,14 +91,13 @@ export class PersonComponent implements AfterViewInit {
                 startWith({}),
                 switchMap(() => {
                     this.isLoading = true;
-                    return this.personService!
-                        .getList(
-                            this.sort.active,
-                            this.sort.direction,
-                            this.pageSize,
-                            this.page,
-                            this.search
-                        );
+                    return this.personService.getList(
+                        this.sort.active,
+                        this.sort.direction,
+                        this.pageSize,
+                        this.page,
+                        this.search
+                    );
                 }),
                 map(data => {
                     this.isLoading = false;
@@ -116,9 +113,7 @@ export class PersonComponent implements AfterViewInit {
             ).subscribe(data => this.dataSource.data = data);
     }
 
-    // EDIT PERSONS
-    edit(row: Person): void {
-        // Getting data from back
+    public edit(row: Person): void {
         this.personService.getOne(row.id).subscribe((data: any) => {
             if (data.success) {
                 const dialogRef = this.dialog.open(FormsComponent, {
@@ -136,8 +131,7 @@ export class PersonComponent implements AfterViewInit {
         });
     }
 
-    // SAVE PERSONS
-    save(): void {
+    public save(): void {
         const dialogRef = this.dialog.open(FormsComponent, {
             //height: '350px',
             width: '400px',
@@ -150,8 +144,7 @@ export class PersonComponent implements AfterViewInit {
         });
     }
 
-    // DELETE PERSONS
-    delete(row: Person) {
+    public delete(row: Person) {
         const dialogRef = this.dialog.open(ConfirmComponent, {
             width: '250px',
             data: {
@@ -159,14 +152,14 @@ export class PersonComponent implements AfterViewInit {
                 message: '¿Seguro que desea eliminar este registro?'
             }
         });
+
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.personService.delete(row.id).subscribe((data: any) => {
+                    this.openSnack(data);
+
                     if (data.success) {
                         this.paginator._changePageSize(this.paginator.pageSize);
-                        this.openSnack(data);
-                    } else {
-                        this.openSnack(data);
                     }
                 });
             }

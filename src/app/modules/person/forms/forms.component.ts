@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -12,8 +12,8 @@ import { SnackbarComponent } from '~components/snackbar/snackbar.component';
     styleUrls: ['./forms.component.css']
 })
 
-export class FormsComponent {
-    frm: FormGroup;
+export class FormsComponent implements OnInit {
+    public frm: FormGroup;
 
     constructor(
         public dialogRef: MatDialogRef<FormsComponent>,
@@ -32,16 +32,16 @@ export class FormsComponent {
         this.initializeForm();
     }
 
-    openSnack(data) {
+    openSnack(data: any) {
         this.snack.openFromComponent(SnackbarComponent, {
             data: { data: data },
             duration: 3000
         });
     }
 
-    initializeForm() {
+    private initializeForm() {
         const IS_EDITING = this.data.action === 'edit';
-        let data = this.data.data;
+        const data = this.data.data;
 
         this.frm = this.fb.group({
             first_name: new FormControl(IS_EDITING ?  data.first_name : null, [Validators.required, Validators.minLength(3)]),
@@ -52,30 +52,33 @@ export class FormsComponent {
         });
     }
 
-    save(form: FormGroup) {
+    public save(form: FormGroup) {
         this.personService.save(form.value).subscribe((data: any) => {
+            this.openSnack(data);
+
             if (data.success) {
                 this.dialogRef.close(true);
-                this.openSnack(data);
-            } else {
-                this.openSnack(data);
             }
         });
     }
 
-    getNameErrorMessage() {
+    public getNameErrorMessage() {
         return this.frm.controls.first_name.hasError('required') ? 'First name is required' :
             this.frm.controls.name.hasError('minlength') ? 'Al menos 2 caracteres' : '';
     }
-    getLastNameErrorMessage() {
+
+    public getLastNameErrorMessage() {
         return this.frm.controls.last_name.hasError('required') ? 'Last name is required' :
             this.frm.controls.name.hasError('minlength') ? 'Al menos 2 caracteres' : '';
     }
-    getAgeErrorMessage() {
+
+    public getAgeErrorMessage() {
         return this.frm.controls.age.hasError('required') ? 'Age is required' :
             this.frm.controls.age.hasError('minlength') ? 'Al menos un numero debe ser ingresado' : '';
     }
-    getGenderErrorMessage() {
+
+    public getGenderErrorMessage() {
         return this.frm.controls.gender.hasError('required') ? '' : '';
     }
+
 }
