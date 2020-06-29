@@ -2,6 +2,7 @@
   "name": "Angular-CRUD",
   "version": "9.0.0",
   "license": "MIT",
+  "author": "Edgar Mejía <edgar1315@gmail.com>",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -55,6 +56,5 @@
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
   },
-  "main": "index.js",
-  "author": "Edgar Mejía <edgar1315@gmail.com>"
+  "main": "index.js"
 }
