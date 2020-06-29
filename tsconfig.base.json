@@ -1,0 +1,32 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "importHelpers": true,
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2017",
+            "dom"
+        ],
+        "module": "esnext",
+        "baseUrl": "./src",
+        "paths": {
+            "~app/*": ["app/*"],
+            "~models/*": ["app/models/*"],
+            "~modules/*": ["app/modules/*"],
+            "~services/*": ["app/services/*"],
+            "~utils/*": ["app/utils/*"],
+            "~components/*": ["app/components/*"],
+            "~environments": ["environments/environment"],
+            "~guards/*": ["app/guards/*"],
+        }
+    }
+}
