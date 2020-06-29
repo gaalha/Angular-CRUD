@@ -34,6 +34,7 @@ export class PersonComponent implements AfterViewInit, OnInit {
     public isTotalReached = false;
     public totalItems = 0;
     public search = '';
+    value: any;
 
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: false }) sort: MatSort;
