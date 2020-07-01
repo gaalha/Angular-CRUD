@@ -10,7 +10,7 @@ QUE LE MANDA LA DATA A ESTE MODULO.*/
 @Component({
     selector: 'app-confirm',
     templateUrl: './confirm.component.html',
-    styleUrls: ['./confirm.component.css']
+    styleUrls: ['./confirm.component.scss']
 })
 export class ConfirmComponent {
     constructor(

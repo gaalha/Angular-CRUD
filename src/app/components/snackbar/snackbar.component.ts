@@ -6,7 +6,7 @@ PARA PODER INYECTARLE LOS DATOS PROCEDENTES DEL COMPONENTE QU ELO ESTA 'INVOCAND
 @Component({
     selector: 'app-snackbar',
     templateUrl: './snackbar.component.html',
-    styleUrls: ['./snackbar.component.css']
+    styleUrls: ['./snackbar.component.scss']
 })
 export class SnackbarComponent implements OnInit {
     constructor(
