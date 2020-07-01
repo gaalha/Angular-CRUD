@@ -1,51 +1,55 @@
 <div class="container">
-    <h1 mat-dialog-title> {{ data.title }}</h1>
-    <div mat-dialog-content>
-        <div class="container">
-            <form [formGroup]="frm" (ngSubmit)='save(frm)'>
-                <mat-form-field>
-                    <input matInput placeholder="First name" formControlName="first_name" class="person-input">
-                    <mat-hint align="end">{{frm.controls.first_name.value?.length || 0}}/10</mat-hint>
-                    <mat-error *ngIf="frm.controls.first_name.invalid">{{getNameErrorMessage()}}</mat-error>
-                </mat-form-field>
+  <h1 mat-dialog-title> {{ data.title }}</h1>
+  <div mat-dialog-content>
+    <div class="container">
+      <form [formGroup]="frm" (ngSubmit)='save(frm)'>
+        <mat-form-field>
+          <input matInput placeholder="First name" formControlName="first_name" class="person-input">
+          <mat-hint align="end">{{frm.controls.first_name.value?.length || 0}}/10</mat-hint>
+          <mat-error *ngIf="frm.controls.first_name.invalid">{{getNameErrorMessage()}}</mat-error>
+        </mat-form-field>
 
-                <br />
+        <br />
 
-                <mat-form-field>
-                    <input matInput placeholder="Last name" formControlName="last_name" class="person-input">
-                    <mat-hint align="end">{{frm.controls.last_name.value?.length || 0}}/10</mat-hint>
-                    <mat-error *ngIf="frm.controls.last_name.invalid">{{getLastNameErrorMessage()}}</mat-error>
-                </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Last name" formControlName="last_name" class="person-input">
+          <mat-hint align="end">{{frm.controls.last_name.value?.length || 0}}/10</mat-hint>
+          <mat-error *ngIf="frm.controls.last_name.invalid">{{getLastNameErrorMessage()}}</mat-error>
+        </mat-form-field>
 
-                <br />
+        <br />
 
-                <mat-form-field>
-                    <input matInput type="number" placeholder="Age" formControlName='age'>
-                    <mat-hint align="end">{{frm.controls.age.value?.length || 0}}/10</mat-hint>
-                    <mat-error *ngIf="frm.controls.age.invalid">{{getAgeErrorMessage()}}</mat-error>
-                </mat-form-field>
+        <mat-form-field>
+          <input matInput type="number" placeholder="Age" formControlName='age'>
+          <mat-hint align="end">{{frm.controls.age.value?.length || 0}}/10</mat-hint>
+          <mat-error *ngIf="frm.controls.age.invalid">{{getAgeErrorMessage()}}</mat-error>
+        </mat-form-field>
 
-                <br />
+        <br />
 
-                <mat-radio-group formControlName='gender'>
-                    <label>Gender: </label> <br /><br />
-                    <mat-radio-button value="Female">Female</mat-radio-button>
-                    <mat-radio-button value="Male">Male</mat-radio-button>
-                    <mat-error *ngIf="frm.controls.gender.invalid">{{getGenderErrorMessage()}}</mat-error>
-                </mat-radio-group>
+        <mat-radio-group formControlName='gender'>
+          <label>Gender: </label> <br /><br />
+          <mat-radio-button value="Female">Female</mat-radio-button>
+          <mat-radio-button value="Male">Male</mat-radio-button>
+          <mat-error *ngIf="frm.controls.gender.invalid">{{getGenderErrorMessage()}}</mat-error>
+        </mat-radio-group>
 
-                <mat-form-field style="visibility: hidden; height: 0vh !important">
-                    <input matInput type="text" formControlName='id'>
-                </mat-form-field>
+        <mat-form-field style="visibility: hidden; height: 0vh !important">
+          <input matInput type="text" formControlName='id'>
+        </mat-form-field>
 
-                <div mat-dialog-actions align="end">
-                    <button mat-button [mat-dialog-close]>Cancelar</button>
-                    <button mat-raised-button color="primary" type="submit" class="btnSave" [disabled]="!frm.valid">
-                        <mat-icon aria-label="icon-button">save </mat-icon>
-                        <span>Save</span>
-                    </button>
-                </div>
-            </form>
+        <div mat-dialog-actions align="end">
+          <button mat-button [mat-dialog-close]>Cancelar</button>
+          <button mat-raised-button color="primary" type="submit" class="btnSave" [disabled]="!frm.valid">
+            <mat-icon aria-label="icon-button">save </mat-icon>
+            <span>Save</span>
+          </button>
         </div>
+      </form>
     </div>
+  </div>
+  <!-- <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  </mat-dialog-actions> -->
 </div>

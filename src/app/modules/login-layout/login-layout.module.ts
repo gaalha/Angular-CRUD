@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { SharedModule } from './../../utils/shared.module';
+import { SharedModule } from '~utils/shared.module';
+import { LoginModule } from './login/login.module';
 import { LoginLayoutComponent } from './login-layout.component';
-import { LoginComponent } from './login/login.component';
 
 @NgModule({
-    imports: [
-        RouterModule,
-        SharedModule
-    ],
-    declarations: [
-        LoginLayoutComponent,
-        LoginComponent
-    ],
-    providers: [],
-    exports: []
+  imports: [
+    RouterModule,
+    SharedModule,
+    LoginModule
+  ],
+  declarations: [
+    LoginLayoutComponent,
+  ],
+  providers: [],
+  exports: []
 })
 export class LoginLayoutModule {
 }
