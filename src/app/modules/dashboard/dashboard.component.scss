@@ -1,0 +1,56 @@
+.dashboard {
+  margin       : 5vh auto 5vh auto !important;
+  /* text-align: center; */
+}
+
+.dashboard-item {
+  cursor: pointer;
+  width : 230px;
+  height: 110px;
+  color : #FFF !important;
+  margin: 2vh 1vw 1vh 1vw !important;
+}
+
+.item-teal {
+  background-color: #00796B;
+}
+
+.item-yellow {
+  background-color: #F57F17;
+}
+
+.item-violet {
+  background-color: #691a99;
+}
+
+.item-pink {
+  background-color: #EF5350;
+}
+
+.item-blue {
+  background-color: #1565C0;
+}
+
+.item-green {
+  background-color: #00C853;
+}
+
+.item-purple {
+  background-color: #9575CD;
+}
+
+.item-brown {
+  background-color: #795548;
+}
+
+.dashboard-icon {
+  position : absolute;
+  right    : 1vw;
+  font-size: 100px;
+  opacity  : 0.5;
+  z-index  : 1;
+}
+
+.float-item {
+  display: inline-block;
+}

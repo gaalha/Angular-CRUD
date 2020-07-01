@@ -9,7 +9,7 @@ import { SnackbarComponent } from '~components/snackbar/snackbar.component';
 @Component({
     selector: 'app-forms',
     templateUrl: './forms.component.html',
-    styleUrls: ['./forms.component.css']
+    styleUrls: ['./forms.component.scss']
 })
 
 export class FormsComponent implements OnInit {

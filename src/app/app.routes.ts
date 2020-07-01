@@ -13,43 +13,48 @@ import { LoginLayoutComponent } from '~modules/login-layout/login-layout.compone
 /*CON LA CREACIÓN DEL ARCHIVO INDEX.PAGES NOS AHORRAMOS TENER QUE HACER
 UNA IMPORTACIÓN POR CADA COMPONENTE DE LAS VISTAS*/
 import {
-    ContactUsComponent,
-    TablesComponent,
-    LoginComponent,
-    NotFoundComponent,
-    PersonComponent,
-    UserComponent,
-    DashboardComponent
+  NotFoundComponent,
 } from '~utils/index.pages';
 
 // ROUTES
 const routes: Routes = [
-    {
+  {
+    path: '',
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
         path: '',
-        component: AdminLayoutComponent,
-        canActivate: [AuthGuard],
-        children: [
-            { path: '', component: DashboardComponent },
-            { path: 'person', component: PersonComponent },
-            { path: 'contact-us', component: ContactUsComponent },
-            { path: 'table', component: TablesComponent }
-        ]
-    },
-    {
-        path: '',
-        component: LoginLayoutComponent,
-        children: [
-            { path: 'login', component: LoginComponent },
-            { path: '404', component: NotFoundComponent },
-            { path: '**', redirectTo: '/404' }
-        ]
-    }
+        loadChildren: '~modules/dashboard/dashboard.module#DashboardModule',
+      },
+      {
+        path: 'person',
+        loadChildren: '~modules/person/person.module#PersonModule',
+      },
+      {
+        path: 'users',
+        loadChildren: '~modules/user/user.module#UserModule',
+      },
+    ]
+  },
+  {
+    path: '',
+    component: LoginLayoutComponent,
+    children: [
+      {
+        path: 'login',
+        loadChildren: '~modules/login-layout/login/login.module#LoginModule',
+      },
+      { path: '404', component: NotFoundComponent },
+      { path: '**', redirectTo: '/404' }
+    ]
+  }
 
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
 

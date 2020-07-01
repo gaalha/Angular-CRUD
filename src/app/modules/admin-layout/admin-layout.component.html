@@ -1,70 +1,65 @@
-<div class="container animated fadeIn" [class.is-mobile]="mobileQuery.matches">
-    <mat-toolbar class="toolbar" color="accent">
+<mat-toolbar class="toolbar" color="accent">
+  <h1 class="menu" routerLink="/" style="cursor: pointer;">Angular-CRUD</h1>
+  <span class="spacer"></span>
 
-        <button mat-icon-button (click)="snav.toggle()">
-            <mat-icon class="menu">menu</mat-icon>
-        </button>
+  <button mat-icon-button [matMenuTriggerFor]="menu" mdTooltip="Change theme">
+    <mat-icon>format_color_fill</mat-icon>
+  </button>
 
-        <h1 class="menu" routerLink="/" style="cursor: pointer;">Angular-CRUD</h1>
-        <span class="spacer"></span>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="null">Light</button>
+    <!-- <button mat-menu-item (click)="changeTheme('light-theme')">Light</button> -->
+    <button mat-menu-item (click)="null">Dark</button>
+    <!-- <button mat-menu-item (click)="changeTheme('dark-theme')">Dark</button> -->
+  </mat-menu>
 
-        <button mat-icon-button [matMenuTriggerFor]="profileMenu">
-            <i class="material-icons menu">person_pin</i>
-        </button>
+  <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+    <mat-icon>person_pin</mat-icon>
+  </button>
 
-        <!--USER PROFILE MENU-->
-        <mat-menu #profileMenu="matMenu">
-            <button mat-menu-item (click)="openDialog()">
-                <mat-icon>exit_to_app</mat-icon>
-                <span>Logout</span>
-            </button>
-            <button mat-menu-item disabled>
-                <mat-icon>supervisor_account</mat-icon>
-                <span>Modify account</span>
-            </button>
-            <button mat-menu-item>
-                <mat-icon>info</mat-icon>
-                <span>Help</span>
-            </button>
-        </mat-menu>
+  <!--USER PROFILE MENU-->
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item disabled>
+      <mat-icon>supervisor_account</mat-icon>
+      <span>Modify account</span>
+    </button>
 
-        <!-- <button mat-icon-button>
-            <i class="material-icons menu">settings</i>
-        </button> -->
-    </mat-toolbar>
+    <button mat-menu-item (click)="openDialog()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
 
-    <!-- LOADINGBAR -->
-    <div class="loading-overlay" #progressBar style="opacity: 0;">
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+<mat-drawer-container>
+  <mat-drawer mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">
+        <i class="material-icons">dashboard</i>
+        &nbsp;Dashboard
+      </a>
+
+      <a mat-list-item routerLink="/person">
+        <i class="material-icons">web</i>
+        &nbsp;Persons
+      </a>
+
+      <a mat-list-item routerLink="/users">
+        <i class="material-icons">person</i>
+        &nbsp;Users
+      </a>
+
+      <a mat-list-item routerLink="/404">
+        <i class="material-icons">error_outline</i>
+        &nbsp;Error page
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="loading-overlay" #progressBar>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
-
-    <mat-sidenav-container class="sidenav-container">
-        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches">
-            <mat-nav-list>
-                <a mat-list-item routerLink="/">
-                    <i class="material-icons">dashboard</i>&nbsp;Dashboard
-                </a>
-
-                <a mat-list-item routerLink="/person">
-                    <i class="material-icons">person</i>&nbsp;Personas
-                </a>
-
-                <a mat-list-item routerLink="/contact-us">
-                    <i class="material-icons">email</i>&nbsp;Contactanos
-                </a>
-
-                <a mat-list-item routerLink="/table">
-                    <i class="material-icons">web</i>&nbsp;Tablas
-                </a>
-
-                <a mat-list-item routerLink="/404">
-                    <i class="material-icons">error_outline</i>&nbsp;Error page
-                </a>
-            </mat-nav-list>
-        </mat-sidenav>
-
-        <mat-sidenav-content>
-            <router-outlet></router-outlet>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
-</div>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

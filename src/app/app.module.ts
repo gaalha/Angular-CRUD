@@ -32,44 +32,40 @@ import { PersonService } from '~services/person.service';
 
 /*IMPORTACION DE LOS MODULES QUE A SU VEZ ELLOS IMPORTAN SUS PROPIOS COMPONENTES
 ASI SE EVITA SATURAR ESTE ARCHIVO DE IMPORTACIONES Y SE MODULARIZA EL PROYECTO.*/
-import { UserComponent } from '~modules/user/user.component';
+import { UserModule } from '~modules/user/user.module';
 import { AdminLayoutModule } from '~modules/admin-layout/admin-layout.module';
 import { LoginLayoutModule } from '~modules/login-layout/login-layout.module';
-import { PersonModule } from '~modules/person/person.module';
-import { DashboardComponent } from '~modules/dashboard/dashboard.component';
 
 @NgModule({
-    declarations: [ /*DECLARACIÓN DE COMPONENTES*/
-        AppComponent,
-        TablesComponent,
-        ContactUsComponent,
-        NotFoundComponent,
-        UserComponent,
-        ConfirmComponent,
-        SnackbarComponent,
-        DashboardComponent
-    ],
-    imports: [ /*DECLARACIÓN DE MODULOS*/
-        SharedModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        AdminLayoutModule,
-        LoginLayoutModule,
-        PersonModule
-    ],
-    providers: [ /*DECLARACIÓN DE SERVICIOS*/
-        AuthGuard,
-        AuthService,
-        UserService,
-        PersonService
-    ],
-    entryComponents: [ /*AQUI SE AGREGAN LOS MAT-CONFIRM Y LOS MAT-SNACKBAR DE ANGULAR MATERIAL*/
-        ConfirmComponent,
-        SnackbarComponent
-    ],
-    bootstrap: [AppComponent]
+  declarations: [ /*DECLARACIÓN DE COMPONENTES*/
+    AppComponent,
+    TablesComponent,
+    ContactUsComponent,
+    NotFoundComponent,
+    ConfirmComponent,
+    SnackbarComponent,
+  ],
+  imports: [ /*DECLARACIÓN DE MODULOS*/
+    SharedModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    AdminLayoutModule,
+    LoginLayoutModule,
+    UserModule,
+  ],
+  providers: [ /*DECLARACIÓN DE SERVICIOS*/
+    AuthGuard,
+    AuthService,
+    UserService,
+    PersonService
+  ],
+  entryComponents: [ /*AQUI SE AGREGAN LOS MAT-CONFIRM Y LOS MAT-SNACKBAR DE ANGULAR MATERIAL*/
+    ConfirmComponent,
+    SnackbarComponent
+  ],
+  bootstrap: [AppComponent]
 })
 
 export class AppModule { }

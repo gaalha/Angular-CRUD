@@ -1,0 +1,105 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// Imports for Angular Material Theming
+// More colors: https://medium.com/@treviergits/angular-material-theme-color-options-7d5968cb7460
+@import '~@angular/material/theming';
+@include mat-core();
+
+// Light theme
+$light-primary: mat-palette($mat-indigo);
+$light-accent : mat-palette($mat-pink, A200, A100, A400);
+$light-theme  : mat-light-theme($light-primary, $light-accent);
+
+// Dark theme
+$dark-primary: mat-palette($mat-pink);
+$dark-accent : mat-palette($mat-indigo, A200, A100, A400);
+$dark-warn   : mat-palette($mat-deep-orange);
+$dark-theme  : mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+@media (prefers-color-scheme: light) {
+  @include angular-material-theme($light-theme);
+}
+
+@media (prefers-color-scheme: dark) {
+  @include angular-material-theme($dark-theme);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin          : 0 !important;
+  height: 100%;
+  background-color: rgb(235, 235, 235);
+}
+
+/* @media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+    }
+
+    .mat-card {
+        background-color: #201f1f;
+    }
+
+    .mat-form-field-empty.mat-form-field-label {
+        color: #3F51B5;
+    }
+
+    .mat-form-field-underline {
+        background-color: #3F51B5 !important;
+    }
+
+    .mat-form-field-underline .mat-form-field-ripple{
+        background-color: #3F51B5 !important;
+    }
+
+    h1,h2,h3,h4 {
+        color: #3F51B5;
+    }
+} */
+
+/* ANIMACIÓN AL CARGAR UNA PÁGINA */
+.animated {
+  -webkit-animation-duration : 1s;
+  animation-duration         : 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode        : both;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name        : fadeIn;
+}
+
+/* FUENTE GLOBAL DEL SISTEMA */
+label {
+  font-family: Roboto;
+}
+
+/* PONE LOS ICONOS DEL TOOLBAR A LA DERECHA */
+.spacer {
+  flex: 1 1 auto !important;
+}

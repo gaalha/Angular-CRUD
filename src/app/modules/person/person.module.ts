@@ -6,19 +6,21 @@ import { PersonComponent } from './person.component';
 import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
-    imports: [
-        RouterModule,
-        SharedModule
-    ],
-    declarations: [
-        PersonComponent,
-        FormsComponent
-    ],
-    providers: [],
-    entryComponents: [
-        FormsComponent
-    ],
-    exports: []
+  imports: [
+    RouterModule.forChild([{path: '', component: PersonComponent}]),
+    SharedModule
+  ],
+  declarations: [
+    PersonComponent,
+    FormsComponent
+  ],
+  providers: [],
+  entryComponents: [
+    FormsComponent
+  ],
+  exports: [
+    RouterModule,
+  ]
 })
 export class PersonModule {
 }
