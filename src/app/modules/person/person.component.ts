@@ -24,8 +24,8 @@ import { SnackbarComponent } from '~components/snackbar/snackbar.component';
 })
 export class PersonComponent implements AfterViewInit, OnInit {
   public readonly displayedColumns = ['id', 'first_name', 'age', 'gender', 'created', 'personid'];
-  public readonly pageSizeOptions = [5, 10, 25, 100];
-  public pageSize = 25;
+  public readonly pageSizeOptions = [5, 10, 20, 40, 100];
+  public pageSize = 20;
   public dataSource = new MatTableDataSource();
   public pageEvent: PageEvent;
   public resultsLength = 0;
@@ -133,7 +133,6 @@ export class PersonComponent implements AfterViewInit, OnInit {
 
   public save(): void {
     const dialogRef = this.dialog.open(FormsComponent, {
-      //height: '350px',
       width: '400px',
       data: { title: 'Add person', action: 'save' }
     });
@@ -148,8 +147,8 @@ export class PersonComponent implements AfterViewInit, OnInit {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '250px',
       data: {
-        title: 'Confirme la acción',
-        message: '¿Seguro que desea eliminar este registro?'
+        title: 'Delete record',
+        message: 'Are you sure you want to delete this record?'
       }
     });
 

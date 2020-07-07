@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-
 import { CONSTANST } from '~utils/constanst';
 import { Person } from '~models/Person';
+import { Response } from '~models/response';
 
 @Injectable()
 export class PersonService {
   loading = true;
 
   constructor(
-    public http: HttpClient
+    private http: HttpClient,
   ) { }
 
   headers = new HttpHeaders({
@@ -25,28 +24,28 @@ export class PersonService {
     params = params.append('pageSize', pageSize.toString());
     params = params.append('page', page.toString());
 
-    return this.http.get<PersonApi>(
+    return this.http.get<Response>(
       CONSTANST.routes.person.list,
       { headers: this.headers, params: params }
     );
   }
 
   delete(id: number) {
-    return this.http.delete(
+    return this.http.delete<Response>(
       CONSTANST.routes.person.delete.replace(':id', String(id)),
       { headers: this.headers }
     );
   }
 
   getOne(id: number) {
-    return this.http.get(
+    return this.http.get<Response>(
       CONSTANST.routes.person.get.replace(':id', String(id)),
       { headers: this.headers }
     );
   }
 
   save(person: Person) {
-    return this.http.post(
+    return this.http.post<Response>(
       CONSTANST.routes.person.save,
       {
         txtFirstName: person.first_name,
@@ -58,12 +57,4 @@ export class PersonService {
       { headers: this.headers }
     );
   }
-}
-
-export interface PersonApi {
-  success: boolean;
-  data: Person[];
-  total: number;
-  pageSize: number;
-  page: number;
 }
