@@ -249,12 +249,12 @@
   dependencies:
     tslib "^2.0.0"
 
-"@auth0/angular-jwt@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@auth0/angular-jwt/-/angular-jwt-1.2.0.tgz#cfac04fe3f93e36ab9881d469df2c0556f2e7392"
-  integrity sha512-T2t8ed4/g/w5aniVmOJ7AieTrQ9iU7urAbzRBx5OToY4UeEzzng+yP4yk114Xwoi3iV9AS4zhqMqgKcQ3vNvxA==
+"@auth0/angular-jwt@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@auth0/angular-jwt/-/angular-jwt-5.0.0.tgz#949077551f75902a6644f4211f50528a2272fd58"
+  integrity sha512-jz2ATYIkgfzXU4riUe7xsslrxLXT3HjgV8LJ1Lna+lvAAmqkJIhFA7FZlbsvMsQuHc32/DN/JPGlFaT8a6wziA==
   dependencies:
-    url "^0.11.0"
+    tslib "^2.0.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.3":
   version "7.10.3"
