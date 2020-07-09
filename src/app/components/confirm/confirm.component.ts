@@ -8,13 +8,13 @@ EN TODO EL PROYECTO, EL TITULO Y EL MENSAJE SERAN SETEADOS DESDE EL MODULO
 QUE LE MANDA LA DATA A ESTE MODULO.*/
 
 @Component({
-    selector: 'app-confirm',
-    templateUrl: './confirm.component.html',
-    styleUrls: ['./confirm.component.scss']
+  selector: 'app-confirm',
+  templateUrl: './confirm.component.html',
+  styleUrls: ['./confirm.component.scss']
 })
 export class ConfirmComponent {
-    constructor(
-        public dialogRef: MatDialogRef<ConfirmComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any /*EN ESTA LINEA LE INYECTAMOS LOS DATOS PROCEDENTES DEL OTRO COMPONENTE*/
-    ) { }
+  constructor(
+    public dialogRef: MatDialogRef<ConfirmComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any /*EN ESTA LINEA LE INYECTAMOS LOS DATOS PROCEDENTES DEL OTRO COMPONENTE*/
+  ) { }
 }
