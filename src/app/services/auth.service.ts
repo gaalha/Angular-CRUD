@@ -4,43 +4,44 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '~models/user';
+import { Response } from '~models/response';
 import { CONSTANST } from '~utils/constanst';
 
 @Injectable()
 export class AuthService {
-    public loggedIn = new BehaviorSubject<boolean>(this.hasToken());
+  public loggedIn = new BehaviorSubject<boolean>(this.hasToken());
 
-    get isLoggedIn() {
-        return this.loggedIn.asObservable();
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
+
+  constructor(
+    public http: HttpClient
+  ) { }
+
+  headers = new HttpHeaders({
+    'x-access-token': localStorage.getItem('token')
+  });
+
+  login(user: User) {
+    if (user.user_name !== '' && user.password !== '') {
+      return this.http.post(
+        CONSTANST.routes.authorization.login, {
+        txtUsername: user.user_name,
+        txtEmail: user.email,
+        txtPassword: user.password
+      });
     }
+  }
 
-    constructor(
-        public http: HttpClient
-    ) { }
+  logout() {
+    return this.http.get<Response>(
+      CONSTANST.routes.authorization.logout,
+      { headers: this.headers }
+    );
+  }
 
-    headers = new HttpHeaders({
-        'x-access-token': localStorage.getItem('token')
-    });
-
-    login(user: User) {
-        if (user.user_name !== '' && user.password !== '') {
-            return this.http.post(
-                CONSTANST.routes.authorization.login, {
-                txtUsername: user.user_name,
-                txtEmail: user.email,
-                txtPassword: user.password
-            });
-        }
-    }
-
-    logout() {
-        return this.http.get(
-            CONSTANST.routes.authorization.logout,
-            { headers: this.headers }
-        );
-    }
-
-    hasToken(): boolean {
-        return !!localStorage.getItem('token');
-    }
+  hasToken(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }
