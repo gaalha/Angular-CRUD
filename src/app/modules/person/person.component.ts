@@ -102,7 +102,7 @@ export class PersonComponent implements AfterViewInit, OnInit {
         map(data => {
           this.isLoading = false;
           this.isTotalReached = false;
-          this.totalItems = data.total;
+          this.totalItems = data.data.total;
           return data.data;
         }),
         catchError(() => {
