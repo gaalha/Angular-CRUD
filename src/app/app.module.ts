@@ -14,9 +14,6 @@ import { AppRoutingModule } from '~app/app.routes';
 // IMPORTACION DE LOS GUARDS
 import { AuthGuard } from '~guards/auth.guard';
 
-// PLUGGINS https://angular.io/guide/rx-library
-import '~app/rxjs-operators';
-
 // COMPONENTS
 import { AppComponent } from '~components/app/app.component';
 import { TablesComponent } from '~components/tables/tables.component';
