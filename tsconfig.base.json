@@ -20,6 +20,7 @@
         "baseUrl": "./src",
         "paths": {
             "~app/*": ["app/*"],
+            "~base/*": ["app/base/*"],
             "~models/*": ["app/models/*"],
             "~modules/*": ["app/modules/*"],
             "~services/*": ["app/services/*"],

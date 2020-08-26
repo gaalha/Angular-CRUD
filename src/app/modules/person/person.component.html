@@ -19,9 +19,9 @@
       <div class="table-header">
         <mat-form-field class="filter-field">
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by name, age or gender"
-            [(ngModel)]="value">
-          <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
-            (click)="value=''; applyFilter('')">
+            [(ngModel)]="search">
+          <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear"
+            (click)="search=''; applyFilter('')">
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
