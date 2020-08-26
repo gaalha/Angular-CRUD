@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 
 import { Controller } from '../../base/controller';
 import { MatTableDataSource } from '@angular/material/table';
-import { Person } from '~app/models/person';
+import { Client } from '~app/models/client';
 
 @Component({
   selector: 'app-user',
@@ -34,13 +34,13 @@ export class UserComponent implements AfterViewInit, OnInit, Controller {
   getData(): void {
     throw new Error("Method not implemented.");
   }
-  edit(person: Person): void {
+  edit(client: Client): void {
     throw new Error("Method not implemented.");
   }
   save(): void {
     throw new Error("Method not implemented.");
   }
-  delete(person: Person): void {
+  delete(client: Client): void {
     throw new Error("Method not implemented.");
   }
 

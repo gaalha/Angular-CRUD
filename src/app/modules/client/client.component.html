@@ -1,22 +1,19 @@
 <div class="animated fadeIn table-container mat-elevation-z20">
-  <!-- <button mat-fab color="primary" class="add-button" (click)="save(row)" align="end">
-        <mat-icon>add</mat-icon>
-    </button> -->
-
   <mat-card>
     <mat-card-header>
-      <!-- <div mat-card-avatar class="example-header-image"></div> -->
       <i class="material-icons">supervised_user_circle</i>
-      <mat-card-title>Person GRID</mat-card-title>
-      <mat-card-subtitle>Add, update & delete</mat-card-subtitle>
+      <mat-card-title>Clients</mat-card-title>
+      <mat-card-subtitle>Add, update or delete clients</mat-card-subtitle>
     </mat-card-header>
-    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+
     <mat-card-content>
+      <!-- Table loading spinner -->
       <div class="table-loading-shade" *ngIf="isLoading">
         <mat-spinner *ngIf="isLoading"></mat-spinner>
       </div>
 
       <div class="table-header">
+        <!-- Table search input -->
         <mat-form-field class="filter-field">
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by name, age or gender"
             [(ngModel)]="search">
@@ -26,13 +23,15 @@
           </button>
         </mat-form-field>
 
-        <button mat-raised-button (click)="save()" align="end" style="margin-bottom: 15px;" color="primary">
+        <!-- Add button -->
+        <button mat-raised-button (click)="save()" style="margin-bottom: 15px;" color="primary">
           <mat-icon>add</mat-icon> Add new
         </button>
       </div>
 
       <mat-table #table [dataSource]="dataSource" class="person-table" matSort matSortActive="id" matSortDisableClear
         matSortDirection="desc">
+        <!-- Table content -->
         <ng-container matColumnDef="id">
           <mat-header-cell *matHeaderCellDef mat-sort-header>No.</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;"> {{ i + 1 }} </mat-cell>
@@ -58,13 +57,7 @@
           <mat-cell *matCellDef="let row">{{ row.created_at | date:'dd/MM/yyyy' }}</mat-cell>
         </ng-container>
 
-        <!-- State Column -->
-        <!-- <ng-container matColumnDef="active">
-                    <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
-                    <mat-cell *matCellDef="let row">{{ row.active }}</mat-cell>
-                </ng-container> -->
-
-        <!-- actions-->
+        <!-- Table actions -->
         <ng-container matColumnDef="personid">
           <mat-header-cell *matHeaderCellDef>
             Actions
@@ -90,6 +83,7 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
 
+      <!-- Table pagination -->
       <mat-paginator [pageSizeOptions]="pageSizeOptions" [length]="totalItems" [pageSize]="pageSize"
         (page)="onPaginateChange($event)">
       </mat-paginator>

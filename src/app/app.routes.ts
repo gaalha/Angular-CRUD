@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// https://angular.io/tutorial/toh-pt5
-
 // FILTER
 import { AuthGuard } from '~guards/auth.guard';
 
@@ -28,8 +26,8 @@ const routes: Routes = [
         loadChildren: '~modules/dashboard/dashboard.module#DashboardModule',
       },
       {
-        path: 'person',
-        loadChildren: '~modules/person/person.module#PersonModule',
+        path: 'clients',
+        loadChildren: '~modules/client/client.module#ClientModule',
       },
       {
         path: 'users',
@@ -49,7 +47,6 @@ const routes: Routes = [
       { path: '**', redirectTo: '/404' }
     ]
   }
-
 ];
 
 @NgModule({

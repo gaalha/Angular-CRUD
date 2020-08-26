@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '~models/user';
-import { Response } from '~models/response';
+import { Response } from '~app/models/response';
 import { CONSTANST } from '~utils/constanst';
 
 @Injectable()
