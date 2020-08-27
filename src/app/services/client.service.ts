@@ -28,28 +28,28 @@ export class ClientService implements Provider {
     params = params.append('page', page.toString());
 
     return this.http.get<Response>(
-      CONSTANST.routes.person.list,
+      CONSTANST.routes.client.list,
       { headers: this.headers, params: params }
     );
   }
 
   delete(id: number): Observable<Response> {
     return this.http.delete<Response>(
-      CONSTANST.routes.person.delete.replace(':id', String(id)),
+      CONSTANST.routes.client.delete.replace(':id', String(id)),
       { headers: this.headers }
     );
   }
 
   getOne(id: number): Observable<Response> {
     return this.http.get<Response>(
-      CONSTANST.routes.person.get.replace(':id', String(id)),
+      CONSTANST.routes.client.get.replace(':id', String(id)),
       { headers: this.headers }
     );
   }
 
   save(client: Client): Observable<Response> {
     return this.http.post<Response>(
-      CONSTANST.routes.person.save,
+      CONSTANST.routes.client.save,
       {
         txtFirstName: client.first_name,
         txtLastName: client.last_name,

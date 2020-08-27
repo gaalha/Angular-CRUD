@@ -7,11 +7,11 @@ export const CONSTANST = {
             login: HOST + '/api/auth/login',
             logout: HOST + '/api/auth/logout'
         },
-        person: {
-            list: HOST + '/api/person',
-            delete: HOST + '/api/person/delete/:id',
-            save: HOST + '/api/person/save',
-            get: HOST + '/api/person/:id'
+        client: {
+            list: HOST + '/api/client',
+            delete: HOST + '/api/client/delete/:id',
+            save: HOST + '/api/client/save',
+            get: HOST + '/api/client/:id'
         },
         user: {}
     },
