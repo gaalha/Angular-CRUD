@@ -70,7 +70,7 @@ export class AdminLayoutComponent implements OnInit {
     });
   }
 
-  // BARRA DE PROGRESO
+  // PROGRESS BAR
   private _navigationInterceptor(event: RouterEvent): void {
     if (event instanceof NavigationStart) {
       this.ngZone.runOutsideAngular(() => {
@@ -93,11 +93,11 @@ export class AdminLayoutComponent implements OnInit {
       }, 1000);
     }
   }
-  /* OCULTA LA BARRA DE PROGRESO CUANDO LA PAGINA
-  DEJA DE CARGAR */
+
   private hideProgressBar(): void {
     this.ngZone.runOutsideAngular(() => {
       this.renderer.setStyle(this.progressBar.nativeElement, 'opacity', '0');
     });
   }
+
 }
