@@ -9,22 +9,24 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { Person } from '~models/Person';
-import { PersonService } from '~services/person.service';
+import { Client } from '~models/client';
+import { ClientService } from '~services/client.service';
 import { AuthService } from '~services/auth.service';
 import { ConfirmComponent } from '~components/confirm/confirm.component';
-import { FormsComponent } from '~modules/person/forms/forms.component';
+import { FormsComponent } from '~modules/client/forms/forms.component';
 import { SnackbarComponent } from '~components/snackbar/snackbar.component';
 
+import { Controller } from '~base/controller';
+
 @Component({
-  selector: 'app-person',
-  templateUrl: './person.component.html',
-  styleUrls: ['./person.component.scss'],
-  providers: [PersonService]
+  selector: 'app-client',
+  templateUrl: './client.component.html',
+  styleUrls: ['./client.component.scss'],
+  providers: [ClientService]
 })
-export class PersonComponent implements AfterViewInit, OnInit {
-  public readonly displayedColumns = ['id', 'first_name', 'age', 'gender', 'created', 'personid'];
-  public readonly pageSizeOptions = [5, 10, 20, 40, 100];
+export class ClientComponent implements AfterViewInit, OnInit, Controller {
+  public displayedColumns = ['id', 'first_name', 'age', 'gender', 'created', 'personid'];
+  public pageSizeOptions = [5, 10, 20, 40, 100];
   public pageSize = 20;
   public dataSource = new MatTableDataSource();
   public pageEvent: PageEvent;
@@ -34,14 +36,13 @@ export class PersonComponent implements AfterViewInit, OnInit {
   public isTotalReached = false;
   public totalItems = 0;
   public search = '';
-  value: any;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
-    private cdr: ChangeDetectorRef,
-    private personService: PersonService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private clientService: ClientService,
     private authService: AuthService,
     private router: Router,
     public dialog: MatDialog,
@@ -60,7 +61,7 @@ export class PersonComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewChecked() {
-    this.cdr.detectChanges();
+    this.changeDetectorRef.detectChanges();
   }
 
   private openSnack(data: any): void {
@@ -77,13 +78,11 @@ export class PersonComponent implements AfterViewInit, OnInit {
   }
 
   public applyFilter(filterValue: string): void {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.search = filterValue;
+    filterValue = filterValue.trim().toLowerCase();
     this.getData();
   }
 
-  private getData(): any {
+  getData(): void {
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
     merge(this.sort.sortChange, this.paginator.page)
@@ -91,7 +90,7 @@ export class PersonComponent implements AfterViewInit, OnInit {
         startWith({}),
         switchMap(() => {
           this.isLoading = true;
-          return this.personService.getList(
+          return this.clientService.getList(
             this.sort.active,
             this.sort.direction,
             this.pageSize,
@@ -113,11 +112,10 @@ export class PersonComponent implements AfterViewInit, OnInit {
       ).subscribe(data => this.dataSource.data = data);
   }
 
-  public edit(row: Person): void {
-    this.personService.getOne(row.id).subscribe((data: any) => {
+  edit(client: Client): void {
+    this.clientService.getOne(client.id).subscribe((data: any) => {
       if (data.success) {
         const dialogRef = this.dialog.open(FormsComponent, {
-          // height: '450px',
           width: '400px',
           data: { title: 'Update person', action: 'edit', data: data.data }
         });
@@ -131,11 +129,12 @@ export class PersonComponent implements AfterViewInit, OnInit {
     });
   }
 
-  public save(): void {
+  save(): void {
     const dialogRef = this.dialog.open(FormsComponent, {
       width: '400px',
       data: { title: 'Add person', action: 'save' }
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.paginator._changePageSize(this.paginator.pageSize);
@@ -143,7 +142,7 @@ export class PersonComponent implements AfterViewInit, OnInit {
     });
   }
 
-  public delete(row: Person) {
+  delete(client: Client): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '250px',
       data: {
@@ -154,9 +153,8 @@ export class PersonComponent implements AfterViewInit, OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.personService.delete(row.id).subscribe((data: any) => {
+        this.clientService.delete(client.id).subscribe((data: any) => {
           this.openSnack(data);
-
           if (data.success) {
             this.paginator._changePageSize(this.paginator.pageSize);
           }

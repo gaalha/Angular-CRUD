@@ -3,14 +3,14 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '~utils/shared.module';
 import { AdminLayoutComponent } from './admin-layout.component';
 import { DashboardModule } from '~modules/dashboard/dashboard.module';
-import { PersonModule } from '~modules/person/person.module';
+import { ClientModule } from '~modules/client/client.module';
 
 @NgModule({
   imports: [
     RouterModule,
     SharedModule,
     DashboardModule,
-    PersonModule,
+    ClientModule,
   ],
   declarations: [
     AdminLayoutComponent

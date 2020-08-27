@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { CONSTANST } from '~utils/constanst';
 import { User } from '~models/user';
-import { Response } from '~models/response';
+import { Response } from '~app/models/response';
 
 @Injectable()
 export class UserService {

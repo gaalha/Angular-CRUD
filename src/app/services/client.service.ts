@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { CONSTANST } from '~utils/constanst';
-import { Person } from '~models/Person';
-import { Response } from '~models/response';
+import { Client } from '~app/models/client';
+import { Response } from '~app/models/response';
+
+import { Provider } from '~base/provider';
+import { Observable } from 'rxjs';
 
 @Injectable()
-export class PersonService {
+export class ClientService implements Provider {
   loading = true;
 
   constructor(
@@ -16,7 +19,7 @@ export class PersonService {
     'Authorization': 'JWT ' + localStorage.getItem('token')
   });
 
-  getList(sortActive: string, order: string, pageSize: number, page: number, search: string) {
+  getList(sortActive: string, order: string, pageSize: number, page: number, search: string): Observable<Response> {
     let params = new HttpParams();
     params = params.append('active', sortActive);
     params = params.append('order', order);
@@ -30,31 +33,32 @@ export class PersonService {
     );
   }
 
-  delete(id: number) {
+  delete(id: number): Observable<Response> {
     return this.http.delete<Response>(
       CONSTANST.routes.person.delete.replace(':id', String(id)),
       { headers: this.headers }
     );
   }
 
-  getOne(id: number) {
+  getOne(id: number): Observable<Response> {
     return this.http.get<Response>(
       CONSTANST.routes.person.get.replace(':id', String(id)),
       { headers: this.headers }
     );
   }
 
-  save(person: Person) {
+  save(client: Client): Observable<Response> {
     return this.http.post<Response>(
       CONSTANST.routes.person.save,
       {
-        txtFirstName: person.first_name,
-        txtLastName: person.last_name,
-        txtAge: person.age,
-        txtGender: person.gender,
-        id: person.id
+        txtFirstName: client.first_name,
+        txtLastName: client.last_name,
+        txtAge: client.age,
+        txtGender: client.gender,
+        id: client.id
       },
       { headers: this.headers }
     );
   }
+
 }

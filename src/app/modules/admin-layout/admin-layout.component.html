@@ -2,16 +2,16 @@
   <h1 class="menu" routerLink="/" style="cursor: pointer;">Angular-CRUD</h1>
   <span class="spacer"></span>
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" mdTooltip="Change theme">
+  <!-- <button mat-icon-button [matMenuTriggerFor]="menu" mdTooltip="Change theme">
     <mat-icon>format_color_fill</mat-icon>
-  </button>
+  </button> -->
 
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="null">Light</button>
+  <!-- <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="null">Light</button> -->
     <!-- <button mat-menu-item (click)="changeTheme('light-theme')">Light</button> -->
-    <button mat-menu-item (click)="null">Dark</button>
+    <!-- <button mat-menu-item (click)="null">Dark</button> -->
     <!-- <button mat-menu-item (click)="changeTheme('dark-theme')">Dark</button> -->
-  </mat-menu>
+  <!-- </mat-menu> -->
 
   <button mat-icon-button [matMenuTriggerFor]="profileMenu">
     <mat-icon>person_pin</mat-icon>
@@ -39,9 +39,9 @@
         &nbsp;Dashboard
       </a>
 
-      <a mat-list-item routerLink="/person">
+      <a mat-list-item routerLink="/clients">
         <i class="material-icons">web</i>
-        &nbsp;Persons
+        &nbsp;Clients
       </a>
 
       <a mat-list-item routerLink="/users">
