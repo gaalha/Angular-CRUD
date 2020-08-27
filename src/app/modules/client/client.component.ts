@@ -116,7 +116,6 @@ export class ClientComponent implements AfterViewInit, OnInit, Controller {
     this.clientService.getOne(client.id).subscribe((data: any) => {
       if (data.success) {
         const dialogRef = this.dialog.open(FormsComponent, {
-          // height: '450px',
           width: '400px',
           data: { title: 'Update person', action: 'edit', data: data.data }
         });
