@@ -1,6 +1,6 @@
 # Angular-CRUD
 
-Basic CRUD with Angular, Angular Material, sessions, JSON Web Token (JWT), routes & pagination.
+Complete CRUD with Angular, Angular Material, sessions, JSON Web Token (JWT), routes & pagination.
 
 ## Backend
 You can use this repo with these backends examples:
