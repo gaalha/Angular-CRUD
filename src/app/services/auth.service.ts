@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+
 import { User } from '~models/user';
 import { Response } from '~app/models/response';
 import { CONSTANST } from '~utils/constanst';
@@ -22,18 +24,16 @@ export class AuthService {
     'x-access-token': localStorage.getItem('token')
   });
 
-  login(user: User) {
-    if (user.user_name !== '' && user.password !== '') {
-      return this.http.post(
-        CONSTANST.routes.authorization.login, {
-        txtUsername: user.user_name,
-        txtEmail: user.email,
-        txtPassword: user.password
-      });
-    }
+  login(user: User): Observable<Response> {
+    return this.http.post<Response>(
+      CONSTANST.routes.authorization.login, {
+      txtUsername: user.user_name,
+      txtEmail: user.email,
+      txtPassword: user.password
+    });
   }
 
-  logout() {
+  logout(): Observable<Response> {
     return this.http.get<Response>(
       CONSTANST.routes.authorization.logout,
       { headers: this.headers }
@@ -43,4 +43,5 @@ export class AuthService {
   hasToken(): boolean {
     return !!localStorage.getItem('token');
   }
+
 }

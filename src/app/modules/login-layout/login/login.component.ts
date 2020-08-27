@@ -16,7 +16,6 @@ import { SnackbarComponent } from '~components/snackbar/snackbar.component';
 export class LoginComponent implements OnInit {
   public form: FormGroup;
   public isLogin = false;
-  private formSubmitAttempt: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -30,20 +29,37 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }
 
+    this.initLoginForm();
+  }
+
+  private initLoginForm(): void {
     this.form = this.fb.group({
-      user_name: ['', Validators.required],
-      password: ['', Validators.required]
+      user_name: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20)
+        ]
+      ],
+      password: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(12)
+        ]
+      ]
     });
   }
 
   public isFieldInvalid(field: string) {
-    return (
-      (!this.form.get(field).valid && this.form.get(field).touched) ||
-      (this.form.get(field).untouched && this.formSubmitAttempt)
-    );
+    if (this.form.get(field).touched) {
+      return !this.form.get(field).valid;
+    }
   }
 
-  onSubmit() {
+  public login() {
     if (this.form.valid) {
       this.isLogin = true;
       this.authService.login(this.form.value).subscribe(
@@ -66,6 +82,6 @@ export class LoginComponent implements OnInit {
         }
       );
     }
-    this.formSubmitAttempt = true;
   }
+
 }
