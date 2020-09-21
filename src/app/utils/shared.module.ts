@@ -8,20 +8,20 @@ import { MaterialComponentsModule } from './material.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        FlexLayoutModule,
-        ReactiveFormsModule,
-        MaterialComponentsModule,
-        MatProgressSpinnerModule
-    ],
-    exports: [
-        CommonModule,
-        FormsModule,
-        FlexLayoutModule,
-        ReactiveFormsModule,
-        MaterialComponentsModule
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    MaterialComponentsModule,
+    MatProgressSpinnerModule
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    MaterialComponentsModule
+  ]
 })
 export class SharedModule { }

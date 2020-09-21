@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '~utils/shared.module';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,

@@ -15,7 +15,7 @@ import { AppRoutingModule } from '~app/app.routes';
 import { AuthGuard } from '~guards/auth.guard';
 
 // COMPONENTS
-import { AppComponent } from '~components/app/app.component';
+import { AppComponent } from '~app/app.component';
 import { TablesComponent } from '~components/tables/tables.component';
 import { ContactUsComponent } from '~components/contact-us/contact-us.component';
 import { NotFoundComponent } from '~components/not-found/not-found.component';
