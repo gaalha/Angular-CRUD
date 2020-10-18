@@ -1,14 +1,21 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '~utils/shared.module';
+
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '~utils/shared.module';
 import { UserComponent } from './user.component';
-// import { UserFormComponent } from './user-form/user-form.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
-  declarations: [], // UserFormComponent
   imports: [
-    SharedModule,
     RouterModule.forChild([{path: '', component: UserComponent}]),
+    SharedModule,
+  ],
+  declarations: [
+    UserComponent,
+    UserFormComponent,
+  ],
+  entryComponents: [
+    UserFormComponent,
   ]
 })
 export class UserModule { }

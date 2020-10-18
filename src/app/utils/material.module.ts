@@ -1,5 +1,3 @@
-// CONTIENE TODOS LOS MODULOS DE ANGULAR MATERIAL
-
 import { NgModule } from '@angular/core';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';

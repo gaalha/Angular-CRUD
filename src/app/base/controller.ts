@@ -34,4 +34,8 @@ export abstract class Controller {
 
   abstract delete(data: any): void;
 
+  abstract onPaginateChange(event: any): void;
+
+  abstract applyFilter(filterValue: string): void;
+
 }

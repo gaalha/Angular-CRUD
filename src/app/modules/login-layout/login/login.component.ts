@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '~services/auth.service';
-import { SnackbarComponent } from '~components/snackbar/snackbar.component';
+import { Response } from '~app/models/response';
 
 @Component({
   selector: 'app-login',
@@ -63,17 +64,14 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.isLogin = true;
       this.authService.login(this.form.value).subscribe(
-        (data: any) => {
+        (data: Response) => {
           this.isLogin = false;
           if (data.success) {
             this.authService.loggedIn.next(true);
             localStorage.setItem('token', data.token);
             this.router.navigate(['/']);
           } else {
-            this.snack.openFromComponent(SnackbarComponent, {
-              data: { data: data },
-              duration: 3000
-            });
+            this.snack.open(data.message, 'Close');
           }
         },
         (error) => {

@@ -14,9 +14,9 @@ import { ClientService } from '~services/client.service';
 import { AuthService } from '~services/auth.service';
 import { ConfirmComponent } from '~components/confirm/confirm.component';
 import { FormsComponent } from '~modules/client/forms/forms.component';
-import { SnackbarComponent } from '~components/snackbar/snackbar.component';
 
 import { Controller } from '~base/controller';
+import { Response } from '~app/models/response';
 
 @Component({
   selector: 'app-client',
@@ -56,7 +56,6 @@ export class ClientComponent implements AfterViewInit, OnInit, Controller {
   }
 
   ngAfterViewInit() {
-    // ANTES QUE LA VISTA CARGUE INICIA LA CARGA DE DATOS EN EL GRID
     this.getData();
   }
 
@@ -64,20 +63,13 @@ export class ClientComponent implements AfterViewInit, OnInit, Controller {
     this.changeDetectorRef.detectChanges();
   }
 
-  private openSnack(data: any): void {
-    this.snack.openFromComponent(SnackbarComponent, {
-      data: { data: data },
-      duration: 3000
-    });
-  }
-
-  public onPaginateChange(event: any): void {
+  onPaginateChange(event: any): void {
     this.page = event.pageIndex + 1;
     this.pageSize = event.pageSize;
     this.getData();
   }
 
-  public applyFilter(filterValue: string): void {
+  applyFilter(filterValue: string): void {
     filterValue = filterValue.trim().toLowerCase();
     this.getData();
   }
@@ -113,7 +105,7 @@ export class ClientComponent implements AfterViewInit, OnInit, Controller {
   }
 
   edit(client: Client): void {
-    this.clientService.getOne(client.id).subscribe((data: any) => {
+    this.clientService.getOne(client.id).subscribe((data: Response) => {
       if (data.success) {
         const dialogRef = this.dialog.open(FormsComponent, {
           width: '400px',
@@ -153,8 +145,9 @@ export class ClientComponent implements AfterViewInit, OnInit, Controller {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.clientService.delete(client.id).subscribe((data: any) => {
-          this.openSnack(data);
+        this.clientService.delete(client.id).subscribe((data: Response) => {
+          this.snack.open(data.message, 'Close');
+
           if (data.success) {
             this.paginator._changePageSize(this.paginator.pageSize);
           }

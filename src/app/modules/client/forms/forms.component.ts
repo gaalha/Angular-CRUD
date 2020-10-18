@@ -4,8 +4,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { ClientService } from '~services/client.service';
-import { SnackbarComponent } from '~components/snackbar/snackbar.component';
-import { Client } from '~app/models/client';
 
 @Component({
   selector: 'app-forms',
@@ -33,13 +31,6 @@ export class FormsComponent implements OnInit {
     this.initializeForm();
   }
 
-  openSnack(data: any) {
-    this.snack.openFromComponent(SnackbarComponent, {
-      data: { data: data },
-      duration: 3000
-    });
-  }
-
   private initializeForm() {
     const IS_EDITING = this.data.action === 'edit';
     const data = this.data.data;
@@ -55,7 +46,7 @@ export class FormsComponent implements OnInit {
 
   public save(form: FormGroup) {
     this.clientService.save(form.value).subscribe((data: any) => {
-      this.openSnack(data);
+      this.snack.open(data.message, 'Close');
 
       if (data.success) {
         this.dialogRef.close(true);
