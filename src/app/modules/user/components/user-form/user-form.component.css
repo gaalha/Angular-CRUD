@@ -1,0 +1,13 @@
+mat-form-field {
+  width: 100%;
+}
+
+.container {
+  width : 100%;
+  height: 100%;
+}
+
+.button-row {
+  margin-top: 2vh;
+  text-align: right;
+}

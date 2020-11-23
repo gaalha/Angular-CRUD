@@ -1,1 +1,56 @@
-<p>user-form works!</p>
+<h1 mat-dialog-title> {{ data.title }}</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="userForm" (keyup.enter)="save()">
+    <mat-form-field>
+      <input matInput placeholder="Username" formControlName="user_name" class="person-input">
+      <mat-error *ngIf="userForm.controls.user_name.invalid">{{ getUsernameErrorMessages() }}</mat-error>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field>
+      <input matInput type="email" placeholder="Email" formControlName="email" class="person-input" autocomplete="off">
+      <mat-error *ngIf="userForm.controls.email.invalid">{{ getEmailErrorMessages() }}</mat-error>
+    </mat-form-field>
+
+    <br />
+
+    <ng-container [style.visibility]="IS_EDITING ? '' : 'hidden'">
+      <mat-checkbox formControlName="changePassword" [(ngModel)]="isChangingPassword">Change password?</mat-checkbox>
+    </ng-container>
+
+    <br />
+
+    <ng-container [style.visibility]="!IS_EDITING || (IS_EDITING && isChangingPassword)">
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" formControlName="password" autocomplete="off">
+        <mat-hint align="end">{{userForm.controls.password.value?.length || 0}}/8</mat-hint>
+        <mat-error *ngIf="userForm.controls.password.invalid">{{ getPasswordErrorMessages() }}</mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <input matInput type="password" placeholder="Repeat password" formControlName="repeat_password" autocomplete="off">
+        <mat-hint align="end">{{userForm.controls.repeat_password.value?.length || 0}}/8</mat-hint>
+        <mat-error *ngIf="userForm.controls.repeat_password.invalid">{{ getRepeatPasswordErrorMessages() }}</mat-error>
+      </mat-form-field>
+
+      <br />
+    </ng-container>
+
+    <mat-form-field style="visibility: hidden; height: 0vh !important">
+      <!-- Input type "hidden" isn't supported by matInput. -->
+      <input matInput type="text" formControlName="id">
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]>Cancel</button>
+  <button mat-raised-button color="primary" (click)='save()' class="btnSave" [disabled]="userForm.invalid || isSaving">
+    <mat-icon aria-label="icon-button">save </mat-icon>
+    <span>Save</span>
+  </button>
+</div>

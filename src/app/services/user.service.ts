@@ -44,9 +44,9 @@ export class UserService implements Provider {
     return this.http.post<Response>(
       CONSTANST.routes.user.save,
       {
-        txtFirstName: user.user_name,
-        txtLastName: user.email,
-        txtAge: user.password,
+        user_name: user.user_name,
+        email: user.email,
+        password: user.password,
         id: user.id
       },
       { headers: this.headers }

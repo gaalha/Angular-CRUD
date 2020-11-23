@@ -14,7 +14,7 @@ import { User } from '~models/user';
 import { UserService } from '~services/user.service';
 import { AuthService } from '~services/auth.service';
 import { ConfirmComponent } from '~components/confirm/confirm.component';
-import { FormsComponent } from '~modules/client/forms/forms.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 import { Controller } from '~base/controller';
 import { Response } from '~app/models/response';
@@ -107,7 +107,7 @@ export class UserComponent implements AfterViewInit, OnInit, Controller {
   edit(user: User): void {
     this.userService.getOne(user.id).subscribe((data: Response) => {
       if (data.success) {
-        const dialogRef = this.dialog.open(FormsComponent, {
+        const dialogRef = this.dialog.open(UserFormComponent, {
           width: '400px',
           data: { title: 'Update user', action: 'edit', data: data.data }
         });
@@ -122,7 +122,7 @@ export class UserComponent implements AfterViewInit, OnInit, Controller {
   }
 
   save(): void {
-    const dialogRef = this.dialog.open(FormsComponent, {
+    const dialogRef = this.dialog.open(UserFormComponent, {
       width: '400px',
       data: { title: 'Add user', action: 'save' }
     });
